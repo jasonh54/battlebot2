@@ -19,10 +19,13 @@ public class App {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setFocusable(true);
-        // f.setIconImage(Utils.ICONIMG);
         f.setResizable(false);
-
+        // f.setIconImage(Utils.ICONIMG);
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
+        f.setVisible(true);
+        f.requestFocus();
+        dc.startDraw();
+        f.setEnabled(true);
     }
 
     public static void render(Graphics2D g2) {
