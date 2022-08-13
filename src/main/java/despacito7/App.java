@@ -1,15 +1,24 @@
 package despacito7;
 
 import java.awt.Graphics2D;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
     public static final DrawingCanvas dc = new DrawingCanvas(f);
 
+    public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     public static void main(String[] args) {
@@ -26,6 +35,16 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
+    }
+
+    public JsonObject loadJson(String filename) {
+        try (Reader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream(filename))) {
+            String text = new BufferedReader(reader).lines().collect(Collectors.joining("\n"));
+            return gson.fromJson(text, JsonObject.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static void render(Graphics2D g2) {

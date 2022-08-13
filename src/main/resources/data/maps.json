@@ -1,0 +1,25 @@
+{
+    "citymap": {
+        "name": "citymap",
+        "layers": {
+            "base": [
+                [],
+                []
+            ],
+            "collide": [
+                [],
+                []
+            ],
+            "top": [
+                [],
+                []
+            ]
+        },
+        "items": [
+            {
+                "variant": "healthPotion",
+                "location": []
+            }
+        ]
+    }
+}
