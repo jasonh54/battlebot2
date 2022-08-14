@@ -20,6 +20,15 @@
                 "variant": "healthPotion",
                 "location": []
             }
+        ],
+        "portals": [
+            {
+                "target": {
+                    "map": "jailmap",
+                    "loc": [5, 3]
+                },
+                "loc": [2,7]
+            }
         ]
     }
 }

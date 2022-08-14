@@ -1,0 +1,9 @@
+{
+    "punch": {
+        "type": 3,
+        "levelReq": 24,
+        "stats": {
+            "dmg": 10
+        }
+    }
+}
