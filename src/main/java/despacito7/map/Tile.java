@@ -6,5 +6,7 @@ public class Tile {
 
     public Tile(int col, Coord coord) {
     }
-    
+    public void  draw(java.awt.Graphics2D g){
+
+    }
 }
