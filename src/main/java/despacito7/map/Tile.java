@@ -1,12 +1,14 @@
 package despacito7.map;
 
 import despacito7.util.Coord;
+import despacito7.util.Drawable;
 
-public class Tile {
-
-    public Tile(int col, Coord coord) {
+public record Tile(java.awt.Image sprite, Coord coord) implements Drawable {
+    public void draw(java.awt.Graphics2D g){
+        g.drawImage(this.sprite, null, null);
     }
-    public void  draw(java.awt.Graphics2D g){
 
+    public boolean isCollidable() {
+        return false;
     }
 }

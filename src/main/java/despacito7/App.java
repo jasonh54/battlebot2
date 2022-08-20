@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import com.google.gson.Gson;
@@ -18,10 +19,15 @@ public class App {
     public static final JFrame f = new JFrame("Battlebot");
     public static final DrawingCanvas dc = new DrawingCanvas(f);
 
+    public static final App instance = new App();
+    private App() {};
+
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     public static void main(String[] args) {
+        instance.init();
+
         f.setVisible(true);
         f.add(dc);
         f.addKeyListener(dc);
@@ -37,6 +43,18 @@ public class App {
         f.setEnabled(true);
     }
 
+    public static void render(Graphics2D g2) {
+        g2.drawString("Hello World", 100, 100);
+    }
+
+    public static void tick() {
+
+    }
+
+    private void init() {
+         // TODO: no filestructure!! can't list all
+    }
+
     public JsonObject loadJson(String filename) {
         try (Reader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream(filename))) {
             String text = new BufferedReader(reader).lines().collect(Collectors.joining("\n"));
@@ -47,11 +65,12 @@ public class App {
         }
     }
 
-    public static void render(Graphics2D g2) {
-        g2.drawString("Hello World", 100, 100);
-    }
-
-    public static void tick() {
-
+    public java.awt.Image loadImage(String filename) {
+        try {
+            return ImageIO.read(getClass().getClassLoader().getResourceAsStream(filename));
+        } catch (IOException e) {
+            System.out.println("Image Failed To Load: "+filename);
+            return null;
+        }
     }
 }
