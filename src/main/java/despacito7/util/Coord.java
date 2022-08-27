@@ -12,6 +12,10 @@ public class Coord {
         return new int[]{r, c};
     }
 
+    public int[] getRealComponents() {
+        return new int[]{r*tilesize,c*tilesize};
+    }
+
     public java.awt.Point getPosition() {
         return new java.awt.Point(r * tilesize, c * tilesize);
     }

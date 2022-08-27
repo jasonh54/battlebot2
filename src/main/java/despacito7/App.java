@@ -45,6 +45,7 @@ public class App {
 
     public static void render(Graphics2D g2) {
         g2.drawString("Hello World", 100, 100);
+        // g2.drawImage(instance.loadImage("sprites/items/PotionArmor.png"), 50, 50, null);
     }
 
     public static void tick() {
