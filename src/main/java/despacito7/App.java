@@ -10,6 +10,7 @@ import java.io.File;
 // import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
@@ -19,6 +20,8 @@ import javax.swing.JFrame;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -30,22 +33,11 @@ public class App {
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
-    public static HashMap<String,Image> itemImages = new HashMap<String,Image>();
-    public static HashMap<String,Image> monsterImages = new HashMap<String,Image>();
-    public static Image[] tileImages;
+    private static final ResourceLoader resourceLoader = new ResourceLoader();
+    
 
     public static void main(String[] args) {
-        String resourcesDirectoryPath = Paths.get("").toAbsolutePath().toString() + "/src/main/resources/images";
-        System.out.println(resourcesDirectoryPath);
-        File imageDirectory = new File(resourcesDirectoryPath+"/items");
-        File[] imageDirectories = imageDirectory.listFiles();
-        for(File object: imageDirectories){
-            if(object.isFile()){
-                System.out.println(object.getName());
-                String filename = object.getName();
-                itemImages.put(filename.substring(0,filename.length()-4), instance.loadImage(filename));
-            }
-        }
+        resourceLoader.loadResources();
 
 
 
