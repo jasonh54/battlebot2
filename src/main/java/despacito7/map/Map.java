@@ -8,9 +8,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import despacito7.App;
-import despacito7.detail.Item;
-import despacito7.detail.NPC;
+import despacito7.ResourceLoader;
+import despacito7.detail.*;
 import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
@@ -70,7 +69,7 @@ public class Map implements Drawable {
                 JsonArray row = data.get(r).getAsJsonArray();
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    tiles[r][c] = new Tile(App.instance.loadImage(String.valueOf(sprite)), new Coord(r, c));
+                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c));
                 }
             }
         }
@@ -105,7 +104,7 @@ public class Map implements Drawable {
                             break;
                         }
                     }
-                    Tile tile = new Tile(App.instance.loadImage(String.valueOf(sprite)), new Coord(r, c), type);
+                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c), type);
                     tiles[r][c] = tile;
                     if (!tile.type().equals(TileType.NORMAL)) this.specials.get(tile.type()).add(tile.coord());
                 }
