@@ -1,0 +1,5874 @@
+[
+	{
+		"name": "Goku",
+		"image": "AirA",
+		"type": "fire",
+		"attack": 9001,
+		"defense": 0,
+		"maxhealth": 9001,
+		"speed": 100,
+		"agility": 100,
+		"moves": [
+			"kamehameha",
+			"attack1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "AirA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "AirA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BallD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BallD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatK",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatK",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatL",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatL",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatM",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatM",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatN",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatN",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatO",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatO",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatP",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatP",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatQ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatQ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatR",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatR",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatS",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatS",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatSmallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatSmallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatSmallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatSmallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatSmallD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatSmallD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatSmallE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatSmallE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BatT",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BatT",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BeardA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BeardA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BeardB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BeardB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BrainA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BrainA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BrainB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BrainB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BrainC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BrainC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BrainD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BrainD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BrainE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BrainE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BugA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BugA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BugB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BugB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BugC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BugC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BugD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BugD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "BugE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "BugE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ButterflyA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ButterflyA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ButterflyB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ButterflyB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CatA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CatA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CatB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CatB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CatC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CatC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CatD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CatD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CatE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CatE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CatF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CatF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ChestA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ChestA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ChickenA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ChickenA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ChickenB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ChickenB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ChickenC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ChickenC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CloudA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CloudA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CloudB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CloudB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CloudC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CloudC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CloudD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CloudD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CoffinA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CoffinA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CoffinB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CoffinB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CoffinC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CoffinC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CoffinD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CoffinD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CountA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CountA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CrabA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CrabA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CrabB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CrabB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CrabC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CrabC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CrabD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CrabD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CrabE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CrabE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "CrabF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "CrabF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DiscA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DiscA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DogG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DogG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DuckA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DuckA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DuckB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DuckB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DuckC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DuckC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DwarfA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DwarfA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DwarfB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DwarfB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DwarfC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DwarfC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DwarfD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DwarfD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DwarfE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DwarfE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DwarfF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DwarfF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DyeA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DyeA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DyeB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DyeB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DyeC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DyeC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "DyeD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "DyeD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthSmallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthSmallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthSmallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthSmallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthSmallerA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthSmallerA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthSmallerB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthSmallerB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EarthSmallerC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EarthSmallerC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EelA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EelA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EelB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EelB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EelC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EelC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EelD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EelD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ElementalOrbA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ElementalOrbA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ElementalOrbB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ElementalOrbB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeBallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeBallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeBallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeBallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeBallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeBallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "EyeD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "EyeD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FactoryA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FactoryA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FactoryB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FactoryB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FireSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FireSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FishA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FishA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FishB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FishB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FishC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FishC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FrogA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FrogA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FrogB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FrogB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FrogC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FrogC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FrogD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FrogD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "FrogE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "FrogE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GhastA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GhastA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GhastB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GhastB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GhastC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GhastC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GnomeA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GnomeA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GnomeB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GnomeB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GnomeC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GnomeC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GoatA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GoatA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GoatB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GoatB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "GolemA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "GolemA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HareA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HareA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HareB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HareB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HareC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HareC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HareD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HareD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HeadA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HeadA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HeadB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HeadB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HeadC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HeadC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HeadD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HeadD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HulkA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HulkA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "HulkB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "HulkB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "KlackonA",
+		"type": "fire",
+		"attack": 60,
+		"defense": 30,
+		"maxhealth": 60,
+		"speed": 60,
+		"image": "KlackonA",
+		"agility": 55,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "KlackonB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "KlackonB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "KlackonC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "KlackonC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "KlackonD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "KlackonD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "KlackonE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "KlackonE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "KlackonF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "KlackonF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "LurkerA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "LurkerA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "LurkerB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "LurkerB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "LurkerC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "LurkerC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MachineA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MachineA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MaskA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MaskA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MaskB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MaskB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MaskC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MaskC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MaskD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MaskD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithK",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithK",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MonolithL",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MonolithL",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MothA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MothA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MothB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MothB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MothC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MothC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MothD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MothD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MothE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MothE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MouthA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MouthA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MouthB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MouthB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MouthC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MouthC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MummyA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MummyA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MummyB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MummyB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MummyC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MummyC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MushroomA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MushroomA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "MushroomB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "MushroomB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "OrbA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "OrbA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "OrbB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "OrbB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "OrbC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "OrbC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "OrbD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "OrbD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionK",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionK",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PotionL",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PotionL",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PterodactylH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PterodactylH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PuddleA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PuddleA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PuddleB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PuddleB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PuddleC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PuddleC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PyramidA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PyramidA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "PyramidB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "PyramidB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ReaperA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ReaperA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "RobotA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "RobotA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "RobotB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "RobotB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "RobotC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "RobotC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "RobotD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "RobotD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ScorpionA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ScorpionA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ScorpionB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ScorpionB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ScorpionC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ScorpionC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SentryA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SentryA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SentryB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SentryB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SentryC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SentryC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SentryCopterA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SentryCopterA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SentryCopterB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SentryCopterB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SentryCopterC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SentryCopterC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ShieldA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ShieldA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ShieldB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ShieldB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ShieldC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ShieldC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ShieldD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ShieldD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ShieldE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ShieldE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ShieldF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ShieldF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkeletonA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkeletonA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkeletonB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkeletonB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkeletonC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkeletonC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkeletonD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkeletonD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullFlamingA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullFlamingA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullFlamingB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullFlamingB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SkullSmallH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SkullSmallH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeK",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeK",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeL",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeL",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeM",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeM",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeN",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeN",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeO",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeO",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeP",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeP",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallerG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallerG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSmallI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSmallI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareK",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareK",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareL",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareL",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallerJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallerJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlimeSquareSmallH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlimeSquareSmallH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SlugG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SlugG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeI",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeI",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeJ",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeJ",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeK",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeK",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SnakeL",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SnakeL",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SpaceA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SpaceA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SparksA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SparksA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SphereA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SphereA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SphereB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SphereB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SphereC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SphereC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SphereD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SphereD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SquirrelA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SquirrelA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SquirrelB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SquirrelB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SwordA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SwordA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "SwordB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "SwordB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "TentacleA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "TentacleA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "TentacleB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "TentacleB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "TentacleC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "TentacleC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "TentacleD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "TentacleD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "TentacleE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "TentacleE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "TentacleF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "TentacleF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WaterA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WaterA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WaterSmallA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WaterSmallA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WeaselA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WeaselA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WeaselB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WeaselB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WeaselC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WeaselC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WitchA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WitchA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WitchB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WitchB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WitchC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WitchC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WitchD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WitchD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WitchE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WitchE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WitchF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WitchF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormC",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormC",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormD",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormD",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormE",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormE",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormF",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormF",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormG",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormG",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "WormH",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "WormH",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ZombieA",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ZombieA",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	},
+	{
+		"name": "ZombieB",
+		"type": "fire",
+		"attack": 45,
+		"defense": 50,
+		"maxhealth": 100,
+		"speed": 50,
+		"image": "ZombieB",
+		"agility": 50,
+		"moves": [
+			"attack1",
+			"defend1",
+			"heal1",
+			"dodge1"
+		]
+	}
+]

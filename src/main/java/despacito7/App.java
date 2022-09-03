@@ -1,10 +1,16 @@
 package despacito7;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.File;
+// import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.Collectors;
@@ -14,6 +20,8 @@ import javax.swing.JFrame;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -25,7 +33,14 @@ public class App {
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
+    private static final ResourceLoader resourceLoader = new ResourceLoader();
+    
+
     public static void main(String[] args) {
+        resourceLoader.loadResources();
+
+
+
         instance.init();
 
         f.setVisible(true);

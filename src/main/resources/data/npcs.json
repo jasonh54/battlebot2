@@ -1,0 +1,61 @@
+{
+    "Red": {
+        "loc": [5, 1],
+        "topics": {
+            "CHAT": "I'm the champion from Pallet Town."
+        }
+    },
+
+    "Blue": {
+        "loc": [7, 1],
+        "topics": {
+            "CHAT": "I'm Professor Oak's grandson! Nyah!!!",
+            "BATTLE": "I'll crush you with my monsters!"
+        },
+        "monsters": [
+			"AirA",
+			"MaskA"
+		]
+    },
+    
+    "Yellow": {
+        "loc": [9, 1],
+        "topics": {
+            "CHAT": "I'm a traveling kid with a funny hat!",
+            "SHOP": "Want some items? I'll trade ya!"
+        },
+        "items": [
+			"ArmorPotion",
+			"AgilityPotion"
+		]
+    },
+
+    "Cynthia": {
+        "loc": [5, 3],
+        "topics": {
+            "CHAT": "I'm just a traveler who hails from the Sinnoh Region."
+        },
+        "movement": [
+			"LEFT",
+			"LEFT",
+			"WAIT",
+			"DOWN",
+			"WAIT",
+			"RIGHT",
+			"UP",
+			"WAIT",
+            "RIGHT"
+		]
+    },
+
+    "Dawn": {
+        "loc": [7, 3],
+        "topics": {
+            "CHAT": "I just LOVE the Monster Contests! Have you ever tried out for one?"
+        },
+        "branch": {
+			"YES": "Wow, another contest enthusiast! It's great to meet you.",
+            "NO": "You really should... People like them, and Pokémon too!"
+        }
+    }
+}
