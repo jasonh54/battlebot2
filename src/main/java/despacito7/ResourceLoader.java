@@ -10,7 +10,7 @@ public class ResourceLoader {
     public static Map<String,Image> itemImages = new HashMap<String,Image>();
     public static Map<String,Image> monsterImages = new HashMap<String,Image>();
     public static Image[] tileImages;
-    String resourcesDirectoryPath = Paths.get("").toAbsolutePath().toString() + "/src/main/resources/images";
+    String resourcesDirectoryPath = Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
 
     public void loadResources(){
         loadItems();
@@ -25,7 +25,7 @@ public class ResourceLoader {
             if(object.isFile()){
                 System.out.println(object.getName());
                 String filename = object.getName();
-                String filepath = "images/items/"+filename;
+                String filepath = "sprites/items/"+filename;
                 System.out.println(filepath);
                 itemImages.put(filename.substring(0,filename.length()-4), App.instance.loadImage(filepath));
             }
@@ -39,7 +39,7 @@ public class ResourceLoader {
             if(object.isFile()){
                 System.out.println(object.getName());
                 String filename = object.getName();
-                String filepath = "images/monsters/"+filename;
+                String filepath = "sprites/monsters/"+filename;
                 System.out.println(filepath);
                 itemImages.put(filename.substring(0,filename.length()-4), App.instance.loadImage(filepath));
             }
@@ -54,7 +54,7 @@ public class ResourceLoader {
         for(File object: tilesDirectories){
             if(object.isFile()){
                 String filename = object.getName();
-                String filepath = "images/tiles/"+filename;
+                String filepath = "sprites/tiles/"+filename;
                 tileImages[i] = App.instance.loadImage(filepath);
             }
         }
