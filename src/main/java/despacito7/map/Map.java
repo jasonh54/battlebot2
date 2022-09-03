@@ -1,6 +1,7 @@
 package despacito7.map;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.google.gson.JsonArray;
@@ -8,6 +9,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.App;
+import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
 
@@ -43,7 +45,11 @@ public class Map implements Drawable {
     }
 
     public boolean collides(Coord pos) {
-        return ((InteractLayer)layers.get(LayerType.INTERACT)).collides(pos);
+        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.COLLIDE, pos);
+    }
+
+    public boolean monsters(Coord pos) {
+        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER, pos);
     }
 
     private class Layer implements Drawable {
@@ -71,21 +77,32 @@ public class Map implements Drawable {
     }
 
     private class InteractLayer extends Layer {
-        private Set<Coord> collidables;
+        private static java.util.Map<TileType, Set<Integer>> specialSprites = java.util.Map.of(TileType.COLLIDE, Set.of(69));
+        private java.util.Map<TileType, Set<Coord>> specials = java.util.Map.of(
+            TileType.COLLIDE, new HashSet<>(),
+            TileType.MONSTER, new HashSet<>()
+        );
         public InteractLayer(JsonArray data) {
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    Tile tile = new Tile(App.instance.loadImage(String.valueOf(sprite)), new Coord(r, c));
+                    TileType type = TileType.NORMAL;
+                    for (java.util.Map.Entry<TileType, Set<Integer>> typesprites : specialSprites.entrySet()) {
+                        if (typesprites.getValue().contains(sprite)) {
+                            type = typesprites.getKey();
+                            break;
+                        }
+                    }
+                    Tile tile = new Tile(App.instance.loadImage(String.valueOf(sprite)), new Coord(r, c), type);
                     tiles[r][c] = tile;
-                    if (tile.isCollidable()) collidables.add(tile.coord());
+                    if (!tile.type().equals(TileType.NORMAL)) this.specials.get(tile.type()).add(tile.coord());
                 }
             }
         }
 
-        public boolean collides(Coord coord) {
-            return collidables.contains(coord);
+        public boolean has(TileType type, Coord coord) {
+            return specials.get(type).contains(coord);
         }
     }
 }
