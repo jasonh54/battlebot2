@@ -10,12 +10,18 @@ import java.util.stream.Collectors;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-class FeatureLoader {
+import despacito7.util.Loader;
+
+class FeatureLoader implements Loader {
     private static java.util.Map<String, despacito7.map.Map> maps;
 
     public static despacito7.map.Map getMap(String mapid) {return maps.get(mapid);}
 
-    public void loadFeatures() {
+    public boolean isLoaded() {
+        return maps != null;
+    }
+
+    public void load() {
         JsonObject mapdata = loadJson("maps.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
@@ -23,7 +29,7 @@ class FeatureLoader {
         }
     }
 
-    public JsonObject loadJson(String filename) {
+    private JsonObject loadJson(String filename) {
         try (Reader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("data/"+filename))) {
             String text = new BufferedReader(reader).lines().collect(Collectors.joining("\n"));
             return App.gson.fromJson(text, JsonObject.class);

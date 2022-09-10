@@ -1,6 +1,7 @@
 package despacito7;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -18,7 +19,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     public static void main(String[] args) {
-        resourceLoader.loadResources();
+        resourceLoader.load();
 
         f.setVisible(true);
         f.add(dc);
@@ -29,7 +30,7 @@ public class App {
         f.setResizable(false);
         // f.setIconImage(Utils.ICONIMG);
 
-        featureLoader.loadFeatures();
+        featureLoader.load();
 
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
@@ -38,9 +39,13 @@ public class App {
         f.setEnabled(true);
     }
 
+    public static boolean isLoaded() {
+        return featureLoader.isLoaded() && resourceLoader.isLoaded();
+    }
+
     public static void render(Graphics2D g) {
-        g.drawString("Hello World", 100, 100);
-        // g2.drawImage(instance.loadImage("sprites/items/PotionArmor.png"), 50, 50, null);
+        g.setTransform(AffineTransform.getScaleInstance(2, 2));
+        FeatureLoader.getMap("citymap").draw(g);
     }
 
     public static void tick() {
