@@ -21,7 +21,11 @@ public class ResourceLoader {
     
     private String resourcesDirectoryPath = java.nio.file.Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
 
-    public void loadResources() {
+    public boolean isLoaded() {
+        return itemSprites != null && monsterSprites != null && tileSprites != null;
+    }
+
+    public void load() {
         loadItems();
         loadMonsters();
         loadTiles();
@@ -49,10 +53,9 @@ public class ResourceLoader {
     private void loadTiles() {
         File dir = new File(resourcesDirectoryPath+"/tiles");
         List<File> files = Arrays.stream(dir.listFiles()).filter(e->e.isFile()).toList();
-        tileSprites = new Image[files.size()];
-        int i = -1;
+        ResourceLoader.tileSprites = new Image[files.size()];
         for(File file : files) {
-            tileSprites[++i] = this.loadImage("sprites/tiles/"+file.getName());
+            ResourceLoader.tileSprites[Integer.parseInt(file.getName().replaceAll("\\D", ""))] = this.loadImage("sprites/tiles/"+file.getName());
         }
     }
 
