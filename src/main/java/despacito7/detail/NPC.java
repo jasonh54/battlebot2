@@ -1,5 +1,9 @@
 package despacito7.detail;
 
-public class NPC {
-    
+// import despacito7.util.AnimatingObject;
+
+public class NPC { // extends AnimatingObject 
+    public NPC(String id) {
+        
+    }
 }

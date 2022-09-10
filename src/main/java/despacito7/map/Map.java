@@ -8,7 +8,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import despacito7.App;
+import despacito7.ResourceLoader;
+import despacito7.detail.*;
 import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
@@ -21,6 +22,8 @@ public class Map implements Drawable {
         }
     }
     private java.util.Map<LayerType, Layer> layers = new HashMap<>();
+    private Set<NPC> npcs = new HashSet<>();
+    private Set<Item> items = new HashSet<>();
 
     public Map(JsonObject data) {
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
@@ -32,6 +35,13 @@ public class Map implements Drawable {
                 default:
                     layers.put(layertype, new Layer(layerdata.getValue().getAsJsonArray()));
             }
+        }
+        for (JsonElement npcid : data.get("npcs").getAsJsonArray()) {
+            npcs.add(new NPC(npcid.getAsString()));
+        }
+        for (JsonElement itemd : data.get("items").getAsJsonArray()) {
+            JsonObject itemdata = itemd.getAsJsonObject();
+            items.add(new Item(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
         }
     }
 
@@ -55,11 +65,13 @@ public class Map implements Drawable {
     private class Layer implements Drawable {
         protected Tile[][] tiles;
         public Layer(JsonArray data) {
+            this.tiles = new Tile[data.size()][];
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
+                this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    tiles[r][c] = new Tile(App.instance.loadImage(String.valueOf(sprite)), new Coord(r, c));
+                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c));
                 }
             }
         }
@@ -83,8 +95,10 @@ public class Map implements Drawable {
             TileType.MONSTER, new HashSet<>()
         );
         public InteractLayer(JsonArray data) {
+            this.tiles = new Tile[data.size()][];
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
+                this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
                     TileType type = TileType.NORMAL;
@@ -94,7 +108,7 @@ public class Map implements Drawable {
                             break;
                         }
                     }
-                    Tile tile = new Tile(App.instance.loadImage(String.valueOf(sprite)), new Coord(r, c), type);
+                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c), type);
                     tiles[r][c] = tile;
                     if (!tile.type().equals(TileType.NORMAL)) this.specials.get(tile.type()).add(tile.coord());
                 }
