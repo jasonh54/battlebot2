@@ -14,12 +14,18 @@ import javax.swing.JFrame;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import despacito7.detail.NPC;
+
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
     public static final DrawingCanvas dc = new DrawingCanvas(f);
 
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+    //game objects
+    NPC eenpcs = gson.fromJson("npcs.json",NPC.class);
+
 
     public static void main(String[] args) {
         f.setVisible(true);
@@ -35,6 +41,9 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
+
+        System.out.println("beeboo");
+        
     }
 
     public JsonObject loadJson(String filename) {
