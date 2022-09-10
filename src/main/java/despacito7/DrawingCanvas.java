@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
 class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
     public JFrame parent;
     public long prevtime = 0;
-    private boolean draw = true;
+    private boolean draw = false;
 
     public DrawingCanvas(JFrame f) {
         this.parent = f;
@@ -20,6 +20,7 @@ class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
     }
 
     public void startDraw() { // begin the draw loop!
+        this.draw = true;
         while (this.draw) {
             if (!this.parent.isShowing())
                 continue; // dont render in background
@@ -39,7 +40,7 @@ class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        App.render(g2);
+        if (App.isLoaded()) App.render(g2);
 
         g.dispose();
         g2.dispose();
