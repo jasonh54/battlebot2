@@ -21,6 +21,9 @@ import javax.swing.JFrame;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import despacito7.util.Coord;
+import despacito7.util.GameObject;
+
 
 
 public class App {
@@ -34,11 +37,14 @@ public class App {
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     private static final ResourceLoader resourceLoader = new ResourceLoader();
+
+    static GameObject test;
     
 
     public static void main(String[] args) {
         resourceLoader.loadResources();
 
+        test = new GameObject(new Coord(12,15), ResourceLoader.monsterImages.get("AirA"));
 
 
         instance.init();
@@ -60,7 +66,8 @@ public class App {
 
     public static void render(Graphics2D g2) {
         g2.drawString("Hello World", 100, 100);
-        // g2.drawImage(instance.loadImage("sprites/items/PotionArmor.png"), 50, 50, null);
+        test.draw(g2);
+        g2.drawImage(instance.loadImage("sprites/items/PotionArmor.png"), 50, 50, null);
     }
 
     public static void tick() {

@@ -56,6 +56,7 @@ public class ResourceLoader {
                 String filename = object.getName();
                 String filepath = "images/tiles/"+filename;
                 tileImages[i] = App.instance.loadImage(filepath);
+                
             }
         }
     }
