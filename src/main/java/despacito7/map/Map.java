@@ -65,8 +65,10 @@ public class Map implements Drawable {
     private class Layer implements Drawable {
         protected Tile[][] tiles;
         public Layer(JsonArray data) {
+            this.tiles = new Tile[data.size()][];
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
+                this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
                     tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c));
@@ -93,8 +95,10 @@ public class Map implements Drawable {
             TileType.MONSTER, new HashSet<>()
         );
         public InteractLayer(JsonArray data) {
+            this.tiles = new Tile[data.size()][];
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
+                this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
                     TileType type = TileType.NORMAL;

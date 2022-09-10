@@ -14,9 +14,9 @@ public class App {
 
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
     private static final ResourceLoader resourceLoader = new ResourceLoader();
-    
+    private static final FeatureLoader featureLoader = new FeatureLoader();
+
     public static void main(String[] args) {
         resourceLoader.loadResources();
 
@@ -28,6 +28,9 @@ public class App {
         f.setFocusable(true);
         f.setResizable(false);
         // f.setIconImage(Utils.ICONIMG);
+
+        featureLoader.loadFeatures();
+
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
         f.requestFocus();
@@ -35,8 +38,8 @@ public class App {
         f.setEnabled(true);
     }
 
-    public static void render(Graphics2D g2) {
-        g2.drawString("Hello World", 100, 100);
+    public static void render(Graphics2D g) {
+        g.drawString("Hello World", 100, 100);
         // g2.drawImage(instance.loadImage("sprites/items/PotionArmor.png"), 50, 50, null);
     }
 

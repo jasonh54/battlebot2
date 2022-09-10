@@ -1,22 +1,14 @@
 package despacito7;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
-
-import com.google.gson.JsonObject;
-
-import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.file.Paths;
 
 public class ResourceLoader {
     private static Map<String,Image> itemSprites;
@@ -27,7 +19,7 @@ public class ResourceLoader {
     public static Image getMonsterSprite(String id) {return monsterSprites.get(id);}
     public static Image getTileSprite(int id) {return tileSprites[id];}
     
-    private String resourcesDirectoryPath = Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
+    private String resourcesDirectoryPath = java.nio.file.Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
 
     public void loadResources() {
         loadItems();
@@ -57,23 +49,13 @@ public class ResourceLoader {
         File dir = new File(resourcesDirectoryPath+"/tiles");
         List<File> files = Arrays.stream(dir.listFiles()).filter(e->e.isFile()).toList();
         tileSprites = new Image[files.size()];
-        int i = 0;
+        int i = -1;
         for(File file : files) {
             tileSprites[++i] = this.loadImage("sprites/tiles/"+file.getName());
         }
     }
 
     private String removeExtension(String filename) {return filename.replaceFirst("[.][^.]+$", "");}
-
-    public JsonObject loadJson(String filename) {
-        try (Reader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream(filename))) {
-            String text = new BufferedReader(reader).lines().collect(Collectors.joining("\n"));
-            return App.gson.fromJson(text, JsonObject.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     private java.awt.Image loadImage(String filename) {
         try {
