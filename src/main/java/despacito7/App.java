@@ -20,7 +20,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    NPC eenpcs = gson.fromJson("npcs.json",NPC.class);
+    NPC npcs = gson.fromJson("npcs.json",NPC.class);
 
 
     public static void main(String[] args) {
@@ -42,9 +42,9 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
-
-        System.out.println("beeboo");
         
+        System.out.println("beeboo");
+
     }
 
     public static void render(Graphics2D g) {
