@@ -1,7 +1,9 @@
 {
     "healthPotion": {
+        
         "health": 10,
 
         "sprite": 96
     }
 }
+

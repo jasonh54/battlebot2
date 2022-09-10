@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
+class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
     public JFrame parent;
     public long prevtime = 0;
     private boolean draw = true;
