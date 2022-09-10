@@ -71,7 +71,7 @@ public class Map implements Drawable {
                 this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c));
+                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r)); // inverted due to java being funny
                 }
             }
         }
@@ -108,7 +108,7 @@ public class Map implements Drawable {
                             break;
                         }
                     }
-                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c), type);
+                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r), type);
                     tiles[r][c] = tile;
                     if (!tile.type().equals(TileType.NORMAL)) this.specials.get(tile.type()).add(tile.coord());
                 }
