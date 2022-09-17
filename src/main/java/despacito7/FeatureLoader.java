@@ -12,12 +12,16 @@ import com.google.gson.JsonObject;
 
 class FeatureLoader {
     private static java.util.Map<String, despacito7.map.Map> maps;
+    private static java.util.Map<String, despacito7.detail.NPC> npcs;
 
     public static despacito7.map.Map getMap(String mapid) {return maps.get(mapid);}
+    public static despacito7.detail.NPC getNPC(String npcid) {return npcs.get(npcid);}
 
     public void loadFeatures() {
         JsonObject mapdata = loadJson("maps.json");
+        JsonObject npcsdata = loadJson("npcs.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
+        FeatureLoader.npcs = new HashMap<>(npcsdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
         }

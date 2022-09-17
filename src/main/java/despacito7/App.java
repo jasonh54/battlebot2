@@ -8,8 +8,6 @@ import javax.swing.JFrame;
 
 import com.google.gson.Gson;
 
-import despacito7.detail.NPC;
-
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
     public static final DrawingCanvas dc = new DrawingCanvas(f);
@@ -20,7 +18,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    NPC npcs = gson.fromJson("npcs.json",NPC.class);
+    //final static NPC Cynthia = new Gson().fromJson("Cynthia",NPC.class);
 
 
     public static void main(String[] args) {
@@ -42,8 +40,8 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
-        
-        System.out.println("beeboo");
+
+        //Cynthia.test();
 
     }
 
