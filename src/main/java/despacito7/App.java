@@ -44,8 +44,11 @@ public class App {
     }
 
     public static void render(Graphics2D g) {
+        if (!isLoaded()) return;
         g.setTransform(AffineTransform.getScaleInstance(2, 2));
         FeatureLoader.getMap("citymap").draw(g);
+
+        FeatureLoader.getMap("citymap").postDraw(g);
     }
 
     public static void tick() {

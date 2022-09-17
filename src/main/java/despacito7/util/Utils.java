@@ -1,5 +1,4 @@
 package despacito7.util;
 
-class Utils {
-    
+public class Utils {
 }

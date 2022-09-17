@@ -10,18 +10,27 @@ import java.util.stream.Collectors;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import despacito7.detail.Item;
 import despacito7.util.Loader;
 
-class FeatureLoader implements Loader {
+public class FeatureLoader implements Loader {
     private static java.util.Map<String, despacito7.map.Map> maps;
+    private static java.util.Map<String, Item> items;
 
-    public static despacito7.map.Map getMap(String mapid) {return maps.get(mapid);}
+    public static despacito7.map.Map getMap(String id) {return maps.get(id);}
+    public static Item getItem(String id) {return items.get(id);}
 
     public boolean isLoaded() {
-        return maps != null;
+        return maps != null && items != null;
     }
 
     public void load() {
+        JsonObject itemdata = loadJson("items.json");
+        FeatureLoader.items = new HashMap<>(itemdata.size(), 0.99f);
+        for (java.util.Map.Entry<String, JsonElement> entry : itemdata.entrySet()) {
+            FeatureLoader.items.put(entry.getKey(), new Item(entry.getKey(), entry.getValue().getAsJsonObject()));
+        }
+
         JsonObject mapdata = loadJson("maps.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
