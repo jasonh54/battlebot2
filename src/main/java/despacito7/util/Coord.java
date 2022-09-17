@@ -2,8 +2,9 @@ package despacito7.util;
 
 import com.google.gson.JsonArray;
 
+import despacito7.Constants;
+
 public class Coord {
-    public static final int tilesize = 16;
     private final int r, c;
 
     public Coord(int r, int c) {
@@ -19,11 +20,11 @@ public class Coord {
     }
 
     public int[] getRealComponents() {
-        return new int[]{r*tilesize,c*tilesize};
+        return new int[]{r*Constants.tilesize,c*Constants.tilesize};
     }
 
     public java.awt.Point getPosition() {
-        return new java.awt.Point(r * tilesize, c * tilesize);
+        return new java.awt.Point(r * Constants.tilesize, c * Constants.tilesize);
     }
 
     // may have to override hashCode
