@@ -1,5 +1,8 @@
 {
     "PotionHealth": {
         "HEALTH": 10
+    },
+    "PotionDefense": {
+        "DEFENSE": 10
     }
 }
