@@ -4,5 +4,8 @@
     },
     "PotionDefense": {
         "DEFENSE": 10
+    },
+    "PotionAgility": {
+        "AGILITY": 10
     }
 }
