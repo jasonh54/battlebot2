@@ -18,7 +18,7 @@ public class ResourceLoader {
 
     public static Image getItemSprite(String id) {return itemSprites.get(id);}
     public static Image getMonsterSprite(String id) {return monsterSprites.get(id);}
-    public static Image getTileSprite(int id) {return tileSprites[id];}
+    public static Image getTileSprite(int id) {return id < 0 ? tileSprites[tileSprites.length+id] : tileSprites[id];}
     
     private String resourcesDirectoryPath = java.nio.file.Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
 
