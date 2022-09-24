@@ -17,7 +17,6 @@ public class App {
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     private static final ResourceLoader resourceLoader = new ResourceLoader();
-
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     public static void main(String[] args) {

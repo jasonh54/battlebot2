@@ -3,6 +3,7 @@ package despacito7;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -87,14 +88,14 @@ public class ResourceLoader {
         }
         return characterSprites;
     }
-    public Image[] cutMonsterSprite(Image spritesheet, int framenums){
+    public static Image[] cutSprites(Image spritesheet){
         BufferedImage spriteImage = (BufferedImage) spritesheet;
-        int frameNum = spritesheet.getWidth(null)/16;
-        Image[] sprites = new Image[frameNum];
-        for(int i = 0; i < frameNum; i++){
-            sprites[i] = spriteImage.getSubimage(i*16, 0, 16, 16);
+        List<Image> sprites = new ArrayList<>();
+        for (int r = 0; r < spriteImage.getWidth(); r+=Constants.tilesize) {
+            for (int c = 0; c < spriteImage.getHeight(); r+=Constants.tilesize) {
+                sprites.add(spriteImage.getSubimage(r, c, Constants.tilesize, Constants.tilesize));
+            }
         }
-        return sprites;
+        return sprites.toArray(new Image[sprites.size()]);
     }
-    
 }
