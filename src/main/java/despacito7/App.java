@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import com.google.gson.Gson;
 
+
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
     public static final DrawingCanvas dc = new DrawingCanvas(f);
@@ -16,10 +17,12 @@ public class App {
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     private static final ResourceLoader resourceLoader = new ResourceLoader();
+
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     public static void main(String[] args) {
         resourceLoader.load();
+
 
         f.setVisible(true);
         f.add(dc);
@@ -39,6 +42,7 @@ public class App {
         f.setEnabled(true);
     }
 
+
     public static boolean isLoaded() {
         return featureLoader.isLoaded() && resourceLoader.isLoaded();
     }
@@ -49,6 +53,7 @@ public class App {
         FeatureLoader.getMap("citymap").draw(g);
 
         FeatureLoader.getMap("citymap").postDraw(g);
+
     }
 
     public static void tick() {

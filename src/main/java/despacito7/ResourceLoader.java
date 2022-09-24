@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
@@ -49,6 +50,7 @@ public class ResourceLoader {
         }
     }
 
+
     private void loadTiles() {
         File dir = new File(resourcesDirectoryPath+"/tiles");
         List<File> files = Arrays.stream(dir.listFiles()).filter(e->e.isFile()).toList();
@@ -68,4 +70,31 @@ public class ResourceLoader {
             return null;
         }
     }
+
+    public Image[] createCharacterSprites(int playerNum){
+        int i = 0;
+        Image[] characterSprites = new Image[12];
+        //locate which row in the tilelayerguide the player starts at
+        int row = 0 + playerNum*3;
+        //locate which tile num col in the tilelayerguide the player starts at
+        int tilenum = (27*(row+1))-4;
+        //for loop that will go through each column
+        for(int c = tilenum; c<tilenum+4; c++){
+          for(int r = 0; r< 3;r++){
+            characterSprites[i] = tileSprites[c + (r*27)];
+            i++;
+          }
+        }
+        return characterSprites;
+    }
+    public Image[] cutMonsterSprite(Image spritesheet, int framenums){
+        BufferedImage spriteImage = (BufferedImage) spritesheet;
+        int frameNum = spritesheet.getWidth(null)/16;
+        Image[] sprites = new Image[frameNum];
+        for(int i = 0; i < frameNum; i++){
+            sprites[i] = spriteImage.getSubimage(i*16, 0, 16, 16);
+        }
+        return sprites;
+    }
+    
 }
