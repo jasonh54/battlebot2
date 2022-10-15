@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import com.google.gson.Gson;
 
+import despacito7.menu.Menu;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -21,7 +22,6 @@ public class App {
 
     public static void main(String[] args) {
         resourceLoader.load();
-
 
         f.setVisible(true);
         f.add(dc);
@@ -53,9 +53,16 @@ public class App {
 
         FeatureLoader.getMap("citymap").postDraw(g);
 
+        Menu.cornerMenu.draw(g);
     }
 
     public static void tick() {
+        Menu.cornerMenu.update();
+    }
 
+    public static void onKey(char keyCode) {
+        switch (keyCode) {
+            case 'm' -> Menu.cornerMenu.expand();
+        }
     }
 }

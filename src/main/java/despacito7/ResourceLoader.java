@@ -16,6 +16,7 @@ public class ResourceLoader {
     private static Map<String,Image> itemSprites;
     private static Map<String,Image> monsterSprites;
     private static Image[] tileSprites;
+    private static boolean loaded = false;
 
     public static Image getItemSprite(String id) {return itemSprites.get(id);}
     public static Image getMonsterSprite(String id) {return monsterSprites.get(id);}
@@ -24,13 +25,14 @@ public class ResourceLoader {
     private String resourcesDirectoryPath = java.nio.file.Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
 
     public boolean isLoaded() {
-        return itemSprites != null && monsterSprites != null && tileSprites != null;
+        return ResourceLoader.loaded;
     }
 
     public void load() {
         loadItems();
         loadMonsters();
         loadTiles();
+        ResourceLoader.loaded = true;
     }
 
     private void loadItems() {

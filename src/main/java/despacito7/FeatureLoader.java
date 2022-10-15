@@ -16,12 +16,13 @@ import despacito7.util.Loader;
 public class FeatureLoader implements Loader {
     private static java.util.Map<String, despacito7.map.Map> maps;
     private static java.util.Map<String, Item> items;
+    private static boolean loaded = false;
 
     public static despacito7.map.Map getMap(String id) {return maps.get(id);}
     public static Item getItem(String id) {return items.get(id);}
 
     public boolean isLoaded() {
-        return maps != null && items != null;
+        return FeatureLoader.loaded;
     }
 
     public void load() {
@@ -36,6 +37,8 @@ public class FeatureLoader implements Loader {
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
         }
+
+        FeatureLoader.loaded = true;
     }
 
     private JsonObject loadJson(String filename) {
