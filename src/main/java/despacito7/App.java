@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import com.google.gson.Gson;
 
+import despacito7.menu.Menu;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -17,12 +18,10 @@ public class App {
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     private static final ResourceLoader resourceLoader = new ResourceLoader();
-
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     public static void main(String[] args) {
         resourceLoader.load();
-
 
         f.setVisible(true);
         f.add(dc);
@@ -56,9 +55,18 @@ public class App {
 
         FeatureLoader.player.draw(g);
         FeatureLoader.player.play("rightWalk",0);
+
+        Menu.cornerMenu.draw(g);
+
     }
 
     public static void tick() {
+        Menu.cornerMenu.update();
+    }
 
+    public static void onKey(char keyCode) {
+        switch (keyCode) {
+            case 'm' -> Menu.cornerMenu.expand();
+        }
     }
 }

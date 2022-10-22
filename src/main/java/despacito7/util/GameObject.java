@@ -1,15 +1,16 @@
 package despacito7.util;
 
-
 import java.awt.Image;
+
 import java.awt.Point;
 import despacito7.Constants;
 
 
 
+
 public abstract class GameObject implements Drawable {
-    public Coord coord;
-    Image sprite;
+    protected Coord coord;
+    protected Image sprite;
 
     public GameObject(Coord coord, Image sprite){
         this.coord = coord;
@@ -21,5 +22,8 @@ public abstract class GameObject implements Drawable {
         Point rc = this.coord.getPosition();
         g.drawImage(this.sprite, rc.x, rc.y, Constants.tilesize, Constants.tilesize, null);
     }
+
+
+    // public abstract void draw(java.awt.Graphics2D g);
 
 }
