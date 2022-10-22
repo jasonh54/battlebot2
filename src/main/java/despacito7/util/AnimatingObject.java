@@ -11,12 +11,10 @@ import despacito7.Constants;
 
 public abstract class AnimatingObject extends GameObject {
 
-
-
     protected Image[] sprites;
     private int frame = 0;
     private int animationFrame = 0;
-
+    private int frameCount = 0;
 
     HashMap<String, int[]> animations;
 
@@ -38,7 +36,12 @@ public abstract class AnimatingObject extends GameObject {
     public void play(String name, int frameDelay){
         //play the animation based on the name
         frame = animations.get(name)[animationFrame];
-        animationFrame=(animationFrame+1)%animations.get(name).length;
+        frameCount++;
+        if(frameCount >= frameDelay){
+            animationFrame=(animationFrame+1)%animations.get(name).length;
+            frameCount = 0;
+        }
+        
     }
     
 

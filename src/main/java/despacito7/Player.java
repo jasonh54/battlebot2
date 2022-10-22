@@ -7,7 +7,10 @@ import despacito7.util.Coord;
 class Player extends AnimatingObject{ //extends AnimatingObject
     public Player(){
         super(new Coord(10,10), ResourceLoader.createCharacterSprites(1));
-        createAnimation("rightWalk",new int[]{0,4,8});
+        createAnimation("leftWalk",new int[]{0,1,2});
+        createAnimation("downWalk",new int[]{3,4,5});
+        createAnimation("upWalk",new int[]{6,7,8});
+        createAnimation("rightWalk",new int[]{9,10,11});
     }
 }
 

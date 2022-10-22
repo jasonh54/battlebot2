@@ -54,7 +54,7 @@ public class App {
         FeatureLoader.getMap("citymap").postDraw(g);
 
         FeatureLoader.player.draw(g);
-        FeatureLoader.player.play("rightWalk",0);
+        FeatureLoader.player.play("downWalk",60);
 
         Menu.cornerMenu.draw(g);
 
