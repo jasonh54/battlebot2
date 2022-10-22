@@ -48,6 +48,7 @@ class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        App.onKey(e.getKeyChar());
     }
 
     @Override
