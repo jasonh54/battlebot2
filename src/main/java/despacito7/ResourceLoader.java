@@ -71,7 +71,7 @@ public class ResourceLoader {
         }
     }
 
-    public Image[] createCharacterSprites(int playerNum){
+    public static Image[] createCharacterSprites(int playerNum){
         int i = 0;
         Image[] characterSprites = new Image[12];
         //locate which row in the tilelayerguide the player starts at

@@ -19,6 +19,7 @@ public class FeatureLoader implements Loader {
 
     public static despacito7.map.Map getMap(String id) {return maps.get(id);}
     public static Item getItem(String id) {return items.get(id);}
+    public static Player player;
 
     public boolean isLoaded() {
         return maps != null && items != null;
@@ -36,6 +37,8 @@ public class FeatureLoader implements Loader {
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
         }
+        player = new Player();
+        
     }
 
     private JsonObject loadJson(String filename) {

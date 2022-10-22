@@ -54,6 +54,8 @@ public class App {
 
         FeatureLoader.getMap("citymap").postDraw(g);
 
+        FeatureLoader.player.draw(g);
+        FeatureLoader.player.play("rightWalk",0);
     }
 
     public static void tick() {

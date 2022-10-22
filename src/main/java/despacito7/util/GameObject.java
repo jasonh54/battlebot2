@@ -3,7 +3,7 @@ package despacito7.util;
 
 import java.awt.Image;
 import java.awt.Point;
-
+import despacito7.Constants;
 
 
 
@@ -17,9 +17,9 @@ public abstract class GameObject implements Drawable {
     }
 
 
-    // public void draw(java.awt.Graphics2D g){
-    //     Point rc = this.coord.getPosition();
-    //     g.drawImage(this.sprite, rc.x, rc.y, Coord.tilesize, Coord.tilesize, null);
-    // }
+    public void draw(java.awt.Graphics2D g){
+        Point rc = this.coord.getPosition();
+        g.drawImage(this.sprite, rc.x, rc.y, Constants.tilesize, Constants.tilesize, null);
+    }
 
 }
