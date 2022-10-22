@@ -20,6 +20,10 @@ public class App {
     private static final ResourceLoader resourceLoader = new ResourceLoader();
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
+    //game objects
+    //final static NPC Cynthia = new Gson().fromJson("Cynthia",NPC.class);
+
+
     public static void main(String[] args) {
         resourceLoader.load();
 
@@ -39,6 +43,9 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
+
+        //Cynthia.test();
+
     }
 
 

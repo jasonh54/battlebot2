@@ -1,5 +1,6 @@
 {
     "Red": {
+        "sprite": 0,
         "loc": [5, 1],
         "topics": {
             "CHAT": "I'm the champion from Pallet Town."
@@ -7,6 +8,7 @@
     },
 
     "Blue": {
+        "sprite": 0,
         "loc": [7, 1],
         "topics": {
             "CHAT": "I'm Professor Oak's grandson! Nyah!!!",
@@ -19,6 +21,7 @@
     },
     
     "Yellow": {
+        "sprite": 0,
         "loc": [9, 1],
         "topics": {
             "CHAT": "I'm a traveling kid with a funny hat!",
@@ -31,6 +34,7 @@
     },
 
     "Cynthia": {
+        "sprite": 0,
         "loc": [5, 3],
         "topics": {
             "CHAT": "I'm just a traveler who hails from the Sinnoh Region."
@@ -49,6 +53,7 @@
     },
 
     "Dawn": {
+        "sprite": 0,
         "loc": [7, 3],
         "topics": {
             "CHAT": "I just LOVE the Monster Contests! Have you ever tried out for one?"
