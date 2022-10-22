@@ -29,6 +29,7 @@ public class Item {
         System.out.println(this.stats.toString());
     }
 
+<<<<<<< HEAD
     public static record GroundItem(Item item, Coord coord) implements Drawable {
         public GroundItem(String id, Coord coord) {
             this(FeatureLoader.getItem(id), coord);
@@ -38,5 +39,10 @@ public class Item {
             Point rc = this.coord.getPosition();
             g.drawImage(this.item.sprite, rc.x, rc.y, Constants.tilesize, Constants.tilesize, null);
         }
+=======
+public class Item { //extends GameObject
+    public Item(String id) {
+        
+>>>>>>> NPCDev
     }
 }
