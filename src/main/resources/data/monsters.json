@@ -1,8 +1,10 @@
 {
     "AirA": {
-        "health": 100,
-        "defense": 10,
-
+        "stats": {
+            "MAX_HEALTH": 100,
+            "DEFENSE": 10
+        },
+        
         "sprite": 52
     }
 }

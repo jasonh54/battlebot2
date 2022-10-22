@@ -1,6 +1,7 @@
 package despacito7;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -9,6 +10,8 @@ import javax.swing.JFrame;
 import com.google.gson.Gson;
 
 import despacito7.detail.NPC;
+
+import despacito7.menu.Menu;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -24,7 +27,7 @@ public class App {
 
 
     public static void main(String[] args) {
-        resourceLoader.loadResources();
+        resourceLoader.load();
 
         f.setVisible(true);
         f.add(dc);
@@ -35,7 +38,7 @@ public class App {
         f.setResizable(false);
         // f.setIconImage(Utils.ICONIMG);
 
-        featureLoader.loadFeatures();
+        featureLoader.load();
 
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
@@ -47,12 +50,32 @@ public class App {
 
     }
 
+
+    public static boolean isLoaded() {
+        return featureLoader.isLoaded() && resourceLoader.isLoaded();
+    }
+
     public static void render(Graphics2D g) {
-        g.drawString("Hello World", 100, 100);
-        // g2.drawImage(instance.loadImage("sprites/items/PotionArmor.png"), 50, 50, null);
+        if (!isLoaded()) return;
+        g.setTransform(AffineTransform.getScaleInstance(2, 2));
+        FeatureLoader.getMap("citymap").draw(g);
+
+        FeatureLoader.getMap("citymap").postDraw(g);
+
+        FeatureLoader.player.draw(g);
+        FeatureLoader.player.play("downWalk",60);
+
+        Menu.cornerMenu.draw(g);
+
     }
 
     public static void tick() {
+        Menu.cornerMenu.update();
+    }
 
+    public static void onKey(char keyCode) {
+        switch (keyCode) {
+            case 'm' -> Menu.cornerMenu.expand();
+        }
     }
 }

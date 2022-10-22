@@ -23,7 +23,7 @@ public class Map implements Drawable {
     }
     private java.util.Map<LayerType, Layer> layers = new HashMap<>();
     private Set<NPC> npcs = new HashSet<>();
-    private Set<Item> items = new HashSet<>();
+    private Set<Item.GroundItem> items = new HashSet<>();
 
     public Map(JsonObject data) {
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
@@ -41,13 +41,14 @@ public class Map implements Drawable {
         }
         for (JsonElement itemd : data.get("items").getAsJsonArray()) {
             JsonObject itemdata = itemd.getAsJsonObject();
-            items.add(new Item(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
+            items.add(new Item.GroundItem(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
         }
     }
 
     public void draw(java.awt.Graphics2D g) {
         layers.get(LayerType.BASE).draw(g);
         layers.get(LayerType.INTERACT).draw(g);
+        items.forEach(item -> item.draw(g));
     }
 
     public void postDraw(java.awt.Graphics2D g) {
@@ -71,7 +72,7 @@ public class Map implements Drawable {
                 this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c));
+                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r)); // inverted due to java being funny
                 }
             }
         }
@@ -108,7 +109,7 @@ public class Map implements Drawable {
                             break;
                         }
                     }
-                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(r, c), type);
+                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r), type);
                     tiles[r][c] = tile;
                     if (!tile.type().equals(TileType.NORMAL)) this.specials.get(tile.type()).add(tile.coord());
                 }

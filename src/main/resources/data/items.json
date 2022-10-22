@@ -1,9 +1,11 @@
 {
-    "healthPotion": {
-        
-        "health": 10,
-
-        "sprite": 96
+    "PotionHealth": {
+        "HEALTH": 10
+    },
+    "PotionDefense": {
+        "DEFENSE": 10
+    },
+    "PotionAgility": {
+        "AGILITY": 10
     }
 }
-
