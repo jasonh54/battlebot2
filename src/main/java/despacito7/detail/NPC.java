@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
@@ -18,27 +19,25 @@ public class NPC extends AnimatingObject{
     private Set<Item> items;
     private String[] movement;
 
-    public NPC(String id, JsonObject data) {
-        super(Coord.ofJson(data.get("loc").getAsJsonArray()), ResourceLoader.createCharacterSprites(data.get("sprite").getAsInt()));
-        //name self
-        this.id = id;
-        //load topics
-        String[] temp = (String[]) data.getAsJsonObject("topics").keySet().toArray();
-        for (int i = 0; i < temp.length; i++) {
-            topics.put(temp[i], data.getAsJsonObject("topics").get(temp[i]).toString());
+    public NPC(Map.Entry<String, JsonElement> entry) {
+        super(
+            Coord.ofJson(entry.getValue().getAsJsonObject().get("loc").getAsJsonArray()),
+            ResourceLoader.createCharacterSprites(entry.getValue().getAsJsonObject().get("sprite").getAsInt())
+        );
+        this.id = entry.getKey();
+        JsonObject data = entry.getValue().getAsJsonObject();
+
+        for (Map.Entry<String, JsonElement> te : data.getAsJsonObject("topics").entrySet())
+            topics.put(te.getKey(), te.getValue().toString());
+        
+        if (data.has("items")) {
+            for (JsonElement te : data.getAsJsonArray("items"))
+                items.add(FeatureLoader.getItem(te.toString()));
         }
         
-        //load monsters
-        if (data.getAsJsonArray("monsters") != null) {
-            for (int i = 0; i < data.getAsJsonArray("monsters").size(); i++) {
-                monsters.add(new Monster(data.getAsJsonArray("monsters").get(i).toString()));
-            }
-        }
-        //load items
-        if (data.getAsJsonArray("items") != null) {
-            for (int i = 0; i < data.getAsJsonArray("items").size(); i++) {
-                items.add(FeatureLoader.getItem(data.getAsJsonArray("items").get(i).toString()));
-            }
+        if (data.has("monsters")) {
+            for (JsonElement te : data.getAsJsonArray("monsters"))
+                monsters.add(FeatureLoader.getMonster(te.toString()));
         }
     }
 

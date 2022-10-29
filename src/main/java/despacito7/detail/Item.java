@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 
 import despacito7.Constants;
 import despacito7.FeatureLoader;
@@ -17,10 +17,10 @@ public class Item implements Cloneable {
     public final String id;
     private java.awt.Image sprite;
     private Map<Stat, Number> stats;
-    public Item(String id, JsonObject data) {
-        this.id = id;
+    public Item(Map.Entry<String, JsonElement> entry) {
+        this.id = entry.getKey();
         this.sprite = ResourceLoader.getItemSprite(id);
-        this.stats = data.entrySet().stream()
+        this.stats = entry.getValue().getAsJsonObject().entrySet().stream()
             .map(e -> Map.<Stat, Number>entry(Stat.valueOf(e.getKey()), e.getValue().getAsNumber()))
             .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
     }
