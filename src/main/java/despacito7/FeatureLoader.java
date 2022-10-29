@@ -11,16 +11,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.detail.Item;
+import despacito7.detail.NPC;
 import despacito7.util.Loader;
 
 public class FeatureLoader implements Loader {
     private static java.util.Map<String, despacito7.map.Map> maps;
-<<<<<<< HEAD
     private static java.util.Map<String, Item> items;
+    private static java.util.Map<String, NPC> npcs;
     private static boolean loaded = false;
 
-    public static despacito7.map.Map getMap(String id) {return maps.get(id);}
-    public static Item getItem(String id) {return items.get(id);}
+    public static despacito7.map.Map getMap(String mapid) {return maps.get(mapid);}
+    public static NPC getNPC(String npcid) {return npcs.get(npcid);}
+    public static Item getItem(String itemid) {return items.get(itemid).clone();}
+
     public static Player player;
 
     public boolean isLoaded() {
@@ -33,26 +36,21 @@ public class FeatureLoader implements Loader {
         for (java.util.Map.Entry<String, JsonElement> entry : itemdata.entrySet()) {
             FeatureLoader.items.put(entry.getKey(), new Item(entry.getKey(), entry.getValue().getAsJsonObject()));
         }
-=======
-    private static java.util.Map<String, despacito7.detail.NPC> npcs;
-
-    public static despacito7.map.Map getMap(String mapid) {return maps.get(mapid);}
-    public static despacito7.detail.NPC getNPC(String npcid) {return npcs.get(npcid);}
->>>>>>> NPCDev
 
         JsonObject mapdata = loadJson("maps.json");
-        JsonObject npcsdata = loadJson("npcs.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
-        FeatureLoader.npcs = new HashMap<>(npcsdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
         }
 
+        JsonObject npcdata = loadJson("npcs.json");
+        FeatureLoader.npcs = new HashMap<>(npcdata.size(), 0.99f);
+        for (java.util.Map.Entry<String, JsonElement> entry : npcdata.entrySet()) {
+            FeatureLoader.npcs.put(entry.getKey(), new NPC(entry.getKey(), entry.getValue().getAsJsonObject()));
+        }
+
         player = new Player();
-        
-
         FeatureLoader.loaded = true;
-
     }
 
     private JsonObject loadJson(String filename) {
