@@ -5,6 +5,9 @@ import java.awt.geom.AffineTransform;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
+import java.util.ResourceLoader;
+import java.util.FeatureLoader;
+
 import javax.swing.JFrame;
 
 import com.google.gson.Gson;

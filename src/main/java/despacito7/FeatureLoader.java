@@ -40,6 +40,7 @@ public class FeatureLoader implements Loader {
             FeatureLoader.items.put(entry.getKey(), new Item(entry));
         }
 
+
         JsonObject mapdata = loadJson("maps.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {

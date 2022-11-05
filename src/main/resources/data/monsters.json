@@ -1,10 +1,53 @@
 {
-    "AirA": {
+    "Air": {
         "stats": {
             "MAX_HEALTH": 100,
             "DEFENSE": 10
         },
-        
+        "moves": [
+            "Attack1", "Defend1", "Heal1", "Special1"
+        ],
+        "sprite": "AirA.png"
+    },
+    "Ball": {
+        "stats": {
+            "MAX_HEALTH": 100,
+            "DEFENSE": 10
+        },
+        "moves": [
+            "Attack1", "Defend1", "Heal1", "Special1"
+        ],
+        "sprite": 52
+    },
+    "Bat": {
+        "stats": {
+            "MAX_HEALTH": 100,
+            "DEFENSE": 10
+        },
+        "moves": [
+            "Attack1", "Defend1", "Heal1", "Special1"
+        ],
+        "sprite": 52
+    },
+    "BatSmall": {
+        "stats": {
+            "MAX_HEALTH": 100,
+            "DEFENSE": 10
+        },
+        "moves": [
+            "Attack1", "Defend1", "Heal1", "Special1"
+        ],
+        "sprite": 52
+    },
+    "Beard": {
+        "stats": {
+            "MAX_HEALTH": 100,
+            "DEFENSE": 10
+        },
+        "moves": [
+            "Attack1", "Defend1", "Heal1", "Special1"
+        ],
         "sprite": 52
     }
+
 }
