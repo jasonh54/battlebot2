@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 
 import despacito7.Constants;
 import despacito7.FeatureLoader;
@@ -13,23 +13,25 @@ import despacito7.Constants.Stat;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
 
-public class Item {
+public class Item implements Cloneable {
     public final String id;
     private java.awt.Image sprite;
     private Map<Stat, Number> stats;
-    public Item(String id, JsonObject data) {
-        this.id = id;
+    public Item(Map.Entry<String, JsonElement> entry) {
+        this.id = entry.getKey();
         this.sprite = ResourceLoader.getItemSprite(id);
-        this.stats = data.entrySet().stream()
+        this.stats = entry.getValue().getAsJsonObject().entrySet().stream()
             .map(e -> Map.<Stat, Number>entry(Stat.valueOf(e.getKey()), e.getValue().getAsNumber()))
             .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
+    }
+    private Item(String id, java.awt.Image sprite, Map<Stat, Number> stats) {
+        this.id = id; this.sprite = sprite; this.stats = stats;
     }
 
     public void apply(Object monster) {
         System.out.println(this.stats.toString());
     }
 
-<<<<<<< HEAD
     public static record GroundItem(Item item, Coord coord) implements Drawable {
         public GroundItem(String id, Coord coord) {
             this(FeatureLoader.getItem(id), coord);
@@ -39,10 +41,9 @@ public class Item {
             Point rc = this.coord.getPosition();
             g.drawImage(this.item.sprite, rc.x, rc.y, Constants.tilesize, Constants.tilesize, null);
         }
-=======
-public class Item { //extends GameObject
-    public Item(String id) {
-        
->>>>>>> NPCDev
+    }
+
+    public Item clone() {
+        return new Item(this.id, this.sprite, this.stats);
     }
 }
