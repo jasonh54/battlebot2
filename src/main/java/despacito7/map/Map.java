@@ -8,6 +8,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
 import despacito7.detail.*;
 import despacito7.map.Tile.TileType;
@@ -37,7 +38,7 @@ public class Map implements Drawable {
             }
         }
         for (JsonElement npcid : data.get("npcs").getAsJsonArray()) {
-            npcs.add(new NPC(npcid.getAsString()));
+            npcs.add(FeatureLoader.getNPC(npcid.getAsString()));
         }
         for (JsonElement itemd : data.get("items").getAsJsonArray()) {
             JsonObject itemdata = itemd.getAsJsonObject();

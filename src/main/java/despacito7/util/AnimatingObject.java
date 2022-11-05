@@ -5,18 +5,16 @@ import java.awt.Image;
 import java.awt.Point;
 
 import java.util.HashMap;
+import java.util.Map;
+
 import despacito7.Constants;
 
-
-
 public abstract class AnimatingObject extends GameObject {
-
     protected Image[] sprites;
     private int frame = 0;
     private int animationFrame = 0;
     private int frameCount = 0;
-
-    HashMap<String, int[]> animations;
+    private Map<String, int[]> animations;
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
@@ -37,12 +35,9 @@ public abstract class AnimatingObject extends GameObject {
         //play the animation based on the name
         frame = animations.get(name)[animationFrame];
         frameCount++;
-        if(frameCount >= frameDelay){
+        if (frameCount >= frameDelay) {
             animationFrame=(animationFrame+1)%animations.get(name).length;
             frameCount = 0;
         }
-        
     }
-    
-
 }

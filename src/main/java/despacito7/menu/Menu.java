@@ -40,6 +40,11 @@ class RotaryMenu extends Menu implements Drawable {
         );
     }
 
+    public void expand() {
+        super.expand();
+        this.buttons.forEach(b->((RotaryButton)b).expand());
+    }
+
     public void update() {
         for (Button b : this.buttons) ((RotaryButton)b).update();
     }
@@ -60,13 +65,19 @@ class RotaryMenu extends Menu implements Drawable {
             };
         }
 
+        private void expand() {
+            animprog = 0;
+        }
+
         public void update() {
-            animprog = expanded ? Utils.easeOutBack(animprog) : 1-Utils.easeOutBack(1-animprog);
+            animprog += 0.01;
+            animprog = Math.min(animprog, 1);
         }
 
         public void draw(Graphics2D g) {
-            int x = (int)Math.round(this.vectors[0] * animprog + origin.getX());
-            int y = (int)Math.round(this.vectors[1] * animprog + origin.getY());
+            double coeff = animprog == 0 ? 0 : (expanded ? Utils.easeOutElastic(animprog) : Utils.easeOutBack(animprog));
+            int x = (int)Math.round(this.vectors[0] * coeff + origin.getX());
+            int y = (int)Math.round(this.vectors[1] * coeff + origin.getY());
             g.drawOval(x, y, size, size);
             g.drawImage(this.icon, x, y, null);
         }
