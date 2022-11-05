@@ -22,12 +22,19 @@ public class NPC extends AnimatingObject{
     HashMap<String,String> topics = new HashMap<>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
     ArrayList<Monster> monsters;
     ArrayList<Item> items;
-    String[] movement;
+    ArrayList<String> movement;
 
     public NPC(JsonObject data) {
-        super(loc);
+        super(loc, ResourceLoader.createCharacterSprites(data.get("sprite")));
         //name self
         this.id = data.getKey();
+
+        //create animations
+        createAnimation("LEFT",new int[]{0,1,2});
+        createAnimation("DOWN",new int[]{3,4,5});
+        createAnimation("UP",new int[]{6,7,8});
+        createAnimation("RIGHT",new int[]{9,10,11});
+
         //load topics
         String[] temp = (String[]) data.getAsJsonObject("topics").keySet().toArray();
         for (int i = 0; i < temp.length; i++) {
@@ -40,10 +47,18 @@ public class NPC extends AnimatingObject{
                 monsters.add(new Monster(data.getAsJsonArray("monsters").get(i).toString()));
             }
         }
+
         //load items
         if (data.getAsJsonArray("items") != null) {
             for (int i = 0; i < data.getAsJsonArray("items").size(); i++) {
                 items.add(new Item(data.getAsJsonArray("items").get(i).toString()));
+            }
+        }
+
+        //load movement
+        if (data.getAsJsonArray("movement") != null) {
+            for (int i = 0; i < data.getAsJsonArray("movement").size(); i++) {
+                movement.add(new Item(data.getAsJsonArray("movement").get(i).toString()));
             }
         }
     }
@@ -66,6 +81,14 @@ public class NPC extends AnimatingObject{
 
     public String[] getItems() {
         return (String[]) items.toArray();
+    }
+
+    public void playWalkSequence() {
+        try {
+            //move
+        } catch (Exception e) {
+            System.out.println("This NPC " + id + " can't move!");
+        }
     }
 
 }
