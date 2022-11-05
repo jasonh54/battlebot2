@@ -3,7 +3,10 @@
         "sprite": 0,
         "loc": [5, 1],
         "topics": {
-            "CHAT": "I'm the champion from Pallet Town."
+            "CHAT": {
+                "type": "line",
+                "text": "I'm the champion from Pallet Town."
+            }
         }
     },
 
@@ -11,8 +14,14 @@
         "sprite": 0,
         "loc": [7, 1],
         "topics": {
-            "CHAT": "I'm Professor Oak's grandson! Nyah!!!",
-            "BATTLE": "I'll crush you with my monsters!"
+            "CHAT": {
+                "type": "line",
+                "text": "I'm Professor Oak's grandson! Nyah!!!"
+            },
+            "BATTLE": {
+                "type": "line",
+                "text": "I'll crush you with my monsters!"
+            }
         },
         "monsters": [
 			"AirA",
@@ -24,8 +33,13 @@
         "sprite": 0,
         "loc": [9, 1],
         "topics": {
-            "CHAT": "I'm a traveling kid with a funny hat!",
-            "SHOP": "Want some items? I'll trade ya!"
+            "CHAT": {
+                "type": "line",
+                "text": "I'm a traveling kid with a funny hat!"
+            },
+            "SHOP": {
+                "type": "line",
+                "text": "Want some items? I'll trade ya!"
         },
         "items": [
 			"ArmorPotion",
@@ -37,7 +51,10 @@
         "sprite": 0,
         "loc": [5, 3],
         "topics": {
-            "CHAT": "I'm just a traveler who hails from the Sinnoh Region."
+            "CHAT": {
+                "type": "line",
+                "text": "I'm just a traveler who hails from the Sinnoh Region."
+            }
         },
         "movement": [
 			"LEFT",
@@ -56,11 +73,16 @@
         "sprite": 0,
         "loc": [7, 3],
         "topics": {
-            "CHAT": "I just LOVE the Monster Contests! Have you ever tried out for one?"
-        },
-        "branch": {
-			"YES": "Wow, another contest enthusiast! It's great to meet you.",
-            "NO": "You really should... People like them, and Pokémon too!"
+            "CHAT": {
+                "type": "line",
+                "text": "Wow, your Monsters are SO cute!"
+            },
+            "CONTESTS": {
+                "type": "question",
+                "text": "I just LOVE the Monster Contests! Have you ever tried out for one?",
+                "ans1": "YES",
+                "ans2": "NO"
+            }
         }
     }
 }
