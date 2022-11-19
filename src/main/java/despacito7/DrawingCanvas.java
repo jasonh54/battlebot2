@@ -7,9 +7,11 @@ import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
+public class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
+    public static int[] dimensions;
+    
     public JFrame parent;
-    public long prevtime = 0;
+    private long prevtime = 0;
     private boolean draw = false;
 
     public DrawingCanvas(JFrame f) {
@@ -17,6 +19,7 @@ class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
         this.setFocusable(true);
         this.requestFocus();
         this.setBackground(java.awt.Color.GRAY);
+        DrawingCanvas.dimensions = new int[]{this.getWidth(), this.getHeight()};
     }
 
     public void startDraw() { // begin the draw loop!

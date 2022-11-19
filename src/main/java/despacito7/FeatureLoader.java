@@ -58,7 +58,7 @@ public class FeatureLoader implements Loader {
             FeatureLoader.monsters.put(entry.getKey(), new Monster(entry));
         }
 
-        player = new Player();
+        player = Player.getPlayer();
         FeatureLoader.loaded = true;
     }
 

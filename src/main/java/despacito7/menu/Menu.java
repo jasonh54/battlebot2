@@ -1,9 +1,12 @@
 package despacito7.menu;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.HashSet;
 import java.util.Set;
 
 import despacito7.Constants;
+import despacito7.DrawingCanvas;
 import despacito7.util.Drawable;
 import despacito7.util.Utils;
 
@@ -23,6 +26,39 @@ public abstract class Menu {
 
     public void draw(Graphics2D g) {
         for (Button b : this.buttons) b.draw(g);
+    }
+    public static interface Button extends Drawable {
+        public void draw(Graphics2D g);
+    }
+}
+
+class DialogueMenu extends Menu implements Drawable {
+    private int height;
+
+    public DialogueMenu(Set<String> topics) {
+        Set<Button> buttons = new HashSet<>();
+        topics.forEach((String topic) -> buttons.add(new DialogueButton(topic)));
+        this.buttons = buttons;
+    }
+
+    public void update() {}
+
+    @Override
+    public void draw(Graphics2D g) {
+        g.setColor(new Color(0x00000099, true));
+        g.drawRect(0, DrawingCanvas.dimensions[1], DrawingCanvas.dimensions[0], height);
+        super.draw(g);
+    }
+
+    private class DialogueButton implements Button {
+        private DialogueButton(String text) {
+
+        }
+
+        @Override
+        public void draw(Graphics2D g) {
+            
+        }
     }
 }
 
@@ -49,14 +85,14 @@ class RotaryMenu extends Menu implements Drawable {
         for (Button b : this.buttons) ((RotaryButton)b).update();
     }
 
-    class RotaryButton extends Button {
+    private class RotaryButton implements Button {
         private static int size = 12;
         private Image icon;
         private double direction;
         private double animprog = 0;
         private double[] vectors;
 
-        public RotaryButton(Image icon, double degrees) {
+        private RotaryButton(Image icon, double degrees) {
             this.icon = icon;
             this.direction = Math.toRadians(degrees);
             this.vectors = new double[]{
