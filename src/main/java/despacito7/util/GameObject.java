@@ -18,6 +18,4 @@ public abstract class GameObject implements Drawable {
         Point rc = this.coord.getPosition();
         g.drawImage(this.sprite, rc.x, rc.y, Constants.tilesize, Constants.tilesize, null);
     }
-
-    // public abstract void draw(java.awt.Graphics2D g);
 }

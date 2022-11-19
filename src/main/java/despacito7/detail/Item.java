@@ -28,7 +28,7 @@ public class Item implements Cloneable {
         this.id = id; this.sprite = sprite; this.stats = stats;
     }
 
-    public void apply(Object monster) {
+    public void apply(Object monster) { // placeholder
         System.out.println(this.stats.toString());
     }
 

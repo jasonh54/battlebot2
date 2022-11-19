@@ -40,10 +40,11 @@
             "SHOP": {
                 "type": "line",
                 "text": "Want some items? I'll trade ya!"
+            }
         },
         "items": [
-			"ArmorPotion",
-			"AgilityPotion"
+			"PotionDefense",
+			"PotionAgility"
 		]
     },
 

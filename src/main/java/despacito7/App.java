@@ -5,9 +5,6 @@ import java.awt.geom.AffineTransform;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-import java.util.ResourceLoader;
-import java.util.FeatureLoader;
-
 import javax.swing.JFrame;
 
 import com.google.gson.Gson;
@@ -25,7 +22,6 @@ public class App {
 
     //game objects
     //final static NPC Cynthia = new Gson().fromJson("Cynthia",NPC.class);
-
 
     public static void main(String[] args) {
         resourceLoader.load();
@@ -48,7 +44,6 @@ public class App {
         f.setEnabled(true);
 
         //Cynthia.test();
-
     }
 
 
@@ -67,7 +62,6 @@ public class App {
         FeatureLoader.player.play("downWalk",60);
 
         Menu.cornerMenu.draw(g);
-
     }
 
     public static void tick() {

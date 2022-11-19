@@ -1,6 +1,7 @@
 package despacito7.detail;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,14 +12,12 @@ import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
-@SuppressWarnings("unused")
-public class NPC extends AnimatingObject{
 
+public class NPC extends AnimatingObject {
     public final String id;
-    private Map<String,String> topics = new HashMap<>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
-    private Set<Monster> monsters;
+    private Map<String,String> topics; // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
+    // private Set<Monster> monsters;
     private Set<Item> items;
-    private String[] movement;
 
     public NPC(Map.Entry<String, JsonElement> entry) {
         super(
@@ -26,6 +25,7 @@ public class NPC extends AnimatingObject{
             ResourceLoader.createCharacterSprites(entry.getValue().getAsJsonObject().get("sprite").getAsInt())
         );
         this.id = entry.getKey();
+
         //create animations
         createAnimation("LEFT",new int[]{0,1,2});
         createAnimation("DOWN",new int[]{3,4,5});
@@ -34,25 +34,21 @@ public class NPC extends AnimatingObject{
 
         JsonObject data = entry.getValue().getAsJsonObject();
 
+        this.topics = new HashMap<>();
         for (Map.Entry<String, JsonElement> te : data.getAsJsonObject("topics").entrySet())
             topics.put(te.getKey(), te.getValue().toString());
         
+        this.items = new HashSet<>();
         if (data.has("items")) {
             for (JsonElement te : data.getAsJsonArray("items"))
-                items.add(FeatureLoader.getItem(te.toString()));
+                items.add(FeatureLoader.getItem(te.getAsString()));
         }
         
-        if (data.has("monsters")) {
-            for (JsonElement te : data.getAsJsonArray("monsters"))
-                monsters.add(FeatureLoader.getMonster(te.toString()));
-        }
-
-        //load movement
-        if (data.getAsJsonArray("movement") != null) {
-            for (int i = 0; i < data.getAsJsonArray("movement").size(); i++) {
-                movement.add(new Item(data.getAsJsonArray("movement").get(i).toString()));
-            }
-        }
+        // this.monsters = new HashSet<>();
+        // if (data.has("monsters")) {
+        //     for (JsonElement te : data.getAsJsonArray("monsters"))
+        //         monsters.add(FeatureLoader.getMonster(te.toString()));
+        // }
     }
 
     public Coord getLoc() {
@@ -63,7 +59,7 @@ public class NPC extends AnimatingObject{
         return this.topics.keySet().toArray(new String[]{});
     }
 
-    public String getSingleResponse(String topic) {
+    public String getTopicResponse(String topic) {
         return this.topics.get(topic);
     }
 
@@ -71,13 +67,11 @@ public class NPC extends AnimatingObject{
         return this.items.toArray(new String[]{});
     }
 
-    public void playWalkSequence() {
+    public void playWalkSequence() { // what does this do??
         try {
             //move
         } catch (Exception e) {
             System.out.println("This NPC " + id + " can't move!");
         }
     }
-
-
 }

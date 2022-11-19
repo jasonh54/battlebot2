@@ -1,29 +1,27 @@
-package despacito7.detail;
+// package despacito7.detail;
 
+// import java.util.Map;
 
-import java.util.Map.Entry;
+// import com.google.gson.JsonElement;
+// import com.google.gson.JsonArray;
+// import com.google.gson.JsonObject;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Set;
-import java.util.HashSet;
+// import despacito7.ResourceLoader;
+// import despacito7.util.AnimatingObject;
 
+// import java.util.Set;
+// import java.util.HashSet;
 
-public class Monster extends AnimatingObject implements Cloneable {
-    private final String id;
-    Set moveset = new HashSet<Move>();
-    public Monster(Entry<String, JsonElement> entry) {
-      super(null, ResourceLoader.createCharacterSprites(data.get("sprite")));
-        this.id = entry.getKey();
-    }
-    private Monster(String id) {
-        this.id = id;
-    }
+// public class Monster extends AnimatingObject implements Cloneable {
+//     private final String id;
+//     // Set<Move> moveset = new HashSet<>();
 
-    public Monster clone() {
-        return new Monster(id);
-    }
+//     public Monster(Map.Entry<String, JsonElement> entry) {
+//         super(null, ResourceLoader.createCharacterSprites(data.get("sprite")));
+//         this.id = entry.getKey();
+//     }
 
-}
+    // public Monster clone() {
+    //     return new Monster(id);
+    // }
+// }
