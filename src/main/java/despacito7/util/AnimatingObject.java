@@ -18,6 +18,7 @@ public abstract class AnimatingObject extends GameObject {
     private boolean locked = false;
     private int movecounter = 0;
     private Point position;
+    private String direction = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
@@ -28,6 +29,7 @@ public abstract class AnimatingObject extends GameObject {
     
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], position.x, position.y, Constants.tilesize, Constants.tilesize, null);
+        move();
     }
 
     public void createAnimation(String name, int[] frames){
@@ -44,14 +46,12 @@ public abstract class AnimatingObject extends GameObject {
         }
     }
 
-    //move for 48 frames
-    //each tile is 16x16
-    //adding 0.0625f to the row/col means 1px as 1/16 is 0.0625
-    //movement has 3 frames, switch frames at every 16th frame
-    //after 48 frames would be one animation completion
-    //change coordinate by 1px every 3rd frame(0.0635 of 1 row)
-    //after 48 frames would be 16px worth of movement
-    public void move(String direction){
+    //frame delay is 8 when switching animation
+    //animation is done at 24 frames
+    //movement needs to reach 16 px at 24 frames
+    //                        
+
+    public void move(){
         if(movecounter == 0){
             locked = true;
         }
@@ -60,41 +60,48 @@ public abstract class AnimatingObject extends GameObject {
             switch(direction){
                 case "Up":
                 case "up":
-                    play("upWalk",16);
-                    if(movecounter%3==0){
-                        position.translate(0,1);
+                    play("upWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(0,-2);
                     }
                 break;
                 case "Down":
                 case "down":
-                    play("downWalk",16);
-                    if(movecounter%3==0){
-                        position.translate(0,-1);
+                    play("downWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(0,2);
                     }
                 break;
                 case "Left":
                 case "left":
-                    play("leftWalk",16);
-                    if(movecounter%3==0){
-                        position.translate(-1,0);
+                    play("leftWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(-2,0);
                     }
                 break;
                 case "Right":
                 case "right":
-                    play("rightWalk",16);
-                    if(movecounter%3==0){
-                        position.translate(1,0);
+                    play("rightWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(2,0);
                     }
                 break;
             }
-            if(movecounter>=48){
+            if(movecounter>=24){
+                System.out.println(locked);
                 locked = false;
                 movecounter=0;
             }
         }
-        
         movecounter++;
+        
     }
 
-    
+    public void setDirection(String d){
+        if(!locked){
+            direction = d;
+            movecounter = 0;
+        }
+    }
+
 }
