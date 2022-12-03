@@ -57,7 +57,6 @@ public class App {
         FeatureLoader.getMap("citymap").draw(g);
 
         FeatureLoader.player.draw(g);
-        FeatureLoader.player.play("downWalk",60);
 
         FeatureLoader.getMap("citymap").postDraw(g);
 
@@ -71,6 +70,11 @@ public class App {
     public static void onKey(char keyCode) {
         switch (keyCode) {
             case 'm' -> Menu.cornerMenu.expand();
+            case 'w' -> FeatureLoader.player.setDirection("up");
+            case 'a' -> FeatureLoader.player.setDirection("left");
+            case 's' -> FeatureLoader.player.setDirection("down");
+            case 'd' -> FeatureLoader.player.setDirection("right"); 
+    
         }
     }
 }

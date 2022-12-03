@@ -15,16 +15,21 @@ public abstract class AnimatingObject extends GameObject {
     private int animationFrame = 0;
     private int frameCount = 0;
     private Map<String, int[]> animations;
+    private boolean locked = false;
+    private int movecounter = 0;
+    private Point position;
+    private String direction = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
+        position = coord.getPosition();
         this.sprites = sprites;
         animations = new HashMap<String, int[]>();
     }
-
+    
     public void draw(Graphics2D g) {
-        Point position = super.coord.getPosition();
         g.drawImage(sprites[frame], position.x, position.y, Constants.tilesize, Constants.tilesize, null);
+        move();
     }
 
     public void createAnimation(String name, int[] frames){
@@ -40,4 +45,63 @@ public abstract class AnimatingObject extends GameObject {
             frameCount = 0;
         }
     }
+
+    //frame delay is 8 when switching animation
+    //animation is done at 24 frames
+    //movement needs to reach 16 px at 24 frames
+    //                        
+
+    public void move(){
+        if(movecounter == 0){
+            locked = true;
+        }
+        
+        if(locked){
+            switch(direction){
+                case "Up":
+                case "up":
+                    play("upWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(0,-2);
+                    }
+                break;
+                case "Down":
+                case "down":
+                    play("downWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(0,2);
+                    }
+                break;
+                case "Left":
+                case "left":
+                    play("leftWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(-2,0);
+                    }
+                break;
+                case "Right":
+                case "right":
+                    play("rightWalk",8);
+                    if(movecounter%3==1){
+                        position.translate(2,0);
+                    }
+                break;
+            }
+            if(movecounter>=24){
+                System.out.println(locked);
+                locked = false;
+                movecounter=0;
+            }
+        }
+        movecounter++;
+        
+    }
+
+    public void setDirection(String d){
+        if(!locked){
+            direction = d;
+            movecounter = 0;
+        }
+    }
+
 }

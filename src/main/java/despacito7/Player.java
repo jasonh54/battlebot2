@@ -10,6 +10,7 @@ import despacito7.util.Coord;
 
 class Player extends AnimatingObject {
     private static Player instance;
+    
     public static Player getPlayer() {
         if (instance == null) instance = new Player();
         return instance;
@@ -25,4 +26,6 @@ class Player extends AnimatingObject {
         createAnimation("upWalk",new int[]{6,7,8});
         createAnimation("rightWalk",new int[]{9,10,11});
     }
+
+    
 }
