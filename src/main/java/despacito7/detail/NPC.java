@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.ArrayList;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -18,6 +19,7 @@ public class NPC extends AnimatingObject {
     private Map<String,String> topics; // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
     // private Set<Monster> monsters;
     private Set<Item> items;
+    private ArrayList<String> movesequence;
 
     public NPC(Map.Entry<String, JsonElement> entry) {
         super(
@@ -42,6 +44,12 @@ public class NPC extends AnimatingObject {
         if (data.has("items")) {
             for (JsonElement te : data.getAsJsonArray("items"))
                 items.add(FeatureLoader.getItem(te.getAsString()));
+        }
+
+        this.movesequence = new ArrayList<String>();
+        if (data.has("movement")) {
+            for (JsonElement te : data.getAsJsonArray("movement"))
+                movesequence.add(te.toString());
         }
         
         // this.monsters = new HashSet<>();
@@ -69,7 +77,7 @@ public class NPC extends AnimatingObject {
 
     public void playWalkSequence() { // what does this do??
         try {
-            //move
+            //for (String step : )
         } catch (Exception e) {
             System.out.println("This NPC " + id + " can't move!");
         }

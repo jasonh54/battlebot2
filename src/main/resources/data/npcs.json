@@ -58,15 +58,15 @@
             }
         },
         "movement": [
-			"LEFT",
-			"LEFT",
-			"WAIT",
-			"DOWN",
-			"WAIT",
-			"RIGHT",
-			"UP",
-			"WAIT",
-            "RIGHT"
+			"left",
+			"left",
+			"wait",
+			"down",
+			"wait",
+			"right",
+			"up",
+			"wait",
+            "right"
 		]
     },
 
