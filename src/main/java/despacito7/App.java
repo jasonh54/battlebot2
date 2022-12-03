@@ -56,10 +56,10 @@ public class App {
         g.setTransform(AffineTransform.getScaleInstance(2, 2));
         FeatureLoader.getMap("citymap").draw(g);
 
-        FeatureLoader.getMap("citymap").postDraw(g);
-
         FeatureLoader.player.draw(g);
         FeatureLoader.player.play("downWalk",60);
+
+        FeatureLoader.getMap("citymap").postDraw(g);
 
         Menu.cornerMenu.draw(g);
     }

@@ -67,7 +67,7 @@ public class NPC extends AnimatingObject {
         return this.items.toArray(new String[]{});
     }
 
-    public void playWalkSequence() { // what does this do??
+    public void playWalkSequence() {
         try {
             //move
         } catch (Exception e) {

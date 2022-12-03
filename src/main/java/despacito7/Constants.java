@@ -21,6 +21,11 @@ public final class Constants {
         DAMAGE,
         AGILITY
     }
+
+    public static enum Type {
+        WATER, EARTH, FIRE, AIR, // long ago, the four nations lived together in harmony
+        NORMAL, FIGHTING
+    }
     
     public static enum Direction {
         UP, DOWN, LEFT, RIGHT;
