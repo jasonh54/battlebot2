@@ -7,8 +7,7 @@
     <version>0.0.1</version>
     <packaging>war</packaging>
 
-    <name>Battlebot Project</name>
-
+    <name>Battlebot</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,6 +16,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>net.alchim31.maven</groupId>
+            <artifactId>scala-maven-plugin</artifactId>
+            <version>4.7.2</version>
+            <type>maven-plugin</type>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

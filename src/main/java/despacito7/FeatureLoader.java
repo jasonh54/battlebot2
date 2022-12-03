@@ -11,7 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.detail.Item;
-// import despacito7.detail.Monster;
+import despacito7.detail.Monster;
 import despacito7.detail.NPC;
 import despacito7.util.Loader;
 
@@ -19,7 +19,8 @@ public class FeatureLoader implements Loader {
     private static java.util.Map<String, despacito7.map.Map> maps;
     private static java.util.Map<String, Item> items;
     private static java.util.Map<String, NPC> npcs;
-    // private static java.util.Map<String, Monster> monsters;
+    private static java.util.Map<String, Monster> monsters;
+    private static java.util.Map<String, java.util.Map<Constants.Stat, Number>> moves;
     private static boolean loaded = false;
 
     public static despacito7.map.Map getMap(String id) {return maps.get(id);}
@@ -30,7 +31,8 @@ public class FeatureLoader implements Loader {
         return null;
     }
     public static NPC getNPC(String id) {return npcs.get(id);}
-    // public static Monster getMonster(String id) {return monsters.get(id).clone();}
+    public static Monster getMonster(String id) {return monsters.get(id);} // unfinished
+    public static java.util.Map<Constants.Stat, Number> getMove(String id) {return new HashMap<Constants.Stat, Number>(moves.get(id));}
 
     public static Player player;
 
@@ -39,6 +41,15 @@ public class FeatureLoader implements Loader {
     }
 
     public void load() {
+        JsonObject movedata = loadJson("moves.json");
+        FeatureLoader.moves = new HashMap<>(movedata.size(), 0.99f);
+        for (java.util.Map.Entry<String, JsonElement> entry : movedata.entrySet()) {
+            java.util.Map<Constants.Stat, Number> stats = new HashMap<>();
+            for (java.util.Map.Entry<String, JsonElement> e : entry.getValue().getAsJsonObject().entrySet())
+                stats.put(Constants.Stat.valueOf(e.getKey()), e.getValue().getAsNumber());
+            FeatureLoader.moves.put(entry.getKey(), stats);
+        }
+
         JsonObject itemdata = loadJson("items.json");
         FeatureLoader.items = new HashMap<>(itemdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : itemdata.entrySet()) {
@@ -57,11 +68,11 @@ public class FeatureLoader implements Loader {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
         }
 
-        // JsonObject monsterdata = loadJson("monsters.json");
-        // FeatureLoader.monsters = new HashMap<>(monsterdata.size(), 0.99f);
-        // for (java.util.Map.Entry<String, JsonElement> entry : monsterdata.entrySet()) {
-        //     FeatureLoader.monsters.put(entry.getKey(), new Monster(entry));
-        // }
+        JsonObject monsterdata = loadJson("monsters.json");
+        FeatureLoader.monsters = new HashMap<>(monsterdata.size(), 0.99f);
+        for (java.util.Map.Entry<String, JsonElement> entry : monsterdata.entrySet()) {
+            FeatureLoader.monsters.put(entry.getKey(), new Monster(entry));
+        }
 
         player = Player.getPlayer();
         FeatureLoader.loaded = true;

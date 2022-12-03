@@ -16,7 +16,7 @@ import despacito7.util.Coord;
 public class NPC extends AnimatingObject {
     public final String id;
     private Map<String,String> topics; // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
-    // private Set<Monster> monsters;
+    private Set<Monster> monsters;
     private Set<Item> items;
 
     public NPC(Map.Entry<String, JsonElement> entry) {
@@ -44,11 +44,11 @@ public class NPC extends AnimatingObject {
                 items.add(FeatureLoader.getItem(te.getAsString()));
         }
         
-        // this.monsters = new HashSet<>();
-        // if (data.has("monsters")) {
-        //     for (JsonElement te : data.getAsJsonArray("monsters"))
-        //         monsters.add(FeatureLoader.getMonster(te.toString()));
-        // }
+        this.monsters = new HashSet<>();
+        if (data.has("monsters")) {
+            for (JsonElement te : data.getAsJsonArray("monsters"))
+                monsters.add(FeatureLoader.getMonster(te.toString()));
+        }
     }
 
     public Coord getLoc() {
