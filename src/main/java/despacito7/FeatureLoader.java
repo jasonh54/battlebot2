@@ -11,7 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.detail.Item;
-// import despacito7.detail.Monster;
+import despacito7.detail.Monster;
 import despacito7.detail.NPC;
 import despacito7.util.Loader;
 
@@ -19,7 +19,7 @@ public class FeatureLoader implements Loader {
     private static java.util.Map<String, despacito7.map.Map> maps;
     private static java.util.Map<String, Item> items;
     private static java.util.Map<String, NPC> npcs;
-    // private static java.util.Map<String, Monster> monsters;
+    private static java.util.Map<String, Monster> monsters;
     private static boolean loaded = false;
 
     public static despacito7.map.Map getMap(String id) {return maps.get(id);}

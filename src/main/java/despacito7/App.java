@@ -59,7 +59,6 @@ public class App {
         FeatureLoader.getMap("citymap").postDraw(g);
 
         FeatureLoader.player.draw(g);
-        //FeatureLoader.player.play("downWalk",60);
 
         Menu.cornerMenu.draw(g);
     }
@@ -71,10 +70,10 @@ public class App {
     public static void onKey(char keyCode) {
         switch (keyCode) {
             case 'm' -> Menu.cornerMenu.expand();
-            case 'w' -> FeatureLoader.player.move("up");
-            case 'a' -> FeatureLoader.player.move("left");
-            case 's' -> FeatureLoader.player.move("down");
-            case 'd' -> FeatureLoader.player.move("right"); 
+            case 'w' -> FeatureLoader.player.setDirection("up");
+            case 'a' -> FeatureLoader.player.setDirection("left");
+            case 's' -> FeatureLoader.player.setDirection("down");
+            case 'd' -> FeatureLoader.player.setDirection("right"); 
     
         }
     }
