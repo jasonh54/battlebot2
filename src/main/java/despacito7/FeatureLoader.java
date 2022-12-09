@@ -60,7 +60,7 @@ public class FeatureLoader implements Loader {
         JsonObject monsterdata = loadJson("monsters.json");
         FeatureLoader.monsters = new HashMap<>(monsterdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : monsterdata.entrySet()) {
-            FeatureLoader.monsters.put(entry.getKey(), new Monster(entry));
+            FeatureLoader.monsters.put(entry.getKey(), new Monster(entry.getValue()));
         }
 
         player = Player.getPlayer();

@@ -13,12 +13,13 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Monster extends AnimatingObject implements Cloneable {
-    private final String id;
+    // private final String id;
     // Set<Move> moveset = new HashSet<>();
 
-    public Monster(Map.Entry<String, JsonElement> entry) {
-        super(null, ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite("sprite")));
-        this.id = entry.getKey();
+    public Monster(JsonElement entry) {
+        //monster sprites are not loaded in yet in ResourceLoader
+        super(null, ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getAsJsonObject().get("sprite").getAsString())));
+        // this.id = entry.getKey();
     }
 
     // public Monster clone() {
