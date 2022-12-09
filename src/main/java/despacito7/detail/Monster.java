@@ -8,10 +8,11 @@ import com.google.gson.JsonObject;
 
 import despacito7.ResourceLoader;
 import despacito7.util.AnimatingObject;
+import despacito7.util.Coord;
 
 import java.util.Set;
 import java.util.HashSet;
-import despacito7.util.Coord;
+import java.awt.Graphics2D;
 
 public class Monster extends AnimatingObject implements Cloneable {
     // private final String id;
@@ -22,8 +23,15 @@ public class Monster extends AnimatingObject implements Cloneable {
         // super(new Coord(10,10), ResourceLoader.createCharacterSprites(1));
         System.out.println(ResourceLoader.getMonsterSprite(entry.getAsJsonObject().get("sprite").getAsString()));
         // this.id = entry.getKey();
+        int[] frames = new int[sprites.length];
+        for(int i = 0; i < sprites.length;i++){
+            frames[i] = i;
+        }
+        createAnimation("idle", frames);
+        setCurrentAnim("idle");
     }
 
+    
     // public Monster clone() {
     //     return new Monster();
     // }
