@@ -57,11 +57,11 @@ public class FeatureLoader implements Loader {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
         }
 
-        // JsonObject monsterdata = loadJson("monsters.json");
-        // FeatureLoader.monsters = new HashMap<>(monsterdata.size(), 0.99f);
-        // for (java.util.Map.Entry<String, JsonElement> entry : monsterdata.entrySet()) {
-        //     FeatureLoader.monsters.put(entry.getKey(), new Monster(entry));
-        // }
+        JsonObject monsterdata = loadJson("monsters.json");
+        FeatureLoader.monsters = new HashMap<>(monsterdata.size(), 0.99f);
+        for (java.util.Map.Entry<String, JsonElement> entry : monsterdata.entrySet()) {
+            FeatureLoader.monsters.put(entry.getKey(), new Monster(entry));
+        }
 
         player = Player.getPlayer();
         FeatureLoader.loaded = true;
