@@ -59,6 +59,7 @@ public class App {
         FeatureLoader.getMap("citymap").postDraw(g);
 
         FeatureLoader.player.draw(g);
+        FeatureLoader.testMonster.draw(g);
 
         Menu.cornerMenu.draw(g);
     }

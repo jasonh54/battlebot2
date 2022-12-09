@@ -33,6 +33,7 @@ public class FeatureLoader implements Loader {
     // public static Monster getMonster(String id) {return monsters.get(id).clone();}
 
     public static Player player;
+    public static Monster testMonster;
 
     public boolean isLoaded() {
         return FeatureLoader.loaded;
@@ -64,6 +65,7 @@ public class FeatureLoader implements Loader {
         }
 
         player = Player.getPlayer();
+        testMonster = FeatureLoader.monsters.get("Air");
         FeatureLoader.loaded = true;
     }
 
