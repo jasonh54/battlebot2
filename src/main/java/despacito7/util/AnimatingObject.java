@@ -19,6 +19,7 @@ public abstract class AnimatingObject extends GameObject {
     private int movecounter = 0;
     private Point position;
     private String direction = "";
+    private String currentAnimation = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
@@ -30,6 +31,9 @@ public abstract class AnimatingObject extends GameObject {
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], position.x, position.y, Constants.tilesize, Constants.tilesize, null);
         move();
+        if(animations.containsKey(currentAnimation)) {
+            play(currentAnimation, 12);
+        }
     }
 
     public void createAnimation(String name, int[] frames){
@@ -95,6 +99,10 @@ public abstract class AnimatingObject extends GameObject {
         }
         movecounter++;
         
+    }
+
+    public void setCurrentAnim(String name){
+        currentAnimation=name;
     }
 
     public void setDirection(String d){
