@@ -14,12 +14,12 @@ import javax.imageio.ImageIO;
 
 public class ResourceLoader {
     private static Map<String,Image> itemSprites;
-    private static Map<String,Image> monsterSprites;
+    private static Map<String,BufferedImage> monsterSprites;
     private static Image[] tileSprites;
     private static boolean loaded = false;
 
     public static Image getItemSprite(String id) {return itemSprites.get(id);}
-    public static Image getMonsterSprite(String id) {return monsterSprites.get(id);}
+    public static BufferedImage getMonsterSprite(String id) {return monsterSprites.get(id);}
     public static Image getTileSprite(int id) {return id < 0 ? tileSprites[tileSprites.length+id] : tileSprites[id];}
     
     private String resourcesDirectoryPath = java.nio.file.Paths.get("").toAbsolutePath().toString() + "/src/main/resources/sprites";
@@ -49,7 +49,7 @@ public class ResourceLoader {
         List<File> files = Arrays.stream(dir.listFiles()).filter(e->e.isFile()).toList();
         monsterSprites = new HashMap<>(files.size(), 0.99f);
         for(File file : files) {
-            monsterSprites.put(removeExtension(file.getName()), this.loadImage("sprites/monsters/"+file.getName()));
+            monsterSprites.put(removeExtension(file.getName()), (BufferedImage) this.loadImage("sprites/monsters/"+file.getName()));
         }
     }
 
@@ -90,13 +90,10 @@ public class ResourceLoader {
         }
         return characterSprites;
     }
-    public static Image[] cutSprites(Image spritesheet){
-        BufferedImage spriteImage = (BufferedImage) spritesheet;
+    public static Image[] cutSprites(BufferedImage spritesheet){
         List<Image> sprites = new ArrayList<>();
-        for (int r = 0; r < spriteImage.getWidth(); r+=Constants.tilesize) {
-            for (int c = 0; c < spriteImage.getHeight(); r+=Constants.tilesize) {
-                sprites.add(spriteImage.getSubimage(r, c, Constants.tilesize, Constants.tilesize));
-            }
+        for (int c = 0; c < spritesheet.getWidth(); c+=Constants.tilesize) {
+            sprites.add(spritesheet.getSubimage(c, 0, Constants.tilesize, Constants.tilesize));
         }
         return sprites.toArray(new Image[sprites.size()]);
     }

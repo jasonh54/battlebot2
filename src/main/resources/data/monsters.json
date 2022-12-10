@@ -7,7 +7,7 @@
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
         ],
-        "sprite": "AirA.png"
+        "sprite": "AirA"
     },
     "Ball": {
         "stats": {
@@ -17,7 +17,7 @@
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
         ],
-        "sprite": 52
+        "sprite": "BallA"
     },
     "Bat": {
         "stats": {
@@ -27,7 +27,7 @@
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
         ],
-        "sprite": 52
+        "sprite": "BatA"
     },
     "BatSmall": {
         "stats": {
@@ -37,7 +37,7 @@
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
         ],
-        "sprite": 52
+        "sprite": "BatSmallA"
     },
     "Beard": {
         "stats": {
@@ -47,7 +47,7 @@
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
         ],
-        "sprite": 52
+        "sprite": "BeardA"
     }
 
 }

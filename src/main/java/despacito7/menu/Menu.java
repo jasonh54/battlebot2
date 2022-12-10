@@ -111,7 +111,7 @@ class RotaryMenu extends Menu implements Drawable {
         }
 
         public void draw(Graphics2D g) {
-            double coeff = animprog == 0 ? 0 : (expanded ? Utils.easeOutElastic(animprog) : Utils.easeOutBack(animprog));
+            double coeff = Utils.easeOutBack(animprog);
             int x = (int)Math.round(this.vectors[0] * coeff + origin.getX());
             int y = (int)Math.round(this.vectors[1] * coeff + origin.getY());
             g.drawOval(x, y, size, size);

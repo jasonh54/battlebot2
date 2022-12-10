@@ -113,7 +113,7 @@ public class NPC extends AnimatingObject {
     }
 
     public void update() {
-        setDirection(movesequence.get(currentmove));
+        //setDirection(movesequence.get(currentmove));
         if (currentmove == movesequence.size() - 1) {
             currentmove = 0;
         } else {
