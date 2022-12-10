@@ -1,6 +1,8 @@
 package despacito7;
 
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class Constants {
     public static final int tilesize = 16;
@@ -27,6 +29,12 @@ public final class Constants {
         NORMAL, FIGHTING
     }
     
+    private static Map<Character, Direction> keyToDir = new HashMap<>() {{
+        put('w', Direction.UP);
+        put('a', Direction.LEFT);
+        put('s', Direction.DOWN);
+        put('d', Direction.RIGHT);
+    }};
     public static enum Direction {
         UP, DOWN, LEFT, RIGHT;
         int toInt() {
@@ -35,6 +43,9 @@ public final class Constants {
                 if (this.equals(dirs[i])) return i;
             }
             return -1;
+        }
+        static Direction fromKey(char key) {
+            return keyToDir.get(key);
         }
     }
 }
