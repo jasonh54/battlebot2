@@ -17,8 +17,8 @@ import despacito7.util.Pair;
 
 public class NPC extends AnimatingObject {
     public final String id;
-    private Map<String,String> topics; // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
-    private Map<Pair,String> subtopics; // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
+    private Map<String,String> topics = new HashMap<String,String>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
+    private Map<Pair,String> subtopics = new HashMap<Pair,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
     // private Set<Monster> monsters;
     private Set<Item> items;
     private ArrayList<String> movesequence;
