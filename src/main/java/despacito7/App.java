@@ -21,7 +21,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    //final static NPC Cynthia = new Gson().fromJson("Cynthia",NPC.class);
+    static String currentmap = "citymap";
 
     public static void main(String[] args) {
         resourceLoader.load();
@@ -42,8 +42,6 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
-
-        //Cynthia.test();
     }
 
 
@@ -54,9 +52,9 @@ public class App {
     public static void render(Graphics2D g) {
         if (!isLoaded()) return;
         g.setTransform(AffineTransform.getScaleInstance(2, 2));
-        FeatureLoader.getMap("citymap").draw(g);
-
-        FeatureLoader.getMap("citymap").postDraw(g);
+        FeatureLoader.getMap(currentmap).draw(g);
+        FeatureLoader.getMap(currentmap).postDraw(g);
+        FeatureLoader.getNPC("Cynthia").draw(g);
 
         FeatureLoader.player.draw(g);
 
@@ -65,7 +63,10 @@ public class App {
 
     public static void tick() {
         Menu.cornerMenu.update();
+        FeatureLoader.getMap(currentmap).update();
+        FeatureLoader.getNPC("Cynthia").update();
     }
+
 
     public static void onKey(char keyCode) {
         switch (keyCode) {

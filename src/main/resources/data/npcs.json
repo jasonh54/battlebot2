@@ -7,7 +7,10 @@
                 "type": "line",
                 "text": "I'm the champion from Pallet Town."
             }
-        }
+        },
+        "movement": [
+            "wait"
+        ]
     },
 
     "Blue": {
@@ -26,7 +29,10 @@
         "monsters": [
 			"AirA",
 			"MaskA"
-		]
+		],
+        "movement": [
+            "wait"
+        ]
     },
     
     "Yellow": {
@@ -45,12 +51,15 @@
         "items": [
 			"PotionDefense",
 			"PotionAgility"
-		]
+		],
+        "movement": [
+            "wait"
+        ]
     },
 
     "Cynthia": {
-        "sprite": 0,
-        "loc": [5, 3],
+        "sprite": 1,
+        "loc": [200, 200],
         "topics": {
             "CHAT": {
                 "type": "line",
@@ -80,10 +89,21 @@
             },
             "CONTESTS": {
                 "type": "question",
-                "text": "I just LOVE the Monster Contests! Have you ever tried out for one?",
-                "ans1": "YES",
-                "ans2": "NO"
+                "text": "I just LOVE the Monster Contests! Have you ever tried out for one?"
+            },
+            "YES": {
+                "type": "response",
+                "source": "CONTESTS",
+                "text": "Wow, another contester! See you on the runway!"
+            },
+            "NO": {
+                "type": "response",
+                "source": "CONTESTS",
+                "text": "Oh my gosh, you totally should... Your Monsters could be celebrities!"
             }
-        }
+        },
+        "movement": [
+            "wait"
+        ]
     }
 }

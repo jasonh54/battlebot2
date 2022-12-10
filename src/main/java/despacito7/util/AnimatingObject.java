@@ -36,7 +36,7 @@ public abstract class AnimatingObject extends GameObject {
         animations.put(name, frames);
     }
 
-    public void play(String name, int frameDelay){
+    private void play(String name, int frameDelay){
         //play the animation based on the name
         frame = animations.get(name)[animationFrame];
         frameCount++;
@@ -51,7 +51,7 @@ public abstract class AnimatingObject extends GameObject {
     //movement needs to reach 16 px at 24 frames
     //                        
 
-    public void move(){
+    private void move(){
         if(movecounter == 0){
             locked = true;
         }
