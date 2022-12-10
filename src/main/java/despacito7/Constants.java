@@ -3,6 +3,9 @@ package despacito7;
 import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.google.gson.JsonObject;
 
 public final class Constants {
     public static final int tilesize = 16;
@@ -21,7 +24,13 @@ public final class Constants {
         MAX_HEALTH, HEALTH,
         DEFENSE,
         DAMAGE,
-        AGILITY
+        AGILITY;
+
+        public static Map<Stat, Number> toMap(JsonObject jo) {
+            return jo.entrySet().stream()
+                .map(e -> Map.<Stat, Number>entry(Stat.valueOf(e.getKey()), e.getValue().getAsNumber()))
+                .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
+        }
     }
 
     public static enum Type {

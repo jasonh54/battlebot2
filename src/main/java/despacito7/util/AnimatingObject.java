@@ -20,6 +20,7 @@ public abstract class AnimatingObject extends GameObject {
     private int movecounter = 0;
     private Point renderPos;
     private Direction direction;
+    private String currentAnimation = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
@@ -32,13 +33,16 @@ public abstract class AnimatingObject extends GameObject {
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], renderPos.x, renderPos.y, Constants.tilesize, Constants.tilesize, null);
         move();
+        if(animations.containsKey(currentAnimation)) {
+            play(currentAnimation, 12);
+        }
     }
 
     public void createAnimation(String name, int[] frames){
         animations.put(name, frames);
     }
 
-    public void play(String name, int frameDelay){
+    private void play(String name, int frameDelay){
         //play the animation based on the name
         frame = animations.get(name)[animationFrame];
         frameCount++;
@@ -52,7 +56,7 @@ public abstract class AnimatingObject extends GameObject {
     //animation is done at 24 frames
     //movement needs to reach 16 px at 24 frames
 
-    public void move(){
+    private void move(){
         if(movecounter == 0){
             locked = true;
         }
@@ -91,6 +95,10 @@ public abstract class AnimatingObject extends GameObject {
         }
         movecounter++;
         
+    }
+
+    public void setCurrentAnim(String name){
+        currentAnimation=name;
     }
 
     public void setDirection(Direction d){
