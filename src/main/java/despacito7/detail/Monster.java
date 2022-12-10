@@ -1,32 +1,24 @@
 package despacito7.detail;
 
-import java.util.Map;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
 import despacito7.ResourceLoader;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
+import despacito7.Constants.Stat;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.awt.Graphics2D;
+import java.util.Map;
+
+import com.google.gson.JsonElement;
 
 public class Monster extends AnimatingObject implements Cloneable {
-    // private final String id;
+    private final String id;
     // Set<Move> moveset = new HashSet<>();
-    private int maxHealth = 0;
-    private int defense = 0;
+    private Map<Stat, Number> stats;
 
-    public Monster(JsonElement entry) {
-        super(new Coord(10,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getAsJsonObject().get("sprite").getAsString())));
-        // super(new Coord(10,10), ResourceLoader.createCharacterSprites(1));
-        System.out.println(ResourceLoader.getMonsterSprite(entry.getAsJsonObject().get("sprite").getAsString()));
-        // this.id = entry.getKey();
-        maxHealth = entry.getAsJsonObject().get("stats").getAsJsonObject().get("MAX_HEALTH").getAsInt();
-        defense = entry.getAsJsonObject().get("stats").getAsJsonObject().get("DEFENSE").getAsInt();
+    public Monster(Map.Entry<String, JsonElement> entry) {
+        super(new Coord(10,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getValue().getAsJsonObject().get("sprite").getAsString())));
+        this.id = entry.getKey();
+        this.stats = Stat.toMap(entry.getValue().getAsJsonObject().getAsJsonObject("stats"));
+        
         int[] frames = new int[sprites.length];
         for(int i = 0; i < sprites.length;i++){
             frames[i] = i;

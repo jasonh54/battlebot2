@@ -1,7 +1,7 @@
 package despacito7;
 
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
+import java.awt.Point;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -46,20 +46,20 @@ public class App {
         //Cynthia.test();
     }
 
-
     public static boolean isLoaded() {
         return featureLoader.isLoaded() && resourceLoader.isLoaded();
     }
 
     public static void render(Graphics2D g) {
         if (!isLoaded()) return;
-        g.setTransform(AffineTransform.getScaleInstance(2, 2));
+        Point p = FeatureLoader.player.getRenderPos();
+        g.scale(2, 2);
+        g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
         FeatureLoader.getMap("citymap").draw(g);
 
-        FeatureLoader.getMap("citymap").postDraw(g);
-
         FeatureLoader.player.draw(g);
-        FeatureLoader.testMonster.draw(g);
+
+        FeatureLoader.getMap("citymap").postDraw(g);
 
         Menu.cornerMenu.draw(g);
     }
@@ -71,11 +71,7 @@ public class App {
     public static void onKey(char keyCode) {
         switch (keyCode) {
             case 'm' -> Menu.cornerMenu.expand();
-            case 'w' -> FeatureLoader.player.setDirection("up");
-            case 'a' -> FeatureLoader.player.setDirection("left");
-            case 's' -> FeatureLoader.player.setDirection("down");
-            case 'd' -> FeatureLoader.player.setDirection("right"); 
-    
         }
+        FeatureLoader.player.onKey(keyCode);
     }
 }

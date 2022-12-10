@@ -1,7 +1,6 @@
 {
     "punch": {
-        "type": 3,
-        "levelReq": 24,
+        "type": "FIGHTING",
         "stats": {
             "HEALTH": -10
         }

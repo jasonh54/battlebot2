@@ -2,7 +2,6 @@ package despacito7.detail;
 
 import java.awt.Point;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.google.gson.JsonElement;
 
@@ -20,9 +19,7 @@ public class Item implements Cloneable {
     public Item(Map.Entry<String, JsonElement> entry) {
         this.id = entry.getKey();
         this.sprite = ResourceLoader.getItemSprite(id);
-        this.stats = entry.getValue().getAsJsonObject().entrySet().stream()
-            .map(e -> Map.<Stat, Number>entry(Stat.valueOf(e.getKey()), e.getValue().getAsNumber()))
-            .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
+        this.stats = Stat.toMap(entry.getValue().getAsJsonObject());
     }
     private Item(String id, java.awt.Image sprite, Map<Stat, Number> stats) {
         this.id = id; this.sprite = sprite; this.stats = stats;
