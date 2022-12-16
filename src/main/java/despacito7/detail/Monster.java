@@ -28,6 +28,8 @@ public class Monster extends AnimatingObject implements Cloneable {
     }
 
     
+
+    
     // public Monster clone() {
     //     return new Monster();
     // }
