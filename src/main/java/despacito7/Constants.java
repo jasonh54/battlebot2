@@ -57,4 +57,6 @@ public final class Constants {
             return keyToDir.get(key);
         }
     }
+
+    public static enum MoveState {IDLE, WALK}
 }

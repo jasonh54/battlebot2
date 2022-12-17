@@ -2,7 +2,6 @@ package despacito7;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -11,8 +10,6 @@ import javax.swing.JFrame;
 import com.google.gson.Gson;
 
 import despacito7.menu.Menu;
-import despacito7.map.Map;
-import despacito7.detail.Monster;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -25,9 +22,6 @@ public class App {
 
     //game objects
     static String currentmap = "citymap";
-
-    private static Map currentMap;
-    private static Monster currentMonster;
     public static void main(String[] args) {
         resourceLoader.load();
 
@@ -41,9 +35,6 @@ public class App {
         // f.setIconImage(Utils.ICONIMG);
 
         featureLoader.load();
-
-        currentMap = FeatureLoader.getMap("fieldmap");
-        currentMonster = FeatureLoader.getMonster("Air");
 
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
@@ -61,15 +52,13 @@ public class App {
         Point p = FeatureLoader.player.getRenderPos();
         g.scale(2, 2);
         g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
-        // FeatureLoader.getMap("citymap").draw(g);
-        currentMap.draw(g);
+        FeatureLoader.getMap("citymap").draw(g);
 
         FeatureLoader.player.draw(g);
         // currentMonster.draw(g);
         // player movement enums conflicting with monsters animation as monster does not require movement enums
 
-        // FeatureLoader.getMap("citymap").postDraw(g);
-        currentMap.postDraw(g);
+        FeatureLoader.getMap("citymap").postDraw(g);
 
         Menu.cornerMenu.draw(g);
     }
@@ -79,7 +68,6 @@ public class App {
         FeatureLoader.getMap(currentmap).update();
         FeatureLoader.getNPC("Cynthia").update();
     }
-
 
     public static void onKey(char keyCode) {
         switch (keyCode) {

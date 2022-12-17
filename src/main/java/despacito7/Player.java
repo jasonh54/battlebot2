@@ -9,7 +9,7 @@ import despacito7.Constants.Direction;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
 
-class Player extends AnimatingObject {
+public class Player extends AnimatingObject {
     private static Player instance;
     
     public static Player getPlayer() {
