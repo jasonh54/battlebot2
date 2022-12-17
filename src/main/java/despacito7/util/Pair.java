@@ -1,18 +1,18 @@
 package despacito7.util;
 
-public class Pair {
-    Object left;
-    Object right;
-    public Pair(Object l, Object r) {
+public class Pair<E1, E2> {
+    E1 left;
+    E2 right;
+    public Pair(E1 l, E2 r) {
         this.left = l;
         this.right = r;
     }
 
-    public Object getLeft() {
+    public E1 getLeft() {
         return left;
     }
 
-    public Object getRight() {
+    public E2 getRight() {
         return right;
     }
 }
