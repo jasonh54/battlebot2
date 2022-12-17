@@ -21,7 +21,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    //final static NPC Cynthia = new Gson().fromJson("Cynthia",NPC.class);
+    static String currentmap = "citymap";
 
     public static void main(String[] args) {
         resourceLoader.load();
@@ -42,8 +42,6 @@ public class App {
         f.requestFocus();
         dc.startDraw();
         f.setEnabled(true);
-
-        //Cynthia.test();
     }
 
     public static boolean isLoaded() {
@@ -66,7 +64,10 @@ public class App {
 
     public static void tick() {
         Menu.cornerMenu.update();
+        FeatureLoader.getMap(currentmap).update();
+        FeatureLoader.getNPC("Cynthia").update();
     }
+
 
     public static void onKey(char keyCode) {
         switch (keyCode) {
