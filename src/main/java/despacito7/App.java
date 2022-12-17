@@ -2,7 +2,6 @@ package despacito7;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -24,8 +23,6 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    static String currentmap = "citymap";
-
     private static Map currentMap;
     private static Monster currentMonster;
     public static void main(String[] args) {
@@ -76,7 +73,7 @@ public class App {
 
     public static void tick() {
         Menu.cornerMenu.update();
-        FeatureLoader.getMap(currentmap).update();
+        currentMap.update();
         FeatureLoader.getNPC("Cynthia").update();
     }
 

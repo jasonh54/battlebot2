@@ -9,7 +9,7 @@
             }
         },
         "movement": [
-            "wait"
+            "WAIT"
         ]
     },
 
@@ -31,7 +31,7 @@
 			"MaskA"
 		],
         "movement": [
-            "wait"
+            "WAIT"
         ]
     },
     
@@ -53,7 +53,7 @@
 			"PotionAgility"
 		],
         "movement": [
-            "wait"
+            "WAIT"
         ]
     },
 
@@ -67,15 +67,15 @@
             }
         },
         "movement": [
-			"left",
-			"left",
-			"wait",
-			"down",
-			"wait",
-			"right",
-			"up",
-			"wait",
-            "right"
+			"LEFT",
+			"LEFT",
+			"WAIT",
+			"DOWN",
+			"WAIT",
+			"RIGHT",
+			"UP",
+			"WAIT",
+            "RIGHT"
 		]
     },
 
@@ -103,7 +103,7 @@
             }
         },
         "movement": [
-            "wait"
+            "WAIT"
         ]
     }
 }

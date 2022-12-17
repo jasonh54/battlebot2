@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
+import despacito7.Constants;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
 import despacito7.util.Pair;
@@ -113,7 +114,7 @@ public class NPC extends AnimatingObject {
     }
 
     public void update() {
-        //setDirection(movesequence.get(currentmove));
+        setDirection(Constants.Direction.valueOf(movesequence.get(currentmove)));
         if (currentmove == movesequence.size() - 1) {
             currentmove = 0;
         } else {
