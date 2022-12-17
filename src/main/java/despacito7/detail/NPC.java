@@ -22,7 +22,7 @@ public class NPC extends AnimatingObject {
     private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
     // private Set<Monster> monsters;
     private Set<Item> items;
-    private ArrayList<String> movesequence;
+    private ArrayList<Pair<String,String>> movesequence;
     private int currentmove;
 
     public NPC(Map.Entry<String, JsonElement> entry) {
@@ -35,10 +35,10 @@ public class NPC extends AnimatingObject {
         this.currentmove = 0;
 
         //create animations
-        createAnimation("left",new int[]{0,1,2});
-        createAnimation("down",new int[]{3,4,5});
-        createAnimation("up",new int[]{6,7,8});
-        createAnimation("right",new int[]{9,10,11});
+        createAnimation("leftWalk",new int[]{0,1,2});
+        createAnimation("downWalk",new int[]{3,4,5});
+        createAnimation("upWalk",new int[]{6,7,8});
+        createAnimation("rightWalk",new int[]{9,10,11});
 
         JsonObject data = entry.getValue().getAsJsonObject();
 
@@ -47,6 +47,7 @@ public class NPC extends AnimatingObject {
         //for each NPC in the entryset
         for (Map.Entry<String, JsonElement> in : data.getAsJsonObject("topics").entrySet()) {
             String type = in.getValue().getAsJsonObject().get("type").getAsString();
+            //store topics
             switch (type) {
                 case "response":
                     subtopics.put(new Pair<String, String>(in.getValue().getAsJsonObject().get("source").getAsString(),in.getKey()),in.getValue().getAsJsonObject().get("text").getAsString());
@@ -63,9 +64,10 @@ public class NPC extends AnimatingObject {
             }
         }
 
-        this.movesequence = new ArrayList<String>();
-        for (JsonElement te : data.getAsJsonArray("movement")) {
-            movesequence.add(te.toString());
+        this.movesequence = new ArrayList<Pair<String,String>>();
+        for (JsonElement ms : data.getAsJsonArray("movement")) {
+            String[] step = ms.getAsString().split("/");
+            movesequence.add(new Pair<String,String>(step[0],step[1]));
        }
         
         this.items = new HashSet<>();
@@ -74,8 +76,6 @@ public class NPC extends AnimatingObject {
                 items.add(FeatureLoader.getItem(te.getAsString()));
             }
         }
-
-        System.out.println(this.id + ": Hello, world! \n Spritenum is " + entry.getValue().getAsJsonObject().get("sprite").getAsInt() + ". \n Movement is " + movesequence + ". \n Topics are " + topics.keySet() + ". \n Coord is " + entry.getValue().getAsJsonObject().get("loc").getAsJsonArray() + ". \n Items are " + items + ". \n");
     }
 
     public Coord getLoc() {
@@ -114,7 +114,8 @@ public class NPC extends AnimatingObject {
     }
 
     public void update() {
-        setDirection(Constants.Direction.valueOf(movesequence.get(currentmove)));
+        this.setDirection(Constants.Direction.valueOf(movesequence.get(currentmove).getRight()));
+        //sets direction, sitll need to set idle vs walk somehow
         if (currentmove == movesequence.size() - 1) {
             currentmove = 0;
         } else {

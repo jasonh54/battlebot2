@@ -94,7 +94,7 @@
             }
         ],
         "npcs": [
-            "Cynthia"
+            "Cynthia", "Red", "Blue", "Yellow", "Dawn"
         ]
     },
     "fieldmap": {
@@ -211,7 +211,7 @@
             }
         ],
         "npcs": [
-            "Cynthia"
+            "Red", "Blue"
         ]
     }
 }
