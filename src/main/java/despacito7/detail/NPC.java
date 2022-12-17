@@ -18,7 +18,7 @@ import despacito7.util.Pair;
 public class NPC extends AnimatingObject {
     public final String id;
     private Map<String,String> topics = new HashMap<String,String>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
-    private Map<Pair,String> subtopics = new HashMap<Pair,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
+    private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
     // private Set<Monster> monsters;
     private Set<Item> items;
     private ArrayList<String> movesequence;
@@ -48,7 +48,7 @@ public class NPC extends AnimatingObject {
             String type = in.getValue().getAsJsonObject().get("type").getAsString();
             switch (type) {
                 case "response":
-                    subtopics.put(new Pair(in.getValue().getAsJsonObject().get("source").getAsString(),in.getKey()),in.getValue().getAsJsonObject().get("text").getAsString());
+                    subtopics.put(new Pair<String, String>(in.getValue().getAsJsonObject().get("source").getAsString(),in.getKey()),in.getValue().getAsJsonObject().get("text").getAsString());
                     break;
                 case "line":
                     topics.put(in.getKey(),in.getValue().getAsJsonObject().get("text").getAsString());
@@ -87,9 +87,9 @@ public class NPC extends AnimatingObject {
 
     public String[] getQuestionTopics(String q) {
         ArrayList<String> s = new ArrayList<String>();
-        for (Pair p : subtopics.keySet()) {
-            if (p.getLeft() == q) {
-                s.add((String) p.getRight());
+        for (Pair<String, String> p : subtopics.keySet()) {
+            if (p.getLeft().equals(q)) {
+                s.add(p.getRight());
             }
         }
         return (String[]) s.toArray();
@@ -99,8 +99,8 @@ public class NPC extends AnimatingObject {
         if (topics.containsKey(t)) {
             return topics.get(t);
         } else {
-            for (Pair p : subtopics.keySet()) {
-                if (p.getRight() == t) {
+            for (Pair<String, String> p : subtopics.keySet()) {
+                if (p.getRight().equals(t)) {
                     return subtopics.get(p);
                 }
             }
