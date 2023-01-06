@@ -12,15 +12,15 @@ import despacito7.Constants.Direction;
 
 public abstract class AnimatingObject extends GameObject {
     protected Image[] sprites;
-    private int frame = 0;
+    protected int frame = 0;
     private int animationFrame = 0;
     private int frameCount = 0;
-    private Map<String, int[]> animations;
+    protected Map<String, int[]> animations;
     private boolean locked = false;
     private int movecounter = 0;
-    private Point renderPos;
+    protected Point renderPos;
     private Direction direction;
-    private String currentAnimation = "";
+    protected String currentAnimation = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
@@ -42,7 +42,7 @@ public abstract class AnimatingObject extends GameObject {
         animations.put(name, frames);
     }
 
-    private void play(String name, int frameDelay){
+    protected void play(String name, int frameDelay){
         //play the animation based on the name
         frame = animations.get(name)[animationFrame];
         frameCount++;
