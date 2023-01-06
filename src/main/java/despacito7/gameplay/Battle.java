@@ -20,15 +20,18 @@ public class Battle {
     public Battle(NPC npc){
         currentNPC = npc;
     }
+
     public Battle(Monster monster){
         currentMonster = monster;
     }
+
     public void draw(Graphics2D g){
         currentMonster.draw(g);
         if(currentNPC != null) {
             currentNPC.draw(g);
         }
     }
+    
     public void tick(){
         
     }
