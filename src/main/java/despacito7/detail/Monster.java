@@ -20,16 +20,11 @@ public class Monster extends AnimatingObject implements Cloneable {
         this.stats = Stat.toMap(entry.getValue().getAsJsonObject().getAsJsonObject("stats"));
         
         int[] frames = new int[sprites.length];
-        for(int i = 0; i < sprites.length;i++){
-            frames[i] = i;
-        }
+        for(int i = 0; i < sprites.length;i++) frames[i] = i;
         createAnimation("idle", frames);
         setCurrentAnim("idle");
     }
 
-    
-
-    
     // public Monster clone() {
     //     return new Monster();
     // }
