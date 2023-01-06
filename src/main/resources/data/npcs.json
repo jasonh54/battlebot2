@@ -9,12 +9,12 @@
             }
         },
         "movement": [
-            "wait"
+            "IDLE/DOWN"
         ]
     },
 
     "Blue": {
-        "sprite": 0,
+        "sprite": 3,
         "loc": [7, 1],
         "topics": {
             "CHAT": {
@@ -31,12 +31,12 @@
 			"MaskA"
 		],
         "movement": [
-            "wait"
+            "IDLE/DOWN"
         ]
     },
     
     "Yellow": {
-        "sprite": 0,
+        "sprite": 2,
         "loc": [9, 1],
         "topics": {
             "CHAT": {
@@ -53,13 +53,13 @@
 			"PotionAgility"
 		],
         "movement": [
-            "wait"
+            "IDLE/DOWN"
         ]
     },
 
     "Cynthia": {
-        "sprite": 1,
-        "loc": [200, 200],
+        "sprite": 5,
+        "loc": [11, 1],
         "topics": {
             "CHAT": {
                 "type": "line",
@@ -67,21 +67,20 @@
             }
         },
         "movement": [
-			"left",
-			"left",
-			"wait",
-			"down",
-			"wait",
-			"right",
-			"up",
-			"wait",
-            "right"
-		]
+			"WALK/LEFT",
+			"WALK/LEFT",
+			"WALK/DOWN",
+			"IDLE/DOWN",
+			"WALK/RIGHT",
+			"WALK/UP",
+			"IDL/UP",
+            "WALK/RIGHT"
+        ]
     },
 
     "Dawn": {
-        "sprite": 0,
-        "loc": [7, 3],
+        "sprite": 4,
+        "loc": [13, 1],
         "topics": {
             "CHAT": {
                 "type": "line",
@@ -103,7 +102,7 @@
             }
         },
         "movement": [
-            "wait"
+            "IDLE/DOWN"
         ]
     }
 }

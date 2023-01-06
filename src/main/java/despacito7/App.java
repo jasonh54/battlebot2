@@ -66,7 +66,6 @@ public class App {
     public static void tick() {
         Menu.cornerMenu.update();
         FeatureLoader.getMap(currentmap).update();
-        FeatureLoader.getNPC("Cynthia").update();
     }
 
     public static void onKey(char keyCode) {
