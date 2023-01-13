@@ -8,6 +8,7 @@ import despacito7.Constants.Direction;
 // import despacito7.detail.Item;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
+import despacito7.detail.Monster;
 
 public class Player extends AnimatingObject {
     private static Player instance;
@@ -16,6 +17,7 @@ public class Player extends AnimatingObject {
         if (instance == null) instance = new Player();
         return instance;
     }
+    private Monster[] monsters = new Monster[6];
     // private Map<Item, Integer> inventory = new HashMap<>();
 
     private Player() {
@@ -24,6 +26,33 @@ public class Player extends AnimatingObject {
         createAnimation("downWalk",new int[]{3,4,5});
         createAnimation("upWalk",new int[]{6,7,8});
         createAnimation("rightWalk",new int[]{9,10,11});
+    }
+
+    public boolean monstersFull(){
+        for(int i = 0; i < monsters.length; i++){
+            if(monsters[i] == null){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void addMonster(Monster mon){
+        if(monstersFull()){
+            return;
+        }
+        for(int i = 0; i < monsters.length; i++){
+            if(monsters[i] == null){
+                monsters[i] = mon;
+                break;
+            }
+        }
+    }
+
+    public Monster removeMonster(int index){
+        Monster temp = monsters[index];
+        monsters[index] = null;
+        return temp;
     }
 
     public void onKey(char keyCode) {

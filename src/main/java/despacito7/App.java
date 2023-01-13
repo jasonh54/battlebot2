@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import com.google.gson.Gson;
 
 import despacito7.menu.Menu;
+import despacito7.detail.Monster;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
@@ -22,6 +23,7 @@ public class App {
 
     //game objects
     static String currentmap = "citymap";
+    static Monster currentMonster;
     public static void main(String[] args) {
         resourceLoader.load();
 
@@ -35,6 +37,7 @@ public class App {
         // f.setIconImage(Utils.ICONIMG);
 
         featureLoader.load();
+        currentMonster = featureLoader.getMonster("Air");
 
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
@@ -55,7 +58,7 @@ public class App {
         FeatureLoader.getMap("citymap").draw(g);
 
         FeatureLoader.player.draw(g);
-        // currentMonster.draw(g);
+        currentMonster.draw(g);
         // player movement enums conflicting with monsters animation as monster does not require movement enums
 
         FeatureLoader.getMap("citymap").postDraw(g);

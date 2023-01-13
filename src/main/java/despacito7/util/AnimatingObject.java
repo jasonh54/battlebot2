@@ -9,18 +9,20 @@ import java.util.Map;
 
 import despacito7.Constants;
 import despacito7.Constants.Direction;
+import despacito7.Constants.MoveState;
 
 public abstract class AnimatingObject extends GameObject {
     protected Image[] sprites;
-    private int frame = 0;
+    protected int frame = 0;
     private int animationFrame = 0;
     private int frameCount = 0;
-    private Map<String, int[]> animations;
+    protected Map<String, int[]> animations;
     private boolean locked = false;
     private int movecounter = 0;
-    private Point renderPos;
+    protected Point renderPos;
     private Direction direction;
-    private String currentAnimation = "";
+    protected String currentAnimation = "";
+    private MoveState moveState;
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
@@ -28,6 +30,7 @@ public abstract class AnimatingObject extends GameObject {
         this.sprites = sprites;
         this.animations = new HashMap<String, int[]>();
         this.direction = Direction.UP;
+        this.moveState = MoveState.WALK;
     }
     
     public void draw(Graphics2D g) {
@@ -42,7 +45,7 @@ public abstract class AnimatingObject extends GameObject {
         animations.put(name, frames);
     }
 
-    private void play(String name, int frameDelay){
+    protected void play(String name, int frameDelay){
         //play the animation based on the name
         frame = animations.get(name)[animationFrame];
         frameCount++;
@@ -62,30 +65,36 @@ public abstract class AnimatingObject extends GameObject {
         }
         
         if(locked){
-            switch(direction) {
-                case UP:
-                    play("upWalk",8);
-                    if(movecounter%3==1){
-                        renderPos.translate(0,-2);
-                    }
+            switch(moveState) {
+                case WALK: 
+                switch(direction) {
+                    case UP:
+                        play("upWalk",8);
+                        if(movecounter%3==1){
+                            renderPos.translate(0,-2);
+                        }
+                    break;
+                    case DOWN:
+                        play("downWalk",8);
+                        if(movecounter%3==1){
+                            renderPos.translate(0,2);
+                        }
+                    break;
+                    case LEFT:
+                        play("leftWalk",8);
+                        if(movecounter%3==1){
+                            renderPos.translate(-2,0);
+                        }
+                    break;
+                    case RIGHT:
+                        play("rightWalk",8);
+                        if(movecounter%3==1){
+                            renderPos.translate(2,0);
+                        }
+                    break;
+                }
                 break;
-                case DOWN:
-                    play("downWalk",8);
-                    if(movecounter%3==1){
-                        renderPos.translate(0,2);
-                    }
-                break;
-                case LEFT:
-                    play("leftWalk",8);
-                    if(movecounter%3==1){
-                        renderPos.translate(-2,0);
-                    }
-                break;
-                case RIGHT:
-                    play("rightWalk",8);
-                    if(movecounter%3==1){
-                        renderPos.translate(2,0);
-                    }
+                case IDLE:
                 break;
             }
             if(movecounter>=24){
@@ -104,6 +113,13 @@ public abstract class AnimatingObject extends GameObject {
     public void setDirection(Direction d){
         if(!locked){
             direction = d;
+            movecounter = 0;
+        }
+    }
+
+    public void setMovement(MoveState s){
+        if(!locked){
+            moveState = s;
             movecounter = 0;
         }
     }
