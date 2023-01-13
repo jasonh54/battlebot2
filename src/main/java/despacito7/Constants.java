@@ -45,7 +45,7 @@ public final class Constants {
         put('d', Direction.RIGHT);
     }};
     public static enum Direction {
-        UP, DOWN, LEFT, RIGHT;
+        UP, DOWN, LEFT, RIGHT, IDLE;
         int toInt() {
             Direction[] dirs = Direction.values();
             for (int i = 0; i < dirs.length; i++) {
