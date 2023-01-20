@@ -6,8 +6,11 @@ import despacito7.util.Coord;
 import scala.concurrent.impl.FutureConvertersImpl.P;
 import despacito7.Constants.*;
 import despacito7.Constants;
+import despacito7.gameplay.Move;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 import java.awt.Graphics2D;
 
@@ -15,7 +18,7 @@ import com.google.gson.JsonElement;
 
 public class Monster extends AnimatingObject implements Cloneable {
     private final String id;
-    // Set<Move> moveset = new HashSet<>();
+    Set<Move> moveset = new HashSet<Move>();
     private Map<Stat, Number> stats;
 
     public Monster(Map.Entry<String, JsonElement> entry) {

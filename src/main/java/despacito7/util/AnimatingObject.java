@@ -21,8 +21,8 @@ public abstract class AnimatingObject extends GameObject {
     private int movecounter = 0;
     protected Point renderPos;
     private Direction direction;
-    protected String currentAnimation = "";
     private MoveState moveState;
+    protected String currentAnimation = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);

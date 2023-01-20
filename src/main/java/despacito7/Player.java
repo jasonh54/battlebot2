@@ -4,6 +4,7 @@ import despacito7.Constants.Direction;
 
 // import java.util.HashMap;
 // import java.util.Map;
+import java.util.ArrayList;
 
 // import despacito7.detail.Item;
 import despacito7.util.AnimatingObject;
@@ -17,7 +18,7 @@ public class Player extends AnimatingObject {
         if (instance == null) instance = new Player();
         return instance;
     }
-    private Monster[] monsters = new Monster[6];
+    private ArrayList<Monster> monsters = new ArrayList<Monster>();
     // private Map<Item, Integer> inventory = new HashMap<>();
 
     private Player() {
@@ -29,33 +30,30 @@ public class Player extends AnimatingObject {
     }
 
     public boolean monstersFull(){
-        for(int i = 0; i < monsters.length; i++){
-            if(monsters[i] == null){
-                return false;
-            }
-        }
-        return true;
+        if(monsters.size() == 6) {
+            return true;
+        } 
+        return false;
     }
 
     public void addMonster(Monster mon){
         if(monstersFull()){
             return;
         }
-        for(int i = 0; i < monsters.length; i++){
-            if(monsters[i] == null){
-                monsters[i] = mon;
-                break;
-            }
-        }
+        monsters.add(mon);
     }
 
     public Monster removeMonster(int index){
-        Monster temp = monsters[index];
-        monsters[index] = null;
+        Monster temp = monsters.get(index);
+        monsters.remove(index);
         return temp;
     }
 
     public void onKey(char keyCode) {
         if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
+    }
+
+    public Monster getMonster(int n){
+        return monsters.get(n);
     }
 }
