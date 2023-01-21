@@ -21,7 +21,8 @@ public final class Constants {
     }
 
     public static enum Stat {
-        MAX_HEALTH, HEALTH,
+        MAX_HEALTH,
+        HEALTH,
         DEFENSE,
         DAMAGE,
         AGILITY;
