@@ -27,7 +27,7 @@ public class Monster extends AnimatingObject implements Cloneable {
         //load moves
         this.moveset = new HashSet<>();
         for (JsonElement t : entry.getValue().getAsJsonObject().get("moves").getAsJsonArray()) {
-            moveset.add(FeatureLoader.getMove(t.getAsString()));
+            //moveset.add(FeatureLoader.getMove(t.getAsString())); // t is currently null???
         }
         //set up animations
         int[] frames = new int[sprites.length];
