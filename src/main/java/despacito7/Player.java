@@ -1,6 +1,7 @@
 package despacito7;
 
 import despacito7.Constants.Direction;
+import java.awt.Graphics2D;
 
 // import java.util.HashMap;
 // import java.util.Map;
@@ -9,8 +10,12 @@ import despacito7.Constants.Direction;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
 
-public class Player extends AnimatingObject {
+import despacito7.Constants.MoveState;
+import despacito7.util.Character;
+
+public class Player extends Character {
     private static Player instance;
+    
     
     public static Player getPlayer() {
         if (instance == null) instance = new Player();
@@ -24,8 +29,19 @@ public class Player extends AnimatingObject {
         createAnimation("downWalk",new int[]{3,4,5});
         createAnimation("upWalk",new int[]{6,7,8});
         createAnimation("rightWalk",new int[]{9,10,11});
+        createAnimation("leftIdle", new int[]{0});
+        createAnimation("downIdle", new int[]{3});
+        createAnimation("upIdle", new int[]{6});
+        createAnimation("rightIdle", new int[]{9});
     }
 
+    
+
+    //frame delay is 8 when switching animation
+    //animation is done at 24 frames
+    //movement needs to reach 16 px at 24 frames
+
+    
     public void onKey(char keyCode) {
         if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
     }

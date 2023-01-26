@@ -13,31 +13,28 @@ import despacito7.Constants.MoveState;
 
 public abstract class AnimatingObject extends GameObject {
     protected Image[] sprites;
-    private int frame = 0;
-    private int animationFrame = 0;
+    protected int frame = 0;
+    protected int animationFrame = 0;
     private int frameCount = 0;
-    private Map<String, int[]> animations;
-    private boolean locked = false;
-    private int movecounter = 0;
-    private Point renderPos;
-    private Direction direction;
-    private MoveState moveState;
-    private String currentAnimation = "";
+    protected Map<String, int[]> animations;
+    
+    
+    protected Point renderPos;
+    
+    protected String currentAnimation = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
         super(coord, sprites[0]);
         this.renderPos = coord.getPosition();
         this.sprites = sprites;
         this.animations = new HashMap<String, int[]>();
-        this.direction = Direction.UP;
-        this.moveState = MoveState.WALK;
+
     }
     
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], renderPos.x, renderPos.y, Constants.tilesize, Constants.tilesize, null);
-        move();
         if(animations.containsKey(currentAnimation)) {
-            play(currentAnimation, 12);
+            play(currentAnimation, 12, false);
         }
     }
 
@@ -45,85 +42,33 @@ public abstract class AnimatingObject extends GameObject {
         animations.put(name, frames);
     }
 
-    private void play(String name, int frameDelay){
+    protected void play(String name, int frameDelay, boolean repeat){
         //play the animation based on the name
-        frame = animations.get(name)[animationFrame];
+        currentAnimation = name;
         frameCount++;
-        if (frameCount >= frameDelay) {
-            animationFrame=(animationFrame+1)%animations.get(name).length;
+        if(animationComplete() && !repeat){
+
+        }
+        else if (frameCount >= frameDelay) {
+            frame = animations.get(name)[animationFrame%animations.get(name).length];
+            animationFrame=(animationFrame+1);
             frameCount = 0;
         }
+
     }
 
-    //frame delay is 8 when switching animation
-    //animation is done at 24 frames
-    //movement needs to reach 16 px at 24 frames
-
-    private void move(){
-        if(movecounter == 0){
-            locked = true;
+    public boolean animationComplete(){
+        if(animationFrame == animations.get(currentAnimation).length){
+            return true;
         }
-        
-        if(locked){
-            switch(moveState) {
-                case WALK: 
-                switch(direction) {
-                    case UP:
-                        play("upWalk",8);
-                        if(movecounter%3==1){
-                            renderPos.translate(0,-2);
-                        }
-                    break;
-                    case DOWN:
-                        play("downWalk",8);
-                        if(movecounter%3==1){
-                            renderPos.translate(0,2);
-                        }
-                    break;
-                    case LEFT:
-                        play("leftWalk",8);
-                        if(movecounter%3==1){
-                            renderPos.translate(-2,0);
-                        }
-                    break;
-                    case RIGHT:
-                        play("rightWalk",8);
-                        if(movecounter%3==1){
-                            renderPos.translate(2,0);
-                        }
-                    break;
-                }
-                break;
-                case IDLE:
-                break;
-            }
-            if(movecounter>=24){
-                locked = false;
-                movecounter=0;
-            }
-        }
-        movecounter++;
-        
+        return false;
     }
 
     public void setCurrentAnim(String name){
         currentAnimation=name;
+        animationFrame = 0;
     }
 
-    public void setDirection(Direction d){
-        if(!locked){
-            direction = d;
-            movecounter = 0;
-        }
-    }
-    public void setMovement(MoveState s){
-        if(!locked){
-            moveState = s;
-            movecounter = 0;
-        }
-    }
-
-    
     public Point getRenderPos() {
         return this.renderPos;
     }

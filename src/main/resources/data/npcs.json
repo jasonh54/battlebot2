@@ -71,9 +71,13 @@
 			"WALK/LEFT",
 			"WALK/DOWN",
 			"IDLE/DOWN",
+            "IDLE/UP",
+            "IDLE/UP",
 			"WALK/RIGHT",
 			"WALK/UP",
 			"IDLE/UP",
+            "IDLE/UP",
+            "IDLE/UP",
             "WALK/RIGHT"
         ]
     },

@@ -11,12 +11,14 @@ import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
+import despacito7.Constants.Direction;
 import despacito7.Constants;
-import despacito7.util.AnimatingObject;
+import despacito7.util.Character;
+import despacito7.Player;
 import despacito7.util.Coord;
 import despacito7.util.Pair;
 
-public class NPC extends AnimatingObject {
+public class NPC extends Character {
     public final String id;
     private Map<String,String> topics = new HashMap<String,String>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
     private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
@@ -39,6 +41,10 @@ public class NPC extends AnimatingObject {
         createAnimation("downWalk",new int[]{3,4,5});
         createAnimation("upWalk",new int[]{6,7,8});
         createAnimation("rightWalk",new int[]{9,10,11});
+        createAnimation("leftIdle", new int[]{0});
+        createAnimation("downIdle", new int[]{3});
+        createAnimation("upIdle", new int[]{6});
+        createAnimation("rightIdle", new int[]{9});
 
         JsonObject data = entry.getValue().getAsJsonObject();
 

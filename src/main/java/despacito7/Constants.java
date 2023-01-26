@@ -59,4 +59,6 @@ public final class Constants {
     }
 
     public static enum MoveState {IDLE, WALK}
+
+    // public static enum 
 }
