@@ -22,7 +22,7 @@ public class NPC extends Character {
     public final String id;
     private Map<String,String> topics = new HashMap<String,String>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
     private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
-    // private Set<Monster> monsters;
+    private ArrayList<Monster> monsters;
     private Set<Item> items;
     private ArrayList<Pair<String,String>> movesequence;
     private int currentmove;
@@ -130,4 +130,7 @@ public class NPC extends Character {
         }
     }
 
+    public Monster getMonster(int n){
+        return monsters.get(n);
+    }
 }

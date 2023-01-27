@@ -106,7 +106,7 @@
             }
         },
         "movement": [
-            "IDLE/DOWN"
+            "IDLE/IDLE"
         ]
     }
 }

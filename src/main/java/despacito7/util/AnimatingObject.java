@@ -14,6 +14,7 @@ import despacito7.Constants.MoveState;
 public abstract class AnimatingObject extends GameObject {
     protected Image[] sprites;
     protected int frame = 0;
+
     protected int animationFrame = 0;
     private int frameCount = 0;
     protected Map<String, int[]> animations;
@@ -21,6 +22,7 @@ public abstract class AnimatingObject extends GameObject {
     
     protected Point renderPos;
     
+
     protected String currentAnimation = "";
 
     public AnimatingObject(Coord coord, Image[] sprites) {
@@ -42,7 +44,9 @@ public abstract class AnimatingObject extends GameObject {
         animations.put(name, frames);
     }
 
+
     protected void play(String name, int frameDelay, boolean repeat){
+
         //play the animation based on the name
         currentAnimation = name;
         frameCount++;
@@ -68,6 +72,7 @@ public abstract class AnimatingObject extends GameObject {
         currentAnimation=name;
         animationFrame = 0;
     }
+
 
     public Point getRenderPos() {
         return this.renderPos;
