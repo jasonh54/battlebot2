@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import com.google.gson.Gson;
 
 import despacito7.menu.Menu;
+import despacito7.Constants.GameState;
 import despacito7.detail.Monster;
 
 public class App {
@@ -24,6 +25,7 @@ public class App {
     //game objects
     static String currentmap = "citymap";
     static Monster currentMonster;
+    static GameState currentGameState = GameState.WORLD;
     public static void main(String[] args) {
         resourceLoader.load();
 
@@ -57,18 +59,39 @@ public class App {
         g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
         FeatureLoader.getMap("citymap").draw(g);
 
-        FeatureLoader.player.draw(g);
-        currentMonster.draw(g);
-        // player movement enums conflicting with monsters animation as monster does not require movement enums
 
-        FeatureLoader.getMap("citymap").postDraw(g);
-
-        Menu.cornerMenu.draw(g);
+        switch (currentGameState) {
+            case WORLD:
+                FeatureLoader.player.draw(g);
+                currentMonster.draw(g);
+                // player movement enums conflicting with monsters animation as monster does not require movement enums
+        
+                FeatureLoader.getMap("citymap").postDraw(g);
+        
+                Menu.cornerMenu.draw(g);
+            break;
+            case BATTLE:
+            break;
+            case MENU:
+            break;
+            case TALK:
+            break;
+        }
     }
 
     public static void tick() {
-        Menu.cornerMenu.update();
-        FeatureLoader.getMap(currentmap).update();
+        switch (currentGameState) {
+            case WORLD:
+                Menu.cornerMenu.update();
+                FeatureLoader.getMap(currentmap).update();
+            break;
+            case BATTLE:
+            break;
+            case MENU:
+            break;
+            case TALK:
+            break;
+        }
     }
 
     public static void onKey(char keyCode) {

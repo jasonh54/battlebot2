@@ -30,8 +30,8 @@ public class Battle {
         currentMonster.draw(g);
         if(currentNPC != null) {
             currentNPC.draw(g);
-            currentEnemy.draw(g);
         }
+        currentEnemy.draw(g);
     }
     
     public void tick(){
