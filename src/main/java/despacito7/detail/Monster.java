@@ -16,6 +16,9 @@ import java.awt.Graphics2D;
 
 import com.google.gson.JsonElement;
 
+import despacito7.Constants.Stat;
+import despacito7.FeatureLoader;
+
 public class Monster extends AnimatingObject implements Cloneable {
     private final String id;
     Set<Move> moveset = new HashSet<Move>();
@@ -23,13 +26,16 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public Monster(Map.Entry<String, JsonElement> entry) {
         super(new Coord(10,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getValue().getAsJsonObject().get("sprite").getAsString())));
+        //name self
         this.id = entry.getKey();
+        //load stats
         this.stats = Stat.toMap(entry.getValue().getAsJsonObject().getAsJsonObject("stats"));
-        for(Stat stat : stats.keySet()){
-            System.out.print(stat);
-            System.out.println(": " + stats.get(stat));
+        //load moves
+        this.moveset = new HashSet<>();
+        for (JsonElement t : entry.getValue().getAsJsonObject().get("moves").getAsJsonArray()) {
+            //moveset.add(FeatureLoader.getMove(t.getAsString())); // t is currently null???
         }
-
+        //set up animations
         int[] frames = new int[sprites.length];
         for(int i = 0; i < sprites.length;i++) frames[i] = i;
         createAnimation("idle", frames);
@@ -42,6 +48,10 @@ public class Monster extends AnimatingObject implements Cloneable {
             play(currentAnimation, 12, true);
         }
     }
+    //one million getters
+    /* public setHealth(int h) {
+        stats.get(HEALTH)
+    } */
 
     // public Monster clone() {
     //     return new Monster();

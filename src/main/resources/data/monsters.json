@@ -2,9 +2,10 @@
     "Air": {
         "stats": {
             "MAX_HEALTH": 100,
+            "HEALTH": 100,
             "DEFENSE": 10,
-            "DAMAGE": 5,
-            "AGILITY": 7
+            "DAMAGE": 10,
+            "AGILITY": 10
         },
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
@@ -14,9 +15,10 @@
     "Ball": {
         "stats": {
             "MAX_HEALTH": 100,
+            "HEALTH": 100,
             "DEFENSE": 10,
-            "DAMAGE": 5,
-            "AGILITY": 7
+            "DAMAGE": 10,
+            "AGILITY": 10
         },
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
@@ -26,9 +28,10 @@
     "Bat": {
         "stats": {
             "MAX_HEALTH": 100,
+            "HEALTH": 100,
             "DEFENSE": 10,
-            "DAMAGE": 5,
-            "AGILITY": 7
+            "DAMAGE": 10,
+            "AGILITY": 10
         },
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
@@ -38,9 +41,10 @@
     "BatSmall": {
         "stats": {
             "MAX_HEALTH": 100,
+            "HEALTH": 100,
             "DEFENSE": 10,
-            "DAMAGE": 5,
-            "AGILITY": 7
+            "DAMAGE": 10,
+            "AGILITY": 10
         },
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"
@@ -50,9 +54,10 @@
     "Beard": {
         "stats": {
             "MAX_HEALTH": 100,
+            "HEALTH": 100,
             "DEFENSE": 10,
-            "DAMAGE": 5,
-            "AGILITY": 7
+            "DAMAGE": 10,
+            "AGILITY": 10
         },
         "moves": [
             "Attack1", "Defend1", "Heal1", "Special1"

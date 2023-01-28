@@ -68,17 +68,17 @@
         },
         "movement": [
 			"WALK/LEFT",
+            "WALK/LEFT",
 			"WALK/LEFT",
-			"WALK/DOWN",
-			"IDLE/DOWN",
-            "IDLE/UP",
-            "IDLE/UP",
+			"IDLE/LEFT",
+            "WALK/LEFT",
+            "IDLE/DOWN",
 			"WALK/RIGHT",
-			"WALK/UP",
-			"IDLE/UP",
-            "IDLE/UP",
-            "IDLE/UP",
-            "WALK/RIGHT"
+            "WALK/RIGHT",
+            "WALK/RIGHT",
+            "IDLE/RIGHT",
+            "WALK/RIGHT",
+            "IDLE/RIGHT"
         ]
     },
 
