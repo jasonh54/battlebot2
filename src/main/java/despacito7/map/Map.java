@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
+import despacito7.Constants;
 import despacito7.detail.*;
 import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
@@ -78,7 +79,15 @@ public class Map implements Drawable {
                 this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r)); // inverted due to java being funny
+                    TileType type;
+                    if (Constants.collideTiles.contains(sprite)) {
+                        type = TileType.COLLIDE;
+                    } else if (Constants.monsterTiles.contains(sprite)) {
+                        type = TileType.MONSTER;
+                    } else {
+                        type = TileType.NORMAL;
+                    }
+                    tiles[r][c] = new Tile(sprite, new Coord(c, r), type);
                 }
             }
         }
