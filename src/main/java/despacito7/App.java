@@ -23,7 +23,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    static String currentmap = "citymap";
+    public static String currentmap = "citymap";
     static Monster currentMonster;
     static GameState currentGameState = GameState.WORLD;
     public static void main(String[] args) {
@@ -84,6 +84,7 @@ public class App {
             case WORLD:
                 Menu.cornerMenu.update();
                 FeatureLoader.getMap(currentmap).update();
+                FeatureLoader.player.update();
             break;
             case BATTLE:
             break;

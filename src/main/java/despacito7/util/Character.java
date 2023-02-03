@@ -31,7 +31,7 @@ public class Character extends AnimatingObject{
     }
     private void RenderToCoord(){
         coord.setCoord(renderPos.y/Constants.tilesize, renderPos.x/Constants.tilesize);
-        coord.print();
+        // coord.print();
     }
     
     private void move(){
