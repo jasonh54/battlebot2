@@ -5,10 +5,11 @@ import java.awt.Point;
 import despacito7.Constants;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
+import despacito7.ResourceLoader;
 
 public record Tile(java.awt.Image sprite, Coord coord, TileType type) implements Drawable {
-    public Tile(java.awt.Image sprite, Coord coord) {
-        this(sprite, coord, TileType.NORMAL);
+    public Tile(int spritenum, Coord coord, TileType t) {
+        this(ResourceLoader.getTileSprite(spritenum), coord, t);
     }
 
     public void draw(java.awt.Graphics2D g){

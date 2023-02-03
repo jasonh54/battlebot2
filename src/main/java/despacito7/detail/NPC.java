@@ -50,7 +50,7 @@ public class NPC extends Character {
 
         this.topics = new HashMap<>();
 
-        //for each NPC in the entryset
+        //for each topic in the entryset
         for (Map.Entry<String, JsonElement> in : data.getAsJsonObject("topics").entrySet()) {
             String type = in.getValue().getAsJsonObject().get("type").getAsString();
             //store topics

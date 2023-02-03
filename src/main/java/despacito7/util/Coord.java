@@ -5,10 +5,15 @@ import com.google.gson.JsonArray;
 import despacito7.Constants;
 
 public class Coord {
-    private final int r, c;
+    private int r, c;
 
     public Coord(int r, int c) {
         this.r = r; this.c = c;
+    }
+
+    public void setCoord(int r, int c){
+        this.r = r;
+        this.c = c;
     }
 
     public static Coord ofJson(JsonArray ja) {
@@ -26,6 +31,8 @@ public class Coord {
     public java.awt.Point getPosition() {
         return new java.awt.Point(r * Constants.tilesize, c * Constants.tilesize);
     }
-
+    public void print(){
+        System.out.println("r:"+r + " c:"+c);
+    }
     // may have to override hashCode
 }

@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
+import despacito7.Constants;
 import despacito7.detail.*;
 import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
@@ -50,7 +51,7 @@ public class Map implements Drawable {
         layers.get(LayerType.BASE).draw(g);
         layers.get(LayerType.INTERACT).draw(g);
         items.forEach(item -> item.draw(g));
-        npcs.forEach(npc -> npc.draw(g));
+        // npcs.forEach(npc -> npc.draw(g));
     }
 
     public void postDraw(java.awt.Graphics2D g) {
@@ -58,7 +59,7 @@ public class Map implements Drawable {
     }
 
     public void update() {
-        npcs.forEach(npc -> npc.update());
+        // npcs.forEach(npc -> npc.update());
     }
 
     public boolean collides(Coord pos) {
@@ -78,7 +79,15 @@ public class Map implements Drawable {
                 this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                    tiles[r][c] = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r)); // inverted due to java being funny
+                    TileType type;
+                    if (Constants.collideTiles.contains(sprite)) {
+                        type = TileType.COLLIDE;
+                    } else if (Constants.monsterTiles.contains(sprite)) {
+                        type = TileType.MONSTER;
+                    } else {
+                        type = TileType.NORMAL;
+                    }
+                    tiles[r][c] = new Tile(sprite, new Coord(c, r), type);
                 }
             }
         }
