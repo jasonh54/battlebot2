@@ -51,7 +51,7 @@ public class Map implements Drawable {
         layers.get(LayerType.BASE).draw(g);
         layers.get(LayerType.INTERACT).draw(g);
         items.forEach(item -> item.draw(g));
-        npcs.forEach(npc -> npc.draw(g));
+        // npcs.forEach(npc -> npc.draw(g));
     }
 
     public void postDraw(java.awt.Graphics2D g) {
@@ -59,7 +59,7 @@ public class Map implements Drawable {
     }
 
     public void update() {
-        npcs.forEach(npc -> npc.update());
+        // npcs.forEach(npc -> npc.update());
     }
 
     public boolean collides(Coord pos) {
