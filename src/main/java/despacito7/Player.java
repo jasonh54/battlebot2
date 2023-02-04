@@ -66,4 +66,15 @@ public class Player extends Character {
     public Monster getMonster(int n){
         return monsters.get(n);
     }
+    
+    public void update(){
+        // coord.print();
+        // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
+        //     System.out.println("You are colliding");
+        // }
+        if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
+            coord.print();
+            System.out.println("You are touching grass");
+        }
+    }
 }
