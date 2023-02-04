@@ -13,6 +13,7 @@ import despacito7.ResourceLoader;
 import despacito7.Constants;
 import despacito7.detail.*;
 import despacito7.map.Tile.TileType;
+import despacito7.map.Tile;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
 
@@ -35,7 +36,7 @@ public class Map implements Drawable {
                     layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
                 break;
                 default:
-                    layers.put(layertype, new Layer(layerdata.getValue().getAsJsonArray()));
+                    layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
             }
         }
         for (JsonElement npcid : data.get("npcs").getAsJsonArray()) {
@@ -51,7 +52,7 @@ public class Map implements Drawable {
         layers.get(LayerType.BASE).draw(g);
         layers.get(LayerType.INTERACT).draw(g);
         items.forEach(item -> item.draw(g));
-        npcs.forEach(npc -> npc.draw(g));
+        // npcs.forEach(npc -> npc.draw(g));
     }
 
     public void postDraw(java.awt.Graphics2D g) {
@@ -59,7 +60,7 @@ public class Map implements Drawable {
     }
 
     public void update() {
-        npcs.forEach(npc -> npc.update());
+        // npcs.forEach(npc -> npc.update());
     }
 
     public boolean collides(Coord pos) {
@@ -67,7 +68,8 @@ public class Map implements Drawable {
     }
 
     public boolean monsters(Coord pos) {
-        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER, pos);
+        pos.print();
+        return ((InteractLayer)layers.get(LayerType.BASE)).has(TileType.MONSTER, pos);
     }
 
     private class Layer implements Drawable {
@@ -118,20 +120,30 @@ public class Map implements Drawable {
                 for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
                     TileType type = TileType.NORMAL;
-                    for (java.util.Map.Entry<TileType, Set<Integer>> typesprites : specialSprites.entrySet()) {
-                        if (typesprites.getValue().contains(sprite)) {
-                            type = typesprites.getKey();
-                            break;
-                        }
+                    // for (java.util.Map.Entry<TileType, Set<Integer>> typesprites : specialSprites.entrySet()) {
+                    //     if (typesprites.getValue().contains(sprite)) {
+                    //         type = typesprites.getKey();
+                    //         break;
+                    //     }
+                    // }]
+                    if(Constants.monsterTiles.contains(sprite)){
+                        type = TileType.MONSTER;
                     }
-                    Tile tile = new Tile(ResourceLoader.getTileSprite(sprite), new Coord(c, r), type);
+                    if(Constants.collideTiles.contains(sprite)){
+                        type = TileType.COLLIDE;
+                    }
+                    Tile tile = new Tile(sprite, new Coord(c, r), type);
                     tiles[r][c] = tile;
-                    if (!tile.type().equals(TileType.NORMAL)) this.specials.get(tile.type()).add(tile.coord());
+                    if (!tile.type().equals(TileType.NORMAL)) { 
+                        this.specials.get(tile.type()).add(tile.coord());
+                    }
                 }
             }
         }
 
         public boolean has(TileType type, Coord coord) {
+            // coord.print();
+            // System.out.println(specials.get(type));
             return specials.get(type).contains(coord);
         }
     }
