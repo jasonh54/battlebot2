@@ -57,7 +57,7 @@ public class App {
         Point p = FeatureLoader.player.getRenderPos();
         g.scale(2, 2);
         g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
-        FeatureLoader.getMap("citymap").draw(g);
+        FeatureLoader.getMap(currentmap).draw(g);
 
 
         switch (currentGameState) {
@@ -66,7 +66,7 @@ public class App {
                 currentMonster.draw(g);
                 // player movement enums conflicting with monsters animation as monster does not require movement enums
         
-                FeatureLoader.getMap("citymap").postDraw(g);
+                FeatureLoader.getMap(currentmap).postDraw(g);
         
                 Menu.cornerMenu.draw(g);
             break;

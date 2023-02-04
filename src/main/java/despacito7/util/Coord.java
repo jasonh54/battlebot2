@@ -34,5 +34,11 @@ public class Coord {
     public void print(){
         System.out.println("r:"+r + " c:"+c);
     }
+    public boolean compare(Coord coord){
+        if(coord.r == r && coord.c == c){
+            return true;
+        }
+        return false;
+    }
     // may have to override hashCode
 }
