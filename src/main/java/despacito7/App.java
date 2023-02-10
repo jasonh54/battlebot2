@@ -12,10 +12,12 @@ import com.google.gson.Gson;
 import despacito7.menu.Menu;
 import despacito7.Constants.GameState;
 import despacito7.detail.Monster;
+import despacito7.gameplay.Battle;
 
 public class App {
     public static final JFrame f = new JFrame("Battlebot");
     public static final DrawingCanvas dc = new DrawingCanvas(f);
+    public static int width, height;
 
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -25,7 +27,8 @@ public class App {
     //game objects
     public static String currentmap = "citymap";
     static Monster currentMonster;
-    static GameState currentGameState = GameState.WORLD;
+    public static GameState currentGameState = GameState.WORLD;
+    public static Battle currentBattle;
     public static void main(String[] args) {
         resourceLoader.load();
 
@@ -36,11 +39,14 @@ public class App {
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setFocusable(true);
         f.setResizable(false);
+        width = f.getWidth();
+        height = f.getHeight();
         // f.setIconImage(Utils.ICONIMG);
 
         featureLoader.load();
         currentMonster = featureLoader.getMonster("Air");
 
+        featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
         f.requestFocus();
@@ -56,12 +62,11 @@ public class App {
         if (!isLoaded()) return;
         Point p = FeatureLoader.player.getRenderPos();
         g.scale(2, 2);
-        g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
-        FeatureLoader.getMap(currentmap).draw(g);
-
 
         switch (currentGameState) {
             case WORLD:
+                g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
+                FeatureLoader.getMap(currentmap).draw(g);
                 FeatureLoader.player.draw(g);
                 currentMonster.draw(g);
                 // player movement enums conflicting with monsters animation as monster does not require movement enums
@@ -71,6 +76,9 @@ public class App {
                 Menu.cornerMenu.draw(g);
             break;
             case BATTLE:
+                // g.clearRect(0, 0, f.getWidth(), f.getHeight());
+                g.translate(0, 0);
+                currentBattle.draw(g);
             break;
             case MENU:
             break;

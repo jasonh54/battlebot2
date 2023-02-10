@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 import java.awt.Graphics2D;
+import java.awt.Color;
 
 import com.google.gson.JsonElement;
 
@@ -44,9 +45,17 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], renderPos.x, renderPos.y, Constants.tilesize, Constants.tilesize, null);
+        drawHealthBar(g);
         if(animations.containsKey(currentAnimation)) {
             play(currentAnimation, 12, true);
         }
+    }
+
+    public void drawHealthBar(Graphics2D g){
+        g.setColor(Color.RED);
+        g.fillRect((int)coord.getPosition().getX(), (int)coord.getPosition().getY(), 50, 5);
+        g.setColor(Color.GREEN);
+        g.fillRect((int)coord.getPosition().getX(), (int)coord.getPosition().getY(), (int)(stats.get(Stat.HEALTH).intValue()*0.5), 5);
     }
     //one million getters
     /* public setHealth(int h) {
