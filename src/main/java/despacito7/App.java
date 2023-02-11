@@ -40,7 +40,7 @@ public class App {
 
         featureLoader.load();
         currentMonster = featureLoader.getMonster("Air");
-
+        
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
         f.requestFocus();
@@ -71,6 +71,7 @@ public class App {
                 Menu.cornerMenu.draw(g);
             break;
             case BATTLE:
+
             break;
             case MENU:
             break;

@@ -75,6 +75,7 @@ public class Player extends Character {
         if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
             coord.print();
             System.out.println("You are touching grass");
+            
         }
     }
 }
