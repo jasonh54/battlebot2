@@ -1,6 +1,8 @@
 package despacito7;
 
 import despacito7.Constants.Direction;
+import despacito7.Constants.GameState;
+
 import java.awt.Graphics2D;
 
 // import java.util.HashMap;
@@ -10,10 +12,12 @@ import java.util.ArrayList;
 // import despacito7.detail.Item;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
+import despacito7.App;
 import despacito7.detail.Monster;
-
+import despacito7.gameplay.Battle;
 import despacito7.Constants.MoveState;
 import despacito7.util.Character;
+import despacito7.FeatureLoader;
 
 public class Player extends Character {
     private static Player instance;
@@ -36,6 +40,7 @@ public class Player extends Character {
         createAnimation("downIdle", new int[]{3});
         createAnimation("upIdle", new int[]{6});
         createAnimation("rightIdle", new int[]{9});
+
     }
 
 
@@ -75,6 +80,8 @@ public class Player extends Character {
         if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
             coord.print();
             System.out.println("You are touching grass");
+            App.currentGameState = Constants.GameState.BATTLE;
+            App.currentBattle = new Battle(App.currentMonster);
         }
     }
 }
