@@ -53,9 +53,10 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public void drawHealthBar(Graphics2D g){
         g.setColor(Color.RED);
-        g.fillRect((int)coord.getPosition().getX(), (int)coord.getPosition().getY(), 50, 5);
+        g.fillRect((int)coord.getPosition().getX()-18, (int)coord.getPosition().getY()-10, 50, 5);
         g.setColor(Color.GREEN);
-        g.fillRect((int)coord.getPosition().getX(), (int)coord.getPosition().getY(), (int)(stats.get(Stat.HEALTH).intValue()*0.5), 5);
+        g.fillRect((int)coord.getPosition().getX()-18, (int)coord.getPosition().getY()-10, (int)(stats.get(Stat.HEALTH).intValue()*0.5), 5);
+        g.setColor(Color.BLACK);
     }
     //one million getters
     /* public setHealth(int h) {

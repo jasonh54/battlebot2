@@ -27,6 +27,7 @@ public class Battle {
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
         playerMonster.setCoord(10, 20);
+        createMenu();
     }
 
     public Battle(Monster monster){
@@ -34,6 +35,14 @@ public class Battle {
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
         playerMonster.setCoord(10, 20);
+        createMenu();
+    }
+
+    public void createMenu(){
+        Menu.battleMenu.addButton(Menu.generateButton(0, 0, 100, 20, "Attack"));
+        Menu.battleMenu.addButton(Menu.generateButton(0, 22, 100, 20, "Pick Item"));
+        Menu.battleMenu.addButton(Menu.generateButton(0, 44, 100, 20, "Switch Monster"));
+        Menu.battleMenu.addButton(Menu.generateButton(0, 66, 100, 20, "Run Away"));
     }
 
     public void draw(Graphics2D g){
@@ -44,6 +53,7 @@ public class Battle {
             currentNPC.draw(g);
         }
         currentMonster.draw(g);
+        Menu.battleMenu.draw(g);
     }
     
     public void tick(){
