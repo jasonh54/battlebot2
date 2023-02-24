@@ -78,7 +78,7 @@ public class Player extends Character {
         //     System.out.println("You are colliding");
         // }
         if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
-            coord.print();
+            // coord.print();
             System.out.println("You are touching grass");
             App.currentGameState = Constants.GameState.BATTLE;
             App.currentBattle = new Battle(App.currentMonster);
