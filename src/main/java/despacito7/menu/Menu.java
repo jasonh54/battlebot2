@@ -5,16 +5,20 @@ import java.awt.Graphics2D;
 import java.util.HashSet;
 import java.util.Set;
 
+import despacito7.App;
 import despacito7.Constants;
 import despacito7.DrawingCanvas;
 import despacito7.util.Drawable;
 import despacito7.util.Utils;
+import scala.Int;
 
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.MouseInfo;
 
 public abstract class Menu {
     public static final Menu cornerMenu = new RotaryMenu(new Point(0, 0));
+    public static final Menu battleMenu = new BattleMenu();
     protected Set<Button> buttons;
     protected boolean expanded;
 
@@ -27,8 +31,86 @@ public abstract class Menu {
     public void draw(Graphics2D g) {
         for (Button b : this.buttons) b.draw(g);
     }
+
+    public abstract void tick();
+
+    public void addButton(Button b){
+        buttons.add(b);
+    }
+
+    public void addButton(BattleButton b){
+        battleMenu.addButton(b);
+    }
+
     public static interface Button extends Drawable {
         public void draw(Graphics2D g);
+    }
+
+    public static BattleButton generateButton(int x, int y, int w, int h, String text, ButtonCallback callback){
+        return new BattleButton(x, y, w, h, text, callback);
+    }
+
+    public static interface ButtonCallback {
+        void activate();
+    }
+
+    static class BattleButton implements Drawable {
+        int x, y, w, h;
+        String text;
+        ButtonCallback c;
+        public BattleButton(int x, int y, int w, int h, String text, ButtonCallback callback){
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+            this.text = text;
+            c = callback;
+        }
+        public void draw(Graphics2D g){
+            Color buttonColor = Color.WHITE;
+            if(hover()) buttonColor = Color.GRAY;
+            g.setColor(buttonColor);
+            g.fillRect(x, y, w, h);
+            g.setColor(Color.BLACK);
+            g.drawString(text, x, y+h);
+        }
+        public boolean hover(){
+            Point coord = MouseInfo.getPointerInfo().getLocation();
+            Point offset = App.f.getLocationOnScreen();
+            int mouseX = ((int)coord.getX()-(int)offset.getX())/2;
+            int mouseY = ((int)coord.getY()-(int)offset.getY())/2;
+            // System.out.println(mouseX + ", " + mouseY);
+            if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h)return true;
+            return false;
+        }
+        public void tick(){
+            System.out.println("running tick");
+            if(hover()) c.activate();
+        }
+    }
+}
+
+
+
+class BattleMenu extends Menu implements Drawable {
+    protected Set<BattleButton> buttons;
+    
+    public BattleMenu(){
+        buttons = new HashSet<BattleButton>();
+    }
+
+    public void update() {}
+
+    public void draw(Graphics2D g) {
+        for (BattleButton b : this.buttons) b.draw(g);
+    }
+    
+    public void tick(){
+        for (BattleButton b : this.buttons) b.tick();
+    }
+
+    public void addButton(BattleButton b){
+        buttons.add(b);
     }
 }
 
@@ -42,6 +124,7 @@ class DialogueMenu extends Menu implements Drawable {
     }
 
     public void update() {}
+    public void tick() {}
 
     @Override
     public void draw(Graphics2D g) {
@@ -84,6 +167,8 @@ class RotaryMenu extends Menu implements Drawable {
     public void update() {
         for (Button b : this.buttons) ((RotaryButton)b).update();
     }
+
+    public void tick() {}
 
     private class RotaryButton implements Button {
         private static int size = 12;

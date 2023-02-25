@@ -27,6 +27,7 @@ public class Battle {
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
         playerMonster.setCoord(10, 20);
+        createMenu();
     }
 
     public Battle(Monster monster){
@@ -34,6 +35,32 @@ public class Battle {
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
         playerMonster.setCoord(10, 20);
+        createMenu();
+    }
+
+    public void createMenu(){
+        int menuX = 300;
+        int menuY = 300;
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, "Attack", new Menu.ButtonCallback(){
+            public void activate(){
+                currentState = BattleStates.SELECTMOVE;
+            }
+        }));
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY+22, 100, 20, "Pick Item", new Menu.ButtonCallback(){
+            public void activate(){
+                currentState = BattleStates.SELECTITEM;
+            }
+        }));
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY+44, 100, 20, "Switch Monster", new Menu.ButtonCallback(){
+            public void activate(){
+                currentState = BattleStates.SELECTMONSTER;
+            }
+        }));
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY+66, 100, 20, "Run Away", new Menu.ButtonCallback(){
+            public void activate(){
+                currentState = BattleStates.END;
+            }
+        }));
     }
 
     public void draw(Graphics2D g){
@@ -44,24 +71,30 @@ public class Battle {
             currentNPC.draw(g);
         }
         currentMonster.draw(g);
+        Menu.battleMenu.draw(g);
     }
     
     public void tick(){
-       switch(currentState){
-        case ENTER:
-        break;
-        case YOURTURN:
-        break;
-        case ENEMYTURN:
-        break;
-        case SELECTITEM:
-        break;
-        case SELECTMONSTER: 
-        break;
-        case SELECTMOVE: 
-        break;
-        case END:
-        break;
+        Menu.battleMenu.tick();
+        switch(currentState){
+            case ENTER:
+            break;
+            case YOURTURN:
+            break;
+            case ENEMYTURN:
+            break;
+            case SELECTITEM:
+                System.out.println("pick item works");
+            break;
+            case SELECTMONSTER: 
+                System.out.println("switch monster works");
+            break;
+            case SELECTMOVE: 
+                System.out.println("attack works");
+            break;
+            case END:
+                System.out.println("run away works");
+            break;
        } 
     }
 }
