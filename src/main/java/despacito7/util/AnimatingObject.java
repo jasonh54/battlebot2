@@ -77,4 +77,9 @@ public abstract class AnimatingObject extends GameObject {
     public Point getRenderPos() {
         return this.renderPos;
     }
+
+    public void setCoord(int r, int c){
+        coord.setCoord(r, c);
+        renderPos.setLocation(r*Constants.tilesize, c*Constants.tilesize);
+    }
 }

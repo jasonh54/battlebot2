@@ -68,8 +68,10 @@ public class Map implements Drawable {
     }
 
     public boolean monsters(Coord pos) {
+        System.out.println("Player coord: ");
         pos.print();
-        return ((InteractLayer)layers.get(LayerType.BASE)).has(TileType.MONSTER, pos);
+        // System.out.println(((InteractLayer)layers.get(LayerType.BASE)).getS(TileType.MONSTER));
+        return ((InteractLayer)layers.get(LayerType.BASE)).has(TileType.MONSTER,pos);
     }
 
     private class Layer implements Drawable {
@@ -139,12 +141,24 @@ public class Map implements Drawable {
                     }
                 }
             }
+            // System.out.println(specials.get(TileType.MONSTER));
         }
+       
 
         public boolean has(TileType type, Coord coord) {
             // coord.print();
             // System.out.println(specials.get(type));
-            return specials.get(type).contains(coord);
+            //Object at parameter is not the same object as the object in the Set
+            for(Coord c : specials.get(type)){
+                c.print();
+                if(c.compare(coord)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        public Set<Coord> getS(TileType type){
+            return specials.get(type);
         }
     }
 }
