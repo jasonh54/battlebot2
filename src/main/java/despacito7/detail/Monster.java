@@ -4,27 +4,17 @@ import despacito7.ResourceLoader;
 import despacito7.gameplay.Move;
 import despacito7.util.AnimatingObject;
 import despacito7.util.Coord;
-import scala.concurrent.impl.FutureConvertersImpl.P;
-import despacito7.Constants.*;
 import despacito7.Constants;
-import despacito7.gameplay.Move;
 
 import java.util.Map;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 import java.awt.Graphics2D;
 import java.awt.Color;
 
 import com.google.gson.JsonElement;
 
 import despacito7.Constants.Stat;
-import despacito7.Constants;
-import despacito7.ResourceLoader;
 import despacito7.FeatureLoader;
-import despacito7.gameplay.Move;
-import despacito7.util.AnimatingObject;
-import despacito7.util.Coord;
 
 public class Monster extends AnimatingObject implements Cloneable {
     private final String id;
