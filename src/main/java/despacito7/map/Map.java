@@ -91,7 +91,7 @@ public class Map implements Drawable {
                     } else {
                         type = TileType.NORMAL;
                     }
-                    tiles[r][c] = new Tile(sprite, new Coord(c, r), type);
+                    tiles[r][c] = new Tile(sprite, new Coord(r, c), type);
                 }
             }
         }
@@ -134,7 +134,7 @@ public class Map implements Drawable {
                     if(Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
                     }
-                    Tile tile = new Tile(sprite, new Coord(c, r), type);
+                    Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
                     if (!tile.type().equals(TileType.NORMAL)) { 
                         this.specials.get(tile.type()).add(tile.coord());
