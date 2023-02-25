@@ -95,6 +95,7 @@ public class App {
                 FeatureLoader.player.update();
             break;
             case BATTLE:
+                currentBattle.tick();
             break;
             case MENU:
             break;
