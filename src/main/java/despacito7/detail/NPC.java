@@ -83,10 +83,10 @@ public class NPC extends Character {
             }
         }
 
-        this.items = new HashSet<>();
+        this.monsters = new ArrayList<Monster>();
         if (data.has("monsters")) {
-            for (JsonElement te : data.getAsJsonArray("monsters")) {
-                monsters.add(FeatureLoader.getMonster(te.getAsString()));
+            for (JsonElement t : data.getAsJsonArray("monsters")) {
+                monsters.add(FeatureLoader.getMonster(t.getAsString()));
             }
         }
     }

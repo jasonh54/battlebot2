@@ -8,7 +8,7 @@ import com.google.gson.JsonObject;
 import despacito7.Constants;
 import despacito7.Constants.Stat;
 
-public record Move(Constants.Type type, java.util.Map<Constants.Stat, Number> stats) implements Cloneable {
+public record Move(Constants.Type type, java.util.Map<Stat, Number> stats) implements Cloneable {
     public static Move fromEntry(Map.Entry<String, JsonElement> entry) {
         JsonObject v = entry.getValue().getAsJsonObject();
         return new Move(Constants.Type.valueOf(v.get("type").getAsString()), Stat.toMap(v.getAsJsonObject("stats")));
@@ -16,5 +16,13 @@ public record Move(Constants.Type type, java.util.Map<Constants.Stat, Number> st
 
     public Move clone() {
         return new Move(this.type, this.stats); // does this pass stats by reference?
+    }
+
+    public java.util.Map<Stat, Number> getStats() {
+        return stats;
+    }
+
+    public int getStat(Stat s) {
+        return (int) stats.get(s);
     }
 }

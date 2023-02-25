@@ -29,6 +29,14 @@ public class Item implements Cloneable {
         System.out.println(this.stats.toString());
     }
 
+    public java.util.Map<Stat, Number> getStats() {
+        return stats;
+    }
+
+    public int getStat(Stat s) {
+        return (int) stats.get(s);
+    }
+
     public static record GroundItem(Item item, Coord coord) implements Drawable {
         public GroundItem(String id, Coord coord) {
             this(FeatureLoader.getItem(id), coord);
