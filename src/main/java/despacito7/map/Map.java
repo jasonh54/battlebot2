@@ -52,7 +52,7 @@ public class Map implements Drawable {
         layers.get(LayerType.BASE).draw(g);
         layers.get(LayerType.INTERACT).draw(g);
         items.forEach(item -> item.draw(g));
-        // npcs.forEach(npc -> npc.draw(g));
+        npcs.forEach(npc -> npc.draw(g));
     }
 
     public void postDraw(java.awt.Graphics2D g) {
@@ -60,7 +60,7 @@ public class Map implements Drawable {
     }
 
     public void update() {
-        // npcs.forEach(npc -> npc.update());
+        npcs.forEach(npc -> npc.update());
     }
 
     public boolean collides(Coord pos) {
@@ -91,7 +91,7 @@ public class Map implements Drawable {
                     } else {
                         type = TileType.NORMAL;
                     }
-                    tiles[r][c] = new Tile(sprite, new Coord(c, r), type);
+                    tiles[r][c] = new Tile(sprite, new Coord(r, c), type);
                 }
             }
         }
@@ -134,7 +134,7 @@ public class Map implements Drawable {
                     if(Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
                     }
-                    Tile tile = new Tile(sprite, new Coord(c, r), type);
+                    Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
                     if (!tile.type().equals(TileType.NORMAL)) { 
                         this.specials.get(tile.type()).add(tile.coord());

@@ -23,7 +23,7 @@ public class Monster extends AnimatingObject implements Cloneable {
     private Map<Stat, Float> statchanges;
 
     public Monster(Map.Entry<String, JsonElement> entry) {
-        super(new Coord(10,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getValue().getAsJsonObject().get("sprite").getAsString())));
+        super(new Coord(1,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getValue().getAsJsonObject().get("sprite").getAsString())));
         //name self
         id = entry.getKey();
         //load stats
