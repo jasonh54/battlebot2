@@ -71,6 +71,7 @@ public class Battle {
             currentNPC.draw(g);
         }
         currentMonster.draw(g);
+        
         Menu.battleMenu.draw(g);
     }
     
