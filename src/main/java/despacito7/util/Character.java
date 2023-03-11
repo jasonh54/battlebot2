@@ -124,6 +124,14 @@ public class Character extends AnimatingObject{
         return (Monster[]) monsters.toArray();
     }
 
+    public String[] getMonsterNames() {
+        ArrayList<String> names = new ArrayList<String>();
+        for (Monster m : monsters) {
+            names.add(m.getName());
+        }
+        return (String[]) names.toArray();
+    }
+
     public Item[] getItemList() {
         return (Item[]) inventory.keySet().toArray();
     }
