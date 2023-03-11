@@ -67,13 +67,26 @@ public class Battle {
             }
         }));
         for(Move m : playerMonster.getMoves()){
-            Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, m.toString(), new Menu.ButtonCallback(){
+            Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, m.id(), new Menu.ButtonCallback(){
                 public void activate(){
                     
                 }
             }));
         }
-        
+        // for(Monster m : FeatureLoader.player.getMonsters()){
+        //     Move.moveMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, , new Menu.ButtonCallback(){
+        //         public void activate(){
+
+        //         }
+        //     }))
+        // }
+        for(Item i : FeatureLoader.player.getItemList()){
+            Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, null,  new Menu.ButtonCallback() {
+                public void activate(){
+                    
+                }
+            }));
+        }
     }
 
     public void draw(Graphics2D g){
