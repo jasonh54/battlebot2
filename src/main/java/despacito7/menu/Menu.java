@@ -19,6 +19,9 @@ import java.awt.MouseInfo;
 public abstract class Menu {
     public static final Menu cornerMenu = new RotaryMenu(new Point(0, 0));
     public static final Menu battleMenu = new BattleMenu();
+    public static final Menu itemMenu = new BattleMenu();
+    public static final Menu monsterMenu = new BattleMenu();
+    public static final Menu moveMenu = new BattleMenu();
     protected Set<Button> buttons;
     protected boolean expanded;
 
