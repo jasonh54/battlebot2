@@ -39,8 +39,8 @@ public class Battle {
     }
 
     public void createMenu(){
-        int menuX = 300;
-        int menuY = 300;
+        int menuX = 200;
+        int menuY = 200;
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, "Attack", new Menu.ButtonCallback(){
             public void activate(){
                 currentState = BattleStates.SELECTMOVE;
