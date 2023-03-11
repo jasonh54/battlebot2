@@ -44,6 +44,10 @@ public class Monster extends AnimatingObject implements Cloneable {
     }
 
     //getters
+    public String getName() {
+        return id;
+    }
+
     public int getStat(Stat s) {
         System.out.println(s + ": " + stats.get(s));
         return (int) stats.get(s);

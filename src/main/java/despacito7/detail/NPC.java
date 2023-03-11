@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
 import despacito7.Constants;
@@ -72,15 +71,16 @@ public class NPC extends Character {
         
         if (data.has("items")) {
             for (JsonElement te : data.getAsJsonArray("items")) {
-                //inventory.put(FeatureLoader.getItem(te.getAsString()));
+                inventory.put(FeatureLoader.getItem(te.getAsString()),0);
+                //System.out.println(id + "has items: " + inventory.keySet());
                 //update json to include # of items in the NPC.json
             }
         }
 
         if (data.has("monsters")) {
             for (JsonElement t : data.getAsJsonArray("monsters")) {
-                //monsters.add(FeatureLoader.getMonster(t.getAsString()));
-                //broke?
+                monsters.add(FeatureLoader.getMonster(t.getAsString())); //monsters null?
+                /* System.out.println(id + "has monsters: " + monsters); */
             }
         }
     }
