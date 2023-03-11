@@ -8,7 +8,7 @@
             "AGILITY": 10
         },
         "moves": [
-            "Attack1", "Defend1", "Heal1", "Special1"
+            "punch", "shield", "restore", "cast"
         ],
         "sprite": "AirA"
     },
@@ -21,7 +21,7 @@
             "AGILITY": 10
         },
         "moves": [
-            "Attack1", "Defend1", "Heal1", "Special1"
+            "punch", "shield", "restore", "cast"
         ],
         "sprite": "BallA"
     },
@@ -34,7 +34,7 @@
             "AGILITY": 10
         },
         "moves": [
-            "Attack1", "Defend1", "Heal1", "Special1"
+            "punch", "shield", "restore", "cast"
         ],
         "sprite": "BatA"
     },
@@ -47,7 +47,7 @@
             "AGILITY": 10
         },
         "moves": [
-            "Attack1", "Defend1", "Heal1", "Special1"
+            "punch", "shield", "restore", "cast"
         ],
         "sprite": "BatSmallA"
     },
@@ -60,7 +60,7 @@
             "AGILITY": 10
         },
         "moves": [
-            "Attack1", "Defend1", "Heal1", "Special1"
+            "punch", "shield", "restore", "cast"
         ],
         "sprite": "BeardA"
     }

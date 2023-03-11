@@ -82,6 +82,13 @@ public class NPC extends Character {
                 items.add(FeatureLoader.getItem(te.getAsString()));
             }
         }
+
+        this.monsters = new ArrayList<Monster>();
+        if (data.has("monsters")) {
+            for (JsonElement t : data.getAsJsonArray("monsters")) {
+                monsters.add(FeatureLoader.getMonster(t.getAsString()));
+            }
+        }
     }
 
     public Coord getLoc() {
