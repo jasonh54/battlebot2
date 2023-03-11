@@ -1,9 +1,7 @@
 package despacito7.detail;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.ArrayList;
 
 import com.google.gson.JsonElement;
@@ -11,10 +9,8 @@ import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
 import despacito7.ResourceLoader;
-import despacito7.Constants.Direction;
 import despacito7.Constants;
 import despacito7.util.Character;
-import despacito7.Player;
 import despacito7.util.Coord;
 import despacito7.util.Pair;
 
@@ -22,8 +18,6 @@ public class NPC extends Character {
     public final String id;
     private Map<String,String> topics = new HashMap<String,String>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
     private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
-    private ArrayList<Monster> monsters;
-    private Set<Item> items;
     private ArrayList<Pair<String,String>> movesequence;
     private int currentmove;
 
@@ -76,17 +70,17 @@ public class NPC extends Character {
             movesequence.add(new Pair<String,String>(step[0],step[1]));
        }
         
-        this.items = new HashSet<>();
         if (data.has("items")) {
             for (JsonElement te : data.getAsJsonArray("items")) {
-                items.add(FeatureLoader.getItem(te.getAsString()));
+                //inventory.put(FeatureLoader.getItem(te.getAsString()));
+                //update json to include # of items in the NPC.json
             }
         }
 
-        this.monsters = new ArrayList<Monster>();
         if (data.has("monsters")) {
             for (JsonElement t : data.getAsJsonArray("monsters")) {
-                monsters.add(FeatureLoader.getMonster(t.getAsString()));
+                //monsters.add(FeatureLoader.getMonster(t.getAsString()));
+                //broke?
             }
         }
     }
@@ -122,10 +116,6 @@ public class NPC extends Character {
         }
     }
 
-    public String[] getItems() {
-        return this.items.toArray(new String[]{});
-    }
-
     public void update() {
         this.setDirection(Constants.Direction.valueOf(movesequence.get(currentmove).getRight()));
         this.setMovement(Constants.MoveState.valueOf(movesequence.get(currentmove).getLeft()));
@@ -135,9 +125,5 @@ public class NPC extends Character {
         } else {
             currentmove++;
         }
-    }
-
-    public Monster getMonster(int n){
-        return monsters.get(n);
     }
 }
