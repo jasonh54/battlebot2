@@ -66,6 +66,14 @@ public class Battle {
                 currentState = BattleStates.END;
             }
         }));
+        for(Move m : playerMonster.getMoves()){
+            Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, m.toString(), new Menu.ButtonCallback(){
+                public void activate(){
+                    
+                }
+            }));
+        }
+        
     }
 
     public void draw(Graphics2D g){
