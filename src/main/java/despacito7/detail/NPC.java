@@ -79,7 +79,8 @@ public class NPC extends Character {
 
         if (data.has("monsters")) {
             for (JsonElement t : data.getAsJsonArray("monsters")) {
-                monsters.add(FeatureLoader.getMonster(t.getAsString()));
+                //monsters.add(FeatureLoader.getMonster(t.getAsString()));
+                //broke?
             }
         }
     }

@@ -18,7 +18,7 @@ public class Character extends AnimatingObject{
     private MoveState moveState;
     private boolean locked = false;
 
-    protected ArrayList<Monster> monsters;
+    protected ArrayList<Monster> monsters = new ArrayList<Monster>();
     protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
 
     public Character(Coord coord, Image[] sprites){
@@ -114,6 +114,10 @@ public class Character extends AnimatingObject{
             movecounter = 0;
             animationFrame = 0;
         }
+    }
+
+    public Monster getMonster(int n) {
+        return monsters.get(n);
     }
 
     public Monster[] getMonsters() {

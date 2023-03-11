@@ -36,7 +36,7 @@ public class Player extends Character {
     }
 
     public void addMonster(Monster mon) {
-        if(monstersFull()){
+        if(monstersFull()) {
             return;
         }
         monsters.add(mon);
