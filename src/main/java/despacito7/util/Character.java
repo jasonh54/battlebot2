@@ -2,9 +2,6 @@ package despacito7.util;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-
-import despacito7.util.Coord;
-
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
@@ -17,7 +14,7 @@ public class Character extends AnimatingObject{
     private boolean locked = false;
 
     public Character(Coord coord, Image[] sprites){
-        super( coord,  sprites);
+        super(coord,  sprites);
         this.direction = Direction.UP;
         this.moveState = MoveState.WALK;
     }

@@ -1,8 +1,33 @@
 {
     "punch": {
         "type": "FIGHTING",
+        "target": "enemy",
         "stats": {
             "HEALTH": -10
+        }
+    },
+
+    "shield": {
+        "type": "FIGHTING",
+        "target": "self",
+        "stats": {
+            "DEFENSE": 5
+        }
+    },
+
+    "restore": {
+        "type": "FIGHTING",
+        "target": "self",
+        "stats": {
+            "HEALTH": 10
+        }
+    },
+
+    "cast": {
+        "type": "FIGHTING",
+        "target": "enemy",
+        "stats": {
+            "AGILITY": -5
         }
     }
 }
