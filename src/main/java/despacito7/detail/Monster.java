@@ -45,6 +45,7 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     //getters
     public int getStat(Stat s) {
+        System.out.println(s + ": " + stats.get(s));
         return (int) stats.get(s);
     }
 
@@ -75,8 +76,6 @@ public class Monster extends AnimatingObject implements Cloneable {
             statchanges.put(s, statchanges.get(s) + i.getStat(s));
         }
     }
-
-    /* do we need a third function for a manual input that just takes a stat and a float? it could all just be one function like that but this method makes it easier on the user's end */
 
     //move changes
     public void learnMove(Move n, Move o) {
