@@ -19,7 +19,7 @@ public class Battle {
         SELECTITEM, SELECTMONSTER, SELECTMOVE, END
     }
 
-    private BattleStates currentState = BattleStates.ENTER;
+    private BattleStates currentState = BattleStates.YOURTURN;
 
     public Battle(NPC npc){
         currentNPC = npc;
@@ -71,7 +71,23 @@ public class Battle {
             currentNPC.draw(g);
         }
         currentMonster.draw(g);
-        Menu.battleMenu.draw(g);
+        switch(currentState){
+            case ENTER:
+            break;
+            case YOURTURN:
+                Menu.battleMenu.draw(g);
+            break;
+            case ENEMYTURN:
+            break;
+            case SELECTITEM:
+            break;
+            case SELECTMONSTER: 
+            break;
+            case SELECTMOVE: 
+            break;
+            case END:
+            break;
+        }
     }
     
     public void tick(){
