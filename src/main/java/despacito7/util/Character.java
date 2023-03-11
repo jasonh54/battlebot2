@@ -5,6 +5,11 @@ import java.awt.Image;
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import despacito7.detail.Monster;
+import despacito7.detail.Item;
 
 
 public class Character extends AnimatingObject{
@@ -12,6 +17,9 @@ public class Character extends AnimatingObject{
     private Direction direction;
     private MoveState moveState;
     private boolean locked = false;
+
+    protected ArrayList<Monster> monsters;
+    protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
 
     public Character(Coord coord, Image[] sprites){
         super(coord,  sprites);
@@ -106,5 +114,17 @@ public class Character extends AnimatingObject{
             movecounter = 0;
             animationFrame = 0;
         }
+    }
+
+    public Monster[] getMonsters() {
+        return (Monster[]) monsters.toArray();
+    }
+
+    public Item[] getItemList() {
+        return (Item[]) inventory.keySet().toArray();
+    }
+
+    public int getItemCount(Item item) {
+        return inventory.get(item);
     }
 }
