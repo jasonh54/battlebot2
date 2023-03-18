@@ -19,7 +19,7 @@ public class Battle {
         SELECTITEM, SELECTMONSTER, SELECTMOVE, END
     }
 
-    private BattleStates currentState = BattleStates.ENTER;
+    private BattleStates currentState = BattleStates.YOURTURN;
 
     public Battle(NPC npc){
         currentNPC = npc;
@@ -44,26 +44,68 @@ public class Battle {
     }
 
     public void createMenu(){
-        int menuX = 200;
-        int menuY = 200;
-        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, "Attack", new Menu.ButtonCallback(){
+        int menuX = 300;
+        int menuY = 366;
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-66, 100, 20, "Attack", new Menu.ButtonCallback(){
             public void activate(){
                 currentState = BattleStates.SELECTMOVE;
             }
         }));
-        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY+22, 100, 20, "Pick Item", new Menu.ButtonCallback(){
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-44, 100, 20, "Pick Item", new Menu.ButtonCallback(){
             public void activate(){
                 currentState = BattleStates.SELECTITEM;
             }
         }));
-        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY+44, 100, 20, "Switch Monster", new Menu.ButtonCallback(){
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-22, 100, 20, "Switch Monster", new Menu.ButtonCallback(){
             public void activate(){
                 currentState = BattleStates.SELECTMONSTER;
             }
         }));
-        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY+66, 100, 20, "Run Away", new Menu.ButtonCallback(){
+        Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY, 100, 20, "Run Away", new Menu.ButtonCallback(){
             public void activate(){
                 currentState = BattleStates.END;
+            }
+        }));
+        int moveindex = 0;
+        for(Move m : playerMonster.getMoves()){
+            Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.id(), new Menu.ButtonCallback(){
+                public void activate(){
+                    
+                }
+            }));
+            moveindex++;
+        }
+        Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, "Return", new Menu.ButtonCallback(){
+            public void activate(){
+                currentState = BattleStates.YOURTURN;
+            }
+        }));
+        int monsterindex = 0;
+        for(String m : FeatureLoader.player.getMonsterNames()){
+            Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
+                public void activate(){
+
+                }
+            }));
+            monsterindex++;
+        }
+        Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, "Return", new Menu.ButtonCallback(){
+            public void activate(){
+                currentState = BattleStates.YOURTURN;
+            }
+        }));
+        int itemindex = 0;
+        for(Item i : FeatureLoader.player.getItemList()){
+            Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
+                public void activate(){
+
+                }
+            }));
+            itemindex++;
+        }
+        Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, "Return",  new Menu.ButtonCallback() {
+            public void activate(){
+                currentState = BattleStates.YOURTURN;
             }
         }));
     }
@@ -76,27 +118,48 @@ public class Battle {
             currentNPC.draw(g);
         }
         currentMonster.draw(g);
-        
-        Menu.battleMenu.draw(g);
-    }
-    
-    public void tick(){
-        Menu.battleMenu.tick();
         switch(currentState){
             case ENTER:
             break;
             case YOURTURN:
+                Menu.battleMenu.draw(g);
+            break;
+            case ENEMYTURN:
+            break;
+            case SELECTITEM:
+                Menu.itemMenu.draw(g);
+            break;
+            case SELECTMONSTER: 
+                Menu.monsterMenu.draw(g);
+            break;
+            case SELECTMOVE: 
+                Menu.moveMenu.draw(g);
+            break;
+            case END:
+            break;
+        }
+    }
+    
+    public void tick(){
+        switch(currentState){
+            case ENTER:
+            break;
+            case YOURTURN:
+                Menu.battleMenu.tick();
             break;
             case ENEMYTURN:
             break;
             case SELECTITEM:
                 System.out.println("pick item works");
+                Menu.itemMenu.tick();
             break;
             case SELECTMONSTER: 
                 System.out.println("switch monster works");
+                Menu.monsterMenu.tick();
             break;
             case SELECTMOVE: 
                 System.out.println("attack works");
+                Menu.moveMenu.tick();
             break;
             case END:
                 System.out.println("run away works");

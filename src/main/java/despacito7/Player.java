@@ -3,6 +3,7 @@ package despacito7;
 import despacito7.Constants.Direction;
 
 import despacito7.util.Coord;
+import despacito7.detail.Item;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 import despacito7.util.Character;
@@ -46,6 +47,10 @@ public class Player extends Character {
         Monster temp = monsters.get(index);
         monsters.remove(index);
         return temp;
+    }
+
+    public void addItem(Item i){
+        inventory.put(i, 1);
     }
 
     public void onKey(char keyCode) {
