@@ -3,6 +3,7 @@ package despacito7.gameplay;
 import despacito7.App;
 import despacito7.Constants;
 import despacito7.FeatureLoader;
+import despacito7.Constants.GameState;
 import despacito7.detail.*;
 import despacito7.menu.Menu;
 
@@ -163,6 +164,7 @@ public class Battle {
             break;
             case END:
                 System.out.println("run away works");
+                App.currentGameState = GameState.WORLD;
             break;
        } 
     }
