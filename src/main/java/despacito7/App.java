@@ -47,6 +47,8 @@ public class App {
         currentMonster = featureLoader.getMonster("Air");
 
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
+        
+        
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
         f.requestFocus();
@@ -85,12 +87,15 @@ public class App {
             case TALK:
             break;
         }
+
+
     }
 
     public static void tick() {
+        System.out.println(currentGameState);
         switch (currentGameState) {
             case WORLD:
-                Menu.cornerMenu.update();
+                // Menu.cornerMenu.update();
                 FeatureLoader.getMap(currentmap).update();
                 FeatureLoader.player.update();
             break;

@@ -12,9 +12,10 @@ import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 import despacito7.util.Character;
 
+
 public class Player extends Character {
     private static Player instance;
-    
+
     
     public static Player getPlayer() {
         if (instance == null) instance = new Player();
@@ -66,15 +67,19 @@ public class Player extends Character {
     }
     
     public void update(){
-        // coord.print();
+        coord.print();
         // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
         //     System.out.println("You are colliding");
         // }
         if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
             // coord.print();
             System.out.println("You are touching grass");
-            App.currentGameState = Constants.GameState.BATTLE;
             App.currentBattle = new Battle(App.currentMonster);
+            System.out.println("A new battle has started");
+            App.currentGameState = Constants.GameState.BATTLE;
+            System.out.println(App.currentGameState);
+            
         }
     }
+
 }

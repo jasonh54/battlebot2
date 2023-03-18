@@ -127,14 +127,15 @@ public class NPC extends Character {
     }
 
     public void update() {
-        this.setDirection(Constants.Direction.valueOf(movesequence.get(currentmove).getRight()));
-        this.setMovement(Constants.MoveState.valueOf(movesequence.get(currentmove).getLeft()));
-        //sets direction, sitll need to set idle vs walk somehow
-        if (currentmove == movesequence.size() - 1) {
-            currentmove = 0;
-        } else {
-            currentmove++;
-        }
+        // this.setDirection(Constants.Direction.valueOf(movesequence.get(currentmove).getRight()));
+        // this.setMovement(Constants.MoveState.valueOf(movesequence.get(currentmove).getLeft()));
+        
+        // //sets direction, sitll need to set idle vs walk somehow
+        // if (currentmove == movesequence.size() - 1) {
+        //     currentmove = 0;
+        // } else {
+        //     currentmove++;
+        // }
     }
 
     public Monster getMonster(int n){
