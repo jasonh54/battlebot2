@@ -45,8 +45,13 @@ public class App {
 
         featureLoader.load();
         currentMonster = featureLoader.getMonster("Air");
-
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
+        featureLoader.player.addItem(featureLoader.getItem("PotionHealth"));
+        featureLoader.player.addItem(featureLoader.getItem("PotionDefense"));
+        featureLoader.player.addItem(featureLoader.getItem("PotionAgility"));
+        currentBattle = new Battle(App.currentMonster);
+        currentGameState = GameState.BATTLE;
+
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
         f.requestFocus();

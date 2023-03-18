@@ -7,6 +7,7 @@ import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import despacito7.detail.Monster;
 import despacito7.detail.Item;
@@ -125,15 +126,22 @@ public class Character extends AnimatingObject{
     }
 
     public String[] getMonsterNames() {
-        ArrayList<String> names = new ArrayList<String>();
-        for (Monster m : monsters) {
-            names.add(m.getName());
+        String[] names = new String[monsters.size()];
+        for (int m = 0; m < monsters.size(); m++) {
+            names[m] = monsters.get(m).getName();
         }
-        return (String[]) names.toArray();
+        return names;
     }
 
     public Item[] getItemList() {
-        return (Item[]) inventory.keySet().toArray();
+        Item[] items = new Item[inventory.size()];
+        Object[] objs = inventory.keySet().toArray();
+        int i = 0;
+        for (Object o : objs){
+            items[i] = (Item) o;
+            i++;
+        }
+        return items;
     }
 
     public int getItemCount(Item item) {
