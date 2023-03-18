@@ -5,6 +5,12 @@ import java.awt.Image;
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
+import despacito7.detail.Monster;
+import despacito7.detail.Item;
 
 
 public class Character extends AnimatingObject{
@@ -12,6 +18,9 @@ public class Character extends AnimatingObject{
     private Direction direction;
     private MoveState moveState;
     private boolean locked = false;
+
+    protected ArrayList<Monster> monsters = new ArrayList<Monster>();
+    protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
 
     public Character(Coord coord, Image[] sprites){
         super(coord,  sprites);
@@ -106,5 +115,36 @@ public class Character extends AnimatingObject{
             movecounter = 0;
             animationFrame = 0;
         }
+    }
+
+    public Monster getMonster(int n) {
+        return monsters.get(n);
+    }
+
+    public Monster[] getMonsters() {
+        return (Monster[]) monsters.toArray();
+    }
+
+    public String[] getMonsterNames() {
+        String[] names = new String[monsters.size()];
+        for (int m = 0; m < monsters.size(); m++) {
+            names[m] = monsters.get(m).getName();
+        }
+        return names;
+    }
+
+    public Item[] getItemList() {
+        Item[] items = new Item[inventory.size()];
+        Object[] objs = inventory.keySet().toArray();
+        int i = 0;
+        for (Object o : objs){
+            items[i] = (Item) o;
+            i++;
+        }
+        return items;
+    }
+
+    public int getItemCount(Item item) {
+        return inventory.get(item);
     }
 }

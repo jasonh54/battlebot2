@@ -2,12 +2,8 @@ package despacito7;
 
 import despacito7.Constants.Direction;
 
-// import java.util.HashMap;
-// import java.util.Map;
-import java.util.ArrayList;
-
-// import despacito7.detail.Item;
 import despacito7.util.Coord;
+import despacito7.detail.Item;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 import despacito7.util.Character;
@@ -21,8 +17,6 @@ public class Player extends Character {
         if (instance == null) instance = new Player();
         return instance;
     }
-    private ArrayList<Monster> monsters = new ArrayList<Monster>();
-    // private Map<Item, Integer> inventory = new HashMap<>();
 
     private Player() {
         super(new Coord(0,0), ResourceLoader.createCharacterSprites(1));
@@ -36,8 +30,6 @@ public class Player extends Character {
         createAnimation("rightIdle", new int[]{9});
 
     }
-
-
     public boolean monstersFull(){
         if(monsters.size() == 6) {
             return true;
@@ -45,25 +37,25 @@ public class Player extends Character {
         return false;
     }
 
-    public void addMonster(Monster mon){
-        if(monstersFull()){
+    public void addMonster(Monster mon) {
+        if(monstersFull()) {
             return;
         }
         monsters.add(mon);
     }
 
-    public Monster removeMonster(int index){
+    public Monster removeMonster(int index) {
         Monster temp = monsters.get(index);
         monsters.remove(index);
         return temp;
     }
 
-    public void onKey(char keyCode) {
-        if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
+    public void addItem(Item i){
+        inventory.put(i, 1);
     }
 
-    public Monster getMonster(int n){
-        return monsters.get(n);
+    public void onKey(char keyCode) {
+        if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
     }
     
     public void update(){
@@ -77,6 +69,7 @@ public class Player extends Character {
             App.currentBattle = new Battle(App.currentMonster);
             System.out.println("A new battle has started");
             App.currentGameState = Constants.GameState.BATTLE;
+            System.out.println("A new battle has started2");
             System.out.println(App.currentGameState);
             
         }

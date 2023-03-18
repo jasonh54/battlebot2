@@ -19,6 +19,9 @@ import java.awt.MouseInfo;
 public abstract class Menu {
     public static final Menu cornerMenu = new RotaryMenu(new Point(0, 0));
     public static final Menu battleMenu = new BattleMenu();
+    public static final Menu itemMenu = new BattleMenu();
+    public static final Menu monsterMenu = new BattleMenu();
+    public static final Menu moveMenu = new BattleMenu();
     protected Set<Button> buttons;
     protected boolean expanded;
 
@@ -78,7 +81,7 @@ public abstract class Menu {
             Point coord = MouseInfo.getPointerInfo().getLocation();
             Point offset = App.f.getLocationOnScreen();
             int mouseX = ((int)coord.getX()+(int)offset.getX()/2)/2;
-            int mouseY = ((int)coord.getY()+(int)offset.getY()*2)/2;
+            int mouseY = (((int)coord.getY()+(int)offset.getY()*2)/2);
             // System.out.println(mouseX + ", " + mouseY);
             if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h)return true;
             return false;
