@@ -7,6 +7,7 @@ import despacito7.detail.Item;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 import despacito7.util.Character;
+import despacito7.Constants.GameState;
 
 
 public class Player extends Character {
@@ -68,9 +69,10 @@ public class Player extends Character {
             System.out.println("You are touching grass");
             App.currentBattle = new Battle(App.currentMonster);
             System.out.println("A new battle has started");
-            App.currentGameState = Constants.GameState.BATTLE;
+            App.currentGameState = GameState.BATTLE;
             System.out.println("A new battle has started2");
             System.out.println(App.currentGameState);
+            System.out.println(1);
             
         }
     }
