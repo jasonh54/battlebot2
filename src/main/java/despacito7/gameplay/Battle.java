@@ -85,7 +85,7 @@ public class Battle {
         for(String m : FeatureLoader.player.getMonsterNames()){
             Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
                 public void activate(){
-
+                    
                 }
             }));
             monsterindex++;
