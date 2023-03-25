@@ -96,11 +96,10 @@ public class App {
     }
 
     public static void tick() {
-        System.out.println(currentGameState);
         switch (currentGameState) {
             case WORLD:
                 // Menu.cornerMenu.update();
-                FeatureLoader.getMap(currentmap).update();
+                // FeatureLoader.getMap(currentmap).update();
                 FeatureLoader.player.update();
             break;
             case BATTLE:

@@ -60,7 +60,7 @@ public class Player extends Character {
     }
     
     public void update(){
-        coord.print();
+        // coord.print();
         // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
         //     System.out.println("You are colliding");
         // }
@@ -68,11 +68,8 @@ public class Player extends Character {
             // coord.print();
             System.out.println("You are touching grass");
             App.currentBattle = new Battle(App.currentMonster);
-            System.out.println("A new battle has started");
             App.currentGameState = GameState.BATTLE;
             System.out.println("A new battle has started2");
-            System.out.println(App.currentGameState);
-            System.out.println(1);
             
         }
     }
