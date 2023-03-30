@@ -99,7 +99,7 @@ public class App {
         switch (currentGameState) {
             case WORLD:
                 // Menu.cornerMenu.update();
-                // FeatureLoader.getMap(currentmap).update();
+                FeatureLoader.getMap(currentmap).update();
                 FeatureLoader.player.update();
             break;
             case BATTLE:

@@ -35,7 +35,10 @@ public class Battle {
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
         playerMonster.setCoord(10, 20);
-        playerMonster.getStat(Constants.Stat.HEALTH);
+        //!!!!!!!!!!!!!!!ALERT!!!!!!!!!!!!!!!!!!!!!!
+        //something very wrong here with this function
+        // playerMonster.getStat(Constants.Stat.HEALTH);
+
         /* System.out.println("Playermonster moves:" + playerMonster.getMoves() + " health: " + playerMonster.getStat(Constants.Stat.HEALTH));
         playerMonster.updateStat(Constants.Stat.HEALTH, -5);
         playerMonster.learnMove(FeatureLoader.getMove("punch"),playerMonster.getMoves().get(3));
