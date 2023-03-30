@@ -3,6 +3,9 @@ package despacito7;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.concurrent.Executors;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.swing.JFrame;
@@ -35,6 +38,7 @@ public class App {
         f.setVisible(true);
         f.add(dc);
         f.addKeyListener(dc);
+        f.addMouseListener(dc);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setFocusable(true);
@@ -110,6 +114,7 @@ public class App {
             case TALK:
             break;
         }
+        Constants.leftMouseClick = false;
     }
 
     public static void onKey(char keyCode) {
@@ -118,4 +123,18 @@ public class App {
         }
         FeatureLoader.player.onKey(keyCode);
     }
+
+    // public void click(){
+    //     f.addMouseListener(new MouseAdapter() {
+    //         public void mouseClicked(MouseEvent m) {
+    //             if (m.getButton() == MouseEvent.BUTTON1) {
+    //                 System.out.println("Button 1 clicked...");
+    //                 Constants.leftMouseClick = true;
+    //             } else {
+    //                 System.out.println("No Button...");
+    //                 Constants.leftMouseClick = false;
+    //             }
+    //         }
+    //     });
+    // }
 }

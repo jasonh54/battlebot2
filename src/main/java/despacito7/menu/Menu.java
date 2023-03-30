@@ -14,6 +14,9 @@ import scala.Int;
 
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.MouseInfo;
 
 public abstract class Menu {
@@ -81,14 +84,18 @@ public abstract class Menu {
             Point coord = MouseInfo.getPointerInfo().getLocation();
             Point offset = App.f.getLocationOnScreen();
             int mouseX = ((int)coord.getX()+(int)offset.getX()/2)/2;
+
             int mouseY = (((int)coord.getY()+(int)offset.getY()*2)/2);
+
             // System.out.println(mouseX + ", " + mouseY);
             if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h)return true;
             return false;
         }
         public void tick(){
             System.out.println("running tick");
-            if(hover()) c.activate();
+            if(hover() && Constants.leftMouseClick){
+                c.activate();
+            }
         }
     }
 }

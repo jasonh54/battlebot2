@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class DrawingCanvas extends javax.swing.JComponent implements KeyListener {
+public class DrawingCanvas extends javax.swing.JComponent implements KeyListener, MouseListener {
     public static int[] dimensions;
     
     public JFrame parent;
@@ -60,5 +62,35 @@ public class DrawingCanvas extends javax.swing.JComponent implements KeyListener
 
     @Override
     public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) { 
+        // if (me.getButton() == MouseEvent.BUTTON1) {
+        //     System.out.println("Button 1 pressed...");
+        //     Constants.leftMouseClick = true;
+        // }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        // if (me.getButton() == MouseEvent.BUTTON1) {
+        //     System.out.println("Button 1 released...");
+        //     Constants.leftMouseClick = false;
+        // }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) { }
+
+    @Override
+    public void mouseExited(MouseEvent me) { }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        if (me.getButton() == MouseEvent.BUTTON1) {
+            System.out.println("Button 1 pressed...");
+            Constants.leftMouseClick = true;
+        }
     }
 }
