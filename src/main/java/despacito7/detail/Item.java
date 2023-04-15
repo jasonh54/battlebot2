@@ -15,13 +15,13 @@ import despacito7.util.Drawable;
 public class Item implements Cloneable {
     public final String id;
     private java.awt.Image sprite;
-    private Map<Stat, Number> stats;
+    private Map<Stat, Float> stats;
     public Item(Map.Entry<String, JsonElement> entry) {
         this.id = entry.getKey();
         this.sprite = ResourceLoader.getItemSprite(id);
         this.stats = Stat.toMap(entry.getValue().getAsJsonObject());
     }
-    private Item(String id, java.awt.Image sprite, Map<Stat, Number> stats) {
+    private Item(String id, java.awt.Image sprite, Map<Stat, Float> stats) {
         this.id = id; this.sprite = sprite; this.stats = stats;
     }
 
@@ -29,12 +29,12 @@ public class Item implements Cloneable {
         System.out.println(this.stats.toString());
     }
 
-    public java.util.Map<Stat, Number> getStats() {
+    public java.util.Map<Stat, Float> getStats() {
         return stats;
     }
 
     public int getStat(Stat s) {
-        return (int) stats.get(s);
+        return (int) stats.get(s).intValue();
     }
 
     public static record GroundItem(Item item, Coord coord) implements Drawable {
