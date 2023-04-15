@@ -3,13 +3,16 @@ package despacito7;
 import despacito7.Constants.Direction;
 
 import despacito7.util.Coord;
+import despacito7.detail.Item;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 import despacito7.util.Character;
+import despacito7.Constants.GameState;
+
 
 public class Player extends Character {
     private static Player instance;
-    
+
     
     public static Player getPlayer() {
         if (instance == null) instance = new Player();
@@ -48,6 +51,10 @@ public class Player extends Character {
         return temp;
     }
 
+    public void addItem(Item i){
+        inventory.put(i, 1);
+    }
+
     public void onKey(char keyCode) {
         if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
     }
@@ -60,8 +67,11 @@ public class Player extends Character {
         if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
             // coord.print();
             System.out.println("You are touching grass");
-            App.currentGameState = Constants.GameState.BATTLE;
             App.currentBattle = new Battle(App.currentMonster);
+            App.currentGameState = GameState.BATTLE;
+            System.out.println("A new battle has started2");
+            
         }
     }
+
 }

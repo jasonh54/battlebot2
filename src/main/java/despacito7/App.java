@@ -3,6 +3,9 @@ package despacito7;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.concurrent.Executors;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.swing.JFrame;
@@ -11,6 +14,7 @@ import com.google.gson.Gson;
 
 import despacito7.menu.Menu;
 import despacito7.Constants.GameState;
+import despacito7.Constants.Stat;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 
@@ -35,6 +39,7 @@ public class App {
         f.setVisible(true);
         f.add(dc);
         f.addKeyListener(dc);
+        f.addMouseListener(dc);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setFocusable(true);
@@ -45,8 +50,15 @@ public class App {
 
         featureLoader.load();
         currentMonster = featureLoader.getMonster("Air");
-
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
+        featureLoader.player.addMonster(featureLoader.getMonster("Bat"));
+        currentMonster.updateStat(Stat.HEALTH, -50);
+        featureLoader.player.addItem(featureLoader.getItem("PotionHealth"));
+        featureLoader.player.addItem(featureLoader.getItem("PotionDefense"));
+        featureLoader.player.addItem(featureLoader.getItem("PotionAgility"));
+        // currentBattle = new Battle(App.currentMonster);
+        // currentGameState = GameState.BATTLE;
+
         executor.scheduleAtFixedRate(App::tick, 0, (long) (1000 / Constants.TPS), java.util.concurrent.TimeUnit.MILLISECONDS);
         f.setVisible(true);
         f.requestFocus();
@@ -85,12 +97,14 @@ public class App {
             case TALK:
             break;
         }
+
+
     }
 
     public static void tick() {
         switch (currentGameState) {
             case WORLD:
-                Menu.cornerMenu.update();
+                // Menu.cornerMenu.update();
                 FeatureLoader.getMap(currentmap).update();
                 FeatureLoader.player.update();
             break;
@@ -102,6 +116,7 @@ public class App {
             case TALK:
             break;
         }
+        Constants.leftMouseClick = false;
     }
 
     public static void onKey(char keyCode) {
@@ -110,4 +125,18 @@ public class App {
         }
         FeatureLoader.player.onKey(keyCode);
     }
+
+    // public void click(){
+    //     f.addMouseListener(new MouseAdapter() {
+    //         public void mouseClicked(MouseEvent m) {
+    //             if (m.getButton() == MouseEvent.BUTTON1) {
+    //                 System.out.println("Button 1 clicked...");
+    //                 Constants.leftMouseClick = true;
+    //             } else {
+    //                 System.out.println("No Button...");
+    //                 Constants.leftMouseClick = false;
+    //             }
+    //         }
+    //     });
+    // }
 }
