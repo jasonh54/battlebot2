@@ -72,6 +72,7 @@ public class Player extends Character {
             System.out.println("A new battle has started2");
             
         }
+        
     }
 
 }
