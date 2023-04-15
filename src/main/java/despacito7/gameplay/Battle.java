@@ -42,7 +42,7 @@ public class Battle {
         playerMonster.setCoord(10, 20);
         //!!!!!!!!!!!!!!!ALERT!!!!!!!!!!!!!!!!!!!!!!
         //something very wrong here with this function
-        // playerMonster.getStat(Constants.Stat.HEALTH);
+        playerMonster.getStat(Constants.Stat.HEALTH);
 
         /* System.out.println("Playermonster moves:" + playerMonster.getMoves() + " health: " + playerMonster.getStat(Constants.Stat.HEALTH));
         playerMonster.updateStat(Constants.Stat.HEALTH, -5);
