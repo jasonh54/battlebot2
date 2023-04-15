@@ -20,7 +20,7 @@ import despacito7.FeatureLoader;
 public class Monster extends AnimatingObject implements Cloneable {
     private final String id;
     private ArrayList<Move> moveset;
-    private Map<Stat, Number> stats;
+    private Map<Stat, Float> stats;
     private Map<Stat, Float> statchanges;
 
     public Monster(Map.Entry<String, JsonElement> entry) {
@@ -59,9 +59,9 @@ public class Monster extends AnimatingObject implements Cloneable {
     }
 
     //setters
-    //update base stat - USE SPARINGLY; eg  when levelling up
+    //update base stat - USE SPARINGLY; eg  when levelling up *exception is currenthealth, please use this function for that*
     public void updateStat(Stat s, int i) {
-        stats.put(s, stats.get(s).intValue() + i);
+        stats.put(s, stats.get(s) + i);
     }
 
     //set a coefficient of stat - use when clearing status effects during or post-battle

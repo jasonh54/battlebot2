@@ -30,9 +30,9 @@ public final class Constants {
         DAMAGE,
         AGILITY;
 
-        public static Map<Stat, Number> toMap(JsonObject jo) {
+        public static Map<Stat, Float> toMap(JsonObject jo) {
             return jo.entrySet().stream()
-                .map(e -> Map.<Stat, Number>entry(Stat.valueOf(e.getKey()), e.getValue().getAsNumber()))
+                .map(e -> Map.<Stat, Float>entry(Stat.valueOf(e.getKey()), e.getValue().getAsFloat()))
                 .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
         }
     }
