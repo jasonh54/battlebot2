@@ -8,6 +8,7 @@ import despacito7.detail.*;
 import despacito7.menu.Menu;
 
 import java.awt.Graphics2D;
+import java.awt.Taskbar.Feature;
 import java.awt.Color;
 
 public class Battle {
@@ -117,6 +118,7 @@ public class Battle {
                     // System.out.println(buttonNum);
                     // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
                     // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
+                    playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
                     FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
                     // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
                 }

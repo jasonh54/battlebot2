@@ -52,7 +52,7 @@ public class App {
         currentMonster = featureLoader.getMonster("Air");
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
         featureLoader.player.addMonster(featureLoader.getMonster("Bat"));
-        currentMonster.updateStat(Stat.HEALTH, -50);
+        currentMonster.updateStat(Stat.HEALTH, -50f);
         featureLoader.player.addItem(featureLoader.getItem("PotionHealth"));
         featureLoader.player.addItem(featureLoader.getItem("PotionDefense"));
         featureLoader.player.addItem(featureLoader.getItem("PotionAgility"));
