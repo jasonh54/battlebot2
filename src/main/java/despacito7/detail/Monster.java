@@ -9,6 +9,7 @@ import despacito7.Constants;
 import java.util.Map;
 import java.util.ArrayList;
 import java.awt.Graphics2D;
+import java.awt.Taskbar.Feature;
 import java.awt.Color;
 
 import com.google.gson.JsonElement;
@@ -28,9 +29,9 @@ public class Monster extends AnimatingObject implements Cloneable {
         id = entry.getKey();
         //load stats
         stats = Stat.toMap(entry.getValue().getAsJsonObject().getAsJsonObject("stats"));
-        for (Map.Entry<Stat,Number> t : stats.entrySet()) {
-            t.setValue((float) 0);
-        }
+        // for (Map.Entry<Stat,Number> t : stats.entrySet()) {
+        //     t.setValue(FeatureLoader.getStat);
+        // }
         //load moves
         this.moveset = new ArrayList<Move>();
         for (JsonElement t : entry.getValue().getAsJsonObject().get("moves").getAsJsonArray()) {

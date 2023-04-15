@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import despacito7.menu.Menu;
 import despacito7.Constants.GameState;
+import despacito7.Constants.Stat;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
 
@@ -50,7 +51,8 @@ public class App {
         featureLoader.load();
         currentMonster = featureLoader.getMonster("Air");
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
-
+        featureLoader.player.addMonster(featureLoader.getMonster("Bat"));
+        currentMonster.updateStat(Stat.HEALTH, -50);
         featureLoader.player.addItem(featureLoader.getItem("PotionHealth"));
         featureLoader.player.addItem(featureLoader.getItem("PotionDefense"));
         featureLoader.player.addItem(featureLoader.getItem("PotionAgility"));
