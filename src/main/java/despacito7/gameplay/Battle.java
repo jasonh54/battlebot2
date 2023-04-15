@@ -14,6 +14,7 @@ public class Battle {
     private Monster currentMonster;
     private Monster playerMonster;
     private NPC currentNPC;
+    private Item currentItem;
     private int moveindex;
     private int monsterindex;
     private int itemindex;
@@ -30,7 +31,7 @@ public class Battle {
         currentMonster = currentNPC.getMonster(0);
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(10, 10);
+        playerMonster.setCoord(10, 20);
         createMenu();
     }
 
@@ -38,7 +39,7 @@ public class Battle {
         currentMonster = monster;
         currentMonster.setCoord(20, 10);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(10, 10);
+        playerMonster.setCoord(10, 20);
         //!!!!!!!!!!!!!!!ALERT!!!!!!!!!!!!!!!!!!!!!!
         //something very wrong here with this function
         // playerMonster.getStat(Constants.Stat.HEALTH);
@@ -76,8 +77,9 @@ public class Battle {
         moveindex = 0;
         for(Move m : playerMonster.getMoves()){
             Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.id(), new Menu.ButtonCallback(){
+                int buttonNum = moveindex;
                 public void activate(){
-                    
+                    playerMonster.getMoves().get(buttonNum);
                 }
             }));
             moveindex++;
@@ -92,12 +94,12 @@ public class Battle {
             Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
                 int buttonNum = monsterindex;
                 public void activate(){
-                    System.out.println(buttonNum);
+                    // System.out.println(buttonNum);
                     playerMonster = FeatureLoader.player.getMonster(buttonNum);
-                    playerMonster.setCoord(10, 10);
-                    System.out.println("getting monster works");
-                    System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
-                    System.out.println("get name function works");
+                    playerMonster.setCoord(10, 20);
+                    // System.out.println("getting monster works");
+                    // System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
+                    // System.out.println("get name function works");
                 }
             }));
             monsterindex++;
@@ -110,8 +112,13 @@ public class Battle {
         itemindex = 0;
         for(Item i : FeatureLoader.player.getItemList()){
             Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
+                int buttonNum = itemindex;
                 public void activate(){
-
+                    // System.out.println(buttonNum);
+                    // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                    // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
+                    FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
+                    // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
                 }
             }));
             itemindex++;
@@ -163,7 +170,7 @@ public class Battle {
             case ENEMYTURN:
             break;
             case SELECTITEM:
-                System.out.println("pick item works");
+                // System.out.println("pick item works");
                 Menu.itemMenu.tick();
             break;
             case SELECTMONSTER: 

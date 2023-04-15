@@ -78,6 +78,9 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public void updateStatChange(Item i) { //this is for items
         for (Stat s : i.getStats().keySet()) {
+            if(s.equals(Stat.HEALTH)){
+                updateStat(Stat.HEALTH, i.getStat(s)+stats.get(Stat.HEALTH));
+            }
             statchanges.put(s, statchanges.get(s) + i.getStat(s));
         }
     }
