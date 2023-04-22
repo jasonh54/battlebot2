@@ -30,17 +30,17 @@ public class Battle {
     public Battle(NPC npc){
         currentNPC = npc;
         currentMonster = currentNPC.getMonster(0);
-        currentMonster.setCoord(20, 10);
+        currentMonster.setCoord(10, 20);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(10, 20);
+        playerMonster.setCoord(10, 10);
         createMenu();
     }
 
     public Battle(Monster monster){
         currentMonster = monster;
-        currentMonster.setCoord(20, 10);
+        currentMonster.setCoord(10, 20);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(10, 20);
+        playerMonster.setCoord(10, 10);
         //!!!!!!!!!!!!!!!ALERT!!!!!!!!!!!!!!!!!!!!!!
         //something very wrong here with this function
         playerMonster.getStat(Constants.Stat.HEALTH);
@@ -97,7 +97,7 @@ public class Battle {
                 public void activate(){
                     // System.out.println(buttonNum);
                     playerMonster = FeatureLoader.player.getMonster(buttonNum);
-                    playerMonster.setCoord(10, 20);
+                    playerMonster.setCoord(10, 10);
                     // System.out.println("getting monster works");
                     // System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
                     // System.out.println("get name function works");

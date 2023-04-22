@@ -85,7 +85,7 @@ public abstract class Menu {
             Point offset = App.f.getLocationOnScreen();
             int mouseX = ((int)coord.getX()+(int)offset.getX()/2)/2;
 
-            int mouseY = (((int)coord.getY()+(int)offset.getY()*2)/2)-50;
+            int mouseY = (((int)coord.getY()+(int)offset.getY()*2)/2);
 
             // System.out.println(mouseX + ", " + mouseY);
             if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h)return true;
