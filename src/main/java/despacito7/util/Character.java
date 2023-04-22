@@ -117,6 +117,10 @@ public class Character extends AnimatingObject{
         }
     }
 
+    public void setItemCount(Item item, int n){
+        inventory.replace(item, n);
+    }
+
     public Monster getMonster(int n) {
         return monsters.get(n);
     }

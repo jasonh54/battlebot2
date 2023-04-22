@@ -60,7 +60,7 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     //setters
     //update base stat - USE SPARINGLY; eg  when levelling up *exception is currenthealth, please use this function for that*
-    public void updateStat(Stat s, int i) {
+    public void updateStat(Stat s, float i) {
         stats.put(s, stats.get(s) + i);
     }
 
@@ -78,7 +78,13 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public void updateStatChange(Item i) { //this is for items
         for (Stat s : i.getStats().keySet()) {
-            statchanges.put(s, statchanges.get(s) + i.getStat(s));
+            System.out.println(s);
+            if(s.equals(Stat.HEALTH)){
+                updateStat(Stat.HEALTH, i.getStat(s));
+                System.out.println("health change: " + stats.get(Stat.HEALTH));
+            } else {
+                statchanges.put(s, statchanges.get(s) + i.getStat(s));
+            }
         }
     }
 
