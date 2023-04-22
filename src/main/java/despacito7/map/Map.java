@@ -9,9 +9,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
+import despacito7.Constants.TileType;
 import despacito7.Constants;
 import despacito7.detail.*;
-import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
 
@@ -34,7 +34,7 @@ public class Map implements Drawable {
                     layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
                 break;
                 default:
-                    layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
+                    layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray())); //eventually should be a regular layer
             }
         }
         for (JsonElement npcid : data.get("npcs").getAsJsonArray()) {
@@ -43,6 +43,13 @@ public class Map implements Drawable {
         for (JsonElement itemd : data.get("items").getAsJsonArray()) {
             JsonObject itemdata = itemd.getAsJsonObject();
             items.add(new Item.GroundItem(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
+        }
+        for (JsonElement portal : data.get("portals").getAsJsonArray()) {
+            JsonObject p = portal.getAsJsonObject();
+            JsonArray c = p.get("loc").getAsJsonArray();
+            Tile port = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()];
+
+            /*layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()] = new Tile(port.spnum,port.coord,TileType.PORTAL); //MUST BE FROM PORTAL, NOT FROM TILE -> RETRIEVE TERMINUS */
         }
     }
 
@@ -72,6 +79,10 @@ public class Map implements Drawable {
         return ((InteractLayer)layers.get(LayerType.BASE)).has(TileType.MONSTER,pos);
     }
 
+    public boolean portals(Coord pos) {
+        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.PORTAL,pos);
+    } 
+
     private class Layer implements Drawable {
         protected Tile[][] tiles;
         public Layer(JsonArray data) {
@@ -79,13 +90,15 @@ public class Map implements Drawable {
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
                 this.tiles[r] = new Tile[row.size()];
-                for (int c = 0; c < row.size(); c++) {
+                for (int c = 0; c < row.size(); c++) { //this whole for loop is redundant (all types will only be in the interactlayer)
                     int sprite = row.get(c).getAsInt();
                     TileType type;
                     if (Constants.collideTiles.contains(sprite)) {
                         type = TileType.COLLIDE;
                     } else if (Constants.monsterTiles.contains(sprite)) {
                         type = TileType.MONSTER;
+                    } else if (Constants.portalTiles.contains(sprite)) {
+                        type = TileType.PORTAL; //portals are only given a type here; they receive further instruction in the map constructor
                     } else {
                         type = TileType.NORMAL;
                     }
@@ -126,11 +139,15 @@ public class Map implements Drawable {
                     //         break;
                     //     }
                     // }]
-                    if(Constants.monsterTiles.contains(sprite)){
+                    if (Constants.monsterTiles.contains(sprite)){
                         type = TileType.MONSTER;
-                    }
-                    if(Constants.collideTiles.contains(sprite)){
+                    } else if (Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
+                    }else if (Constants.portalTiles.contains(sprite)) {
+                        type = TileType.PORTAL;
+                        //portals are only given a type here; they receive further instruction in the map constructor
+                    } else {
+                        System.out.println("Warning: NORMAL tile in interact layer at coord = " + r + "," + c);
                     }
                     Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
@@ -139,7 +156,6 @@ public class Map implements Drawable {
                     }
                 }
             }
-            // System.out.println(specials.get(TileType.MONSTER));
         }
        
 
