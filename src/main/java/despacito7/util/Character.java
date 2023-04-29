@@ -141,9 +141,13 @@ public class Character extends AnimatingObject{
         Item[] items = new Item[inventory.size()];
         Object[] objs = inventory.keySet().toArray();
         int i = 0;
+        int j = 0;
         for (Object o : objs){
-            items[i] = (Item) o;
-            i++;
+            if(inventory.get(objs[j]) != 0){
+                items[i] = (Item) o;
+                i++;
+            }
+            j++;
         }
         return items;
     }
