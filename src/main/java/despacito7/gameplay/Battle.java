@@ -6,6 +6,7 @@ import despacito7.FeatureLoader;
 import despacito7.Constants.GameState;
 import despacito7.detail.*;
 import despacito7.menu.Menu;
+import scala.tools.nsc.typechecker.MacroAnnotationAttachments.SymbolSourceAttachment;
 
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
@@ -15,7 +16,6 @@ public class Battle {
     private Monster currentMonster;
     private Monster playerMonster;
     private NPC currentNPC;
-    private Item currentItem;
     private int moveindex;
     private int monsterindex;
     private int itemindex;
@@ -57,16 +57,19 @@ public class Battle {
         int menuY = 366;
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-66, 100, 20, "Attack", new Menu.ButtonCallback(){
             public void activate(){
+                createMoveMenu();
                 currentState = BattleStates.SELECTMOVE;
             }
         }));
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-44, 100, 20, "Pick Item", new Menu.ButtonCallback(){
             public void activate(){
+                createItemMenu();
                 currentState = BattleStates.SELECTITEM;
             }
         }));
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-22, 100, 20, "Switch Monster", new Menu.ButtonCallback(){
             public void activate(){
+                createMonsterMenu();
                 currentState = BattleStates.SELECTMONSTER;
             }
         }));
@@ -75,12 +78,18 @@ public class Battle {
                 currentState = BattleStates.END;
             }
         }));
+    }
+
+    public void createMoveMenu(){
+        int menuX = 300;
+        int menuY = 366;
         moveindex = 0;
         for(Move m : playerMonster.getMoves()){
             Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.id(), new Menu.ButtonCallback(){
                 int buttonNum = moveindex;
                 public void activate(){
                     playerMonster.getMoves().get(buttonNum);
+                    currentState = BattleStates.ENEMYTURN;
                 }
             }));
             moveindex++;
@@ -90,6 +99,11 @@ public class Battle {
                 currentState = BattleStates.YOURTURN;
             }
         }));
+    }
+
+    public void createMonsterMenu(){
+        int menuX = 300;
+        int menuY = 366;
         monsterindex = 0;
         for(String m : FeatureLoader.player.getMonsterNames()){
             Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
@@ -110,20 +124,31 @@ public class Battle {
                 currentState = BattleStates.YOURTURN;
             }
         }));
+    }
+
+    public void createItemMenu(){
+        int menuX = 300;
+        int menuY = 366;
         itemindex = 0;
+        Menu.itemMenu.resetButtons();
         for(Item i : FeatureLoader.player.getItemList()){
-            Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
-                int buttonNum = itemindex;
-                public void activate(){
-                    // System.out.println(buttonNum);
-                    // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
-                    // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
-                    playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
-                    FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
-                    // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
-                }
-            }));
-            itemindex++;
+            if (i != null) {
+                Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
+                    int buttonNum = itemindex;
+                    public void activate(){
+                        // System.out.println(buttonNum);
+                        // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
+                        playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
+                        System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
+                        // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
+                        currentState = BattleStates.ENEMYTURN;
+                    }
+                }));
+                itemindex++;
+            }
         }
         Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, "Return",  new Menu.ButtonCallback() {
             public void activate(){
@@ -170,6 +195,7 @@ public class Battle {
                 Menu.battleMenu.tick();
             break;
             case ENEMYTURN:
+                currentState = BattleStates.YOURTURN;
             break;
             case SELECTITEM:
                 // System.out.println("pick item works");

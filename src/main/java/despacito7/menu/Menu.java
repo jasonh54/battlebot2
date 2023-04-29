@@ -48,6 +48,14 @@ public abstract class Menu {
         battleMenu.addButton(b);
     }
 
+    public void resetButtons(){
+        buttons = new HashSet<Button>();
+    }
+
+    public int getLength(){
+        return buttons.size();
+    }
+
     public static interface Button extends Drawable {
         public void draw(Graphics2D g);
     }
@@ -121,6 +129,14 @@ class BattleMenu extends Menu implements Drawable {
 
     public void addButton(BattleButton b){
         buttons.add(b);
+    }
+
+    public int getLength(){
+       return buttons.size();
+    }
+
+    public void resetButtons(){
+        buttons = new HashSet<BattleButton>();
     }
 }
 

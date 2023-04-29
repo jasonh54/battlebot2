@@ -8,6 +8,7 @@ import despacito7.Constants;
 
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
 import java.awt.Color;
@@ -33,6 +34,10 @@ public class Monster extends AnimatingObject implements Cloneable {
         //     t.setValue(FeatureLoader.getStat);
         // }
         //load moves
+        statchanges = new HashMap<Stat, Float>();
+        statchanges.put(Stat.AGILITY, 1f);
+        statchanges.put(Stat.DEFENSE, 1f);
+        statchanges.put(Stat.DAMAGE, 1f);
         this.moveset = new ArrayList<Move>();
         for (JsonElement t : entry.getValue().getAsJsonObject().get("moves").getAsJsonArray()) {
             moveset.add(FeatureLoader.getMove(t.getAsString()));
@@ -80,10 +85,13 @@ public class Monster extends AnimatingObject implements Cloneable {
         for (Stat s : i.getStats().keySet()) {
             System.out.println(s);
             if(s.equals(Stat.HEALTH)){
-                updateStat(Stat.HEALTH, i.getStat(s));
+                if(stats.get(Stat.HEALTH) + i.getStat(s) <= stats.get(Stat.MAX_HEALTH)){
+                    updateStat(Stat.HEALTH, i.getStat(s));
+                }
                 System.out.println("health change: " + stats.get(Stat.HEALTH));
             } else {
                 statchanges.put(s, statchanges.get(s) + i.getStat(s));
+                System.out.println("stat change: " + statchanges.get(s));
             }
         }
     }
