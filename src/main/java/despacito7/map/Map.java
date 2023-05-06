@@ -164,7 +164,7 @@ public class Map implements Drawable {
                     } else if (Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
                     } else if (Constants.portalTiles.contains(sprite)) {
-                        System.out.println("PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
+                        System.out.println("(111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111/2) PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
                         type = TileType.PORTAL;
                         //portals are only given a type here; they receive further instruction in the map constructor
                     } else {
