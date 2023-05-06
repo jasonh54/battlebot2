@@ -85,9 +85,14 @@ public class Battle {
         int menuY = 366;
         moveindex = 0;
         for(Move m : playerMonster.getMoves()){
-            Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.id(), new Menu.ButtonCallback(){
+            Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.getId(), new Menu.ButtonCallback(){
                 int buttonNum = moveindex;
                 public void activate(){
+                    if(m.getTarget().equals("self")){
+                        playerMonster.updateStatChange(m);
+                    } else if(m.getTarget().equals("enemy")){
+                        currentMonster.updateStatChange(m);
+                    }
                     playerMonster.getMoves().get(buttonNum);
                     currentState = BattleStates.ENEMYTURN;
                 }
