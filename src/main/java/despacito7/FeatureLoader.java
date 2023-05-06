@@ -33,7 +33,7 @@ public class FeatureLoader implements Loader {
     }
     public static NPC getNPC(String id) {return npcs.get(id);}
     public static Monster getMonster(String id) {return monsters.get(id);}
-    public static Move getMove(String id) {return moves.get(id).clone();}
+    public static Move getMove(String id) {return moves.get(id);}
 
     public static Player player;
 
@@ -45,7 +45,7 @@ public class FeatureLoader implements Loader {
         JsonObject movedata = loadJson("moves.json");
         FeatureLoader.moves = new HashMap<>(movedata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : movedata.entrySet()) {
-            FeatureLoader.moves.put(entry.getKey(), Move.fromEntry(entry));
+            FeatureLoader.moves.put(entry.getKey(), new Move(entry));
         }
 
         JsonObject itemdata = loadJson("items.json");
