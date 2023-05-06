@@ -27,6 +27,7 @@ public class Map implements Drawable {
     private Set<Item.GroundItem> items = new HashSet<>();
 
     public Map(JsonObject data) {
+        System.out.println("Beginning map #"+this);
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
             LayerType layertype = LayerType.valueOf(layerdata.getKey().toUpperCase());
             switch (layertype) {
@@ -45,11 +46,21 @@ public class Map implements Drawable {
             items.add(new Item.GroundItem(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
         }
         for (JsonElement portal : data.get("portals").getAsJsonArray()) {
-            JsonObject p = portal.getAsJsonObject();
+            JsonObject p = portal.getAsJsonObject(); //48-51 are json data retrieval
+            String tarmap = p.get("target").getAsJsonObject().get("map").getAsString();
+            JsonArray tarcj = p.get("target").getAsJsonObject().get("loc").getAsJsonArray();
+            Coord tarcoord = new Coord(tarcj.get(0).getAsInt(),tarcj.get(1).getAsInt());
             JsonArray c = p.get("loc").getAsJsonArray();
-            Tile port = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()];
 
-            /*layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()] = new Tile(port.spnum,port.coord,TileType.PORTAL); //MUST BE FROM PORTAL, NOT FROM TILE -> RETRIEVE TERMINUS */
+            Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
+            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement
+            System.out.println("map " + this + " attempting to replace tile with portal tile");
+            System.out.println("coords of replacement action are " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
+
+            layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
+            //next two lines should be uncommented once the interactlayer/layer system is functioning again and portals can be added to the portal coord set
+            /* layers.get(LayerType.INTERACT).specials.get(TileType.PORTAL).add(copy.coord()); //add portals to set
+            System.out.println("new portaltile successfully placed; terminus at " + (PortalTile) layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()].terminus()); //finish test */
         }
     }
 
@@ -98,7 +109,7 @@ public class Map implements Drawable {
                     } else if (Constants.monsterTiles.contains(sprite)) {
                         type = TileType.MONSTER;
                     } else if (Constants.portalTiles.contains(sprite)) {
-                        type = TileType.PORTAL; //portals are only given a type here; they receive further instruction in the map constructor
+                        type = TileType.PORTAL;
                     } else {
                         type = TileType.NORMAL;
                     }
@@ -107,6 +118,14 @@ public class Map implements Drawable {
             }
         }
         protected Layer() {};
+
+        public void replaceTile(Coord co, PortalTile p) {
+            if (tiles[co.getComponents()[0]][co.getComponents()[1]].type != TileType.PORTAL) {
+                System.out.println("WARNING: Attempting to replace non-portal tile with portaltile at coords " + co.getComponents()[0] + "," + co.getComponents()[1] + "; original type is " + tiles[co.getComponents()[0]][co.getComponents()[1]].type);
+            } else {
+                tiles[co.getComponents()[0]][co.getComponents()[1]] = p;
+            }
+        }
 
         public void draw(java.awt.Graphics2D g) {
             for (int r = 0; r < tiles.length; r++) {
@@ -123,7 +142,8 @@ public class Map implements Drawable {
         private static java.util.Map<TileType, Set<Integer>> specialSprites = java.util.Map.of(TileType.COLLIDE, Set.of(69));
         private java.util.Map<TileType, Set<Coord>> specials = java.util.Map.of(
             TileType.COLLIDE, new HashSet<>(),
-            TileType.MONSTER, new HashSet<>()
+            TileType.MONSTER, new HashSet<>(),
+            TileType.PORTAL, new HashSet<>()
         );
         public InteractLayer(JsonArray data) {
             this.tiles = new Tile[data.size()][];
@@ -143,17 +163,19 @@ public class Map implements Drawable {
                         type = TileType.MONSTER;
                     } else if (Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
-                    }else if (Constants.portalTiles.contains(sprite)) {
+                    } else if (Constants.portalTiles.contains(sprite)) {
+                        System.out.println("PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
                         type = TileType.PORTAL;
                         //portals are only given a type here; they receive further instruction in the map constructor
                     } else {
-                        System.out.println("Warning: NORMAL tile in interact layer at coord = " + r + "," + c);
+                        //PRINT ERROR IF NORMAL TILE IS IN INTERACTLAYER
                     }
                     Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
-                    if (!tile.type().equals(TileType.NORMAL)) { 
+                    //JASON GET TILE CLASSIFICATION SETS WORKING WHEN YOU FIX THE LAYER CLASSES
+                    /* if (!tile.type().equals(TileType.NORMAL) || !tile.type().equals(TileType.PORTAL)) {
                         this.specials.get(tile.type()).add(tile.coord());
-                    }
+                    } */
                 }
             }
         }
@@ -171,6 +193,7 @@ public class Map implements Drawable {
             }
             return false;
         }
+
         public Set<Coord> getS(TileType type){
             return specials.get(type);
         }
