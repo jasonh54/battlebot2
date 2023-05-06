@@ -30,17 +30,17 @@ public class Battle {
     public Battle(NPC npc){
         currentNPC = npc;
         currentMonster = currentNPC.getMonster(0);
-        currentMonster.setCoord(20, 10);
+        currentMonster.setCoord(10, 20);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(10, 20);
+        playerMonster.setCoord(20, 10);
         createMenu();
     }
 
     public Battle(Monster monster){
         currentMonster = monster;
-        currentMonster.setCoord(20, 10);
+        currentMonster.setCoord(10, 20);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(10, 20);
+        playerMonster.setCoord(20, 10);
         //!!!!!!!!!!!!!!!ALERT!!!!!!!!!!!!!!!!!!!!!!
         //something very wrong here with this function
         playerMonster.getStat(Constants.Stat.HEALTH);
@@ -84,17 +84,20 @@ public class Battle {
         int menuX = 300;
         int menuY = 366;
         moveindex = 0;
+        Menu.itemMenu.resetButtons();
         for(Move m : playerMonster.getMoves()){
             Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.getId(), new Menu.ButtonCallback(){
                 int buttonNum = moveindex;
                 public void activate(){
                     if(m.getTarget().equals("self")){
                         playerMonster.updateStatChange(m);
+                        currentState = BattleStates.ENEMYTURN;
                     } else if(m.getTarget().equals("enemy")){
                         currentMonster.updateStatChange(m);
+                        currentState = BattleStates.ENEMYTURN;
                     }
-                    playerMonster.getMoves().get(buttonNum);
-                    currentState = BattleStates.ENEMYTURN;
+                    // playerMonster.getMoves().get(buttonNum);
+                    
                 }
             }));
             moveindex++;
@@ -110,13 +113,14 @@ public class Battle {
         int menuX = 300;
         int menuY = 366;
         monsterindex = 0;
+        Menu.itemMenu.resetButtons();
         for(String m : FeatureLoader.player.getMonsterNames()){
             Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
                 int buttonNum = monsterindex;
                 public void activate(){
                     // System.out.println(buttonNum);
                     playerMonster = FeatureLoader.player.getMonster(buttonNum);
-                    playerMonster.setCoord(10, 20);
+                    playerMonster.setCoord(20, 10);
                     // System.out.println("getting monster works");
                     // System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
                     // System.out.println("get name function works");
@@ -211,11 +215,11 @@ public class Battle {
                 Menu.monsterMenu.tick();
             break;
             case SELECTMOVE: 
-                System.out.println("attack works");
+                // System.out.println("attack works");
                 Menu.moveMenu.tick();
             break;
             case END:
-                System.out.println("run away works");
+                // System.out.println("run away works");
                 App.currentGameState = GameState.WORLD;
             break;
        } 
