@@ -77,7 +77,15 @@ public class Monster extends AnimatingObject implements Cloneable {
     //update coefficient of stat - use during battle for status effects
     public void updateStatChange(Move m) { //this is for moves
         for (Stat s : m.getStats().keySet()) {
-            statchanges.put(s, statchanges.get(s) + m.getStat(s));
+            if(s.equals(Stat.HEALTH)){
+                if(stats.get(Stat.HEALTH) + m.getStat(s) <= stats.get(Stat.MAX_HEALTH)){
+                    updateStat(Stat.HEALTH, m.getStat(s));
+                }
+                System.out.println("health change: " + stats.get(Stat.HEALTH));
+            } else {
+                statchanges.put(s, statchanges.get(s) + m.getStat(s));
+                System.out.println("stat change: " + statchanges.get(s));
+            }
         }
     }
 
