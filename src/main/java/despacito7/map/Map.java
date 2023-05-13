@@ -35,7 +35,7 @@ public class Map implements Drawable {
                     layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
                 break;
                 default:
-                    layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray())); //eventually should be a regular layer
+                    layers.put(layertype, new Layer(layerdata.getValue().getAsJsonArray())); //eventually should be a regular layer
             }
         }
         for (JsonElement npcid : data.get("npcs").getAsJsonArray()) {
@@ -86,8 +86,8 @@ public class Map implements Drawable {
     public boolean monsters(Coord pos) {
         // System.out.println("Player coord: ");
         // pos.print();
-        // System.out.println(((InteractLayer)layers.get(LayerType.BASE)).getS(TileType.MONSTER));
-        return ((InteractLayer)layers.get(LayerType.BASE)).has(TileType.MONSTER,pos);
+        System.out.println(((InteractLayer)layers.get(LayerType.INTERACT)).getS(TileType.MONSTER));
+        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER,pos);
     }
 
     public boolean portals(Coord pos) {
@@ -103,17 +103,8 @@ public class Map implements Drawable {
                 this.tiles[r] = new Tile[row.size()];
                 for (int c = 0; c < row.size(); c++) { //this whole for loop is redundant (all types will only be in the interactlayer)
                     int sprite = row.get(c).getAsInt();
-                    TileType type;
-                    if (Constants.collideTiles.contains(sprite)) {
-                        type = TileType.COLLIDE;
-                    } else if (Constants.monsterTiles.contains(sprite)) {
-                        type = TileType.MONSTER;
-                    } else if (Constants.portalTiles.contains(sprite)) {
-                        type = TileType.PORTAL;
-                    } else {
-                        type = TileType.NORMAL;
-                    }
-                    tiles[r][c] = new Tile(sprite, new Coord(r, c), type);
+                
+                    tiles[r][c] = new Tile(sprite, new Coord(r, c), TileType.NORMAL);
                 }
             }
         }
@@ -164,7 +155,7 @@ public class Map implements Drawable {
                     } else if (Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
                     } else if (Constants.portalTiles.contains(sprite)) {
-                        System.out.println("(111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111/2) PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
+                        System.out.println("(1/2) PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
                         type = TileType.PORTAL;
                         //portals are only given a type here; they receive further instruction in the map constructor
                     } else {
@@ -172,10 +163,12 @@ public class Map implements Drawable {
                     }
                     Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
+                    
+
                     //JASON GET TILE CLASSIFICATION SETS WORKING WHEN YOU FIX THE LAYER CLASSES
-                    /* if (!tile.type().equals(TileType.NORMAL) || !tile.type().equals(TileType.PORTAL)) {
+                    if (!tile.type().equals(TileType.NORMAL) && !tile.type().equals(TileType.PORTAL)) {
                         this.specials.get(tile.type()).add(tile.coord());
-                    } */
+                    }
                 }
             }
         }
