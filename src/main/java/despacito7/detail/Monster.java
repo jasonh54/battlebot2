@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.Graphics2D;
-import java.awt.Taskbar.Feature;
 import java.awt.Color;
 
 import com.google.gson.JsonElement;
@@ -66,15 +65,20 @@ public class Monster extends AnimatingObject implements Cloneable {
     //setters
     //update base stat - USE SPARINGLY; eg  when levelling up *exception is currenthealth, please use this function for that*
     public void updateStat(Stat s, float i) {
+    //update base stat - this adds/subtracts the permanent stat value.
+    //use this to update currenthealth, or to update other stats permanently (ex. levelling up)
         stats.put(s, stats.get(s) + i);
     }
 
-    //set a coefficient of stat - use when clearing status effects during or post-battle
+    //set a coefficient of stat - this resets the value of a stat coefficient to a number
+    //use this to reset/clear modifiers after a battle, or after healing (ex. move that clears status effects)
     public void setStatChange(Stat s, float f) {
         statchanges.put(s,f);
     }
 
-    //update coefficient of stat - use during battle for status effects
+    //update coefficient of stat - use during battle for temporary status effect changes
+    //use this when a move or an item temporarily changes a stat (ex. speed boost, defense boost)
+    //do NOT use this for currenthealth, which should NEVER have a coefficient
     public void updateStatChange(Move m) { //this is for moves
         for (Stat s : m.getStats().keySet()) {
             if(s.equals(Stat.HEALTH)){
