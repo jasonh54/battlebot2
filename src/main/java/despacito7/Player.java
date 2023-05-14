@@ -70,7 +70,6 @@ public class Player extends Character {
             App.currentBattle = new Battle(App.currentMonster);
             App.currentGameState = GameState.BATTLE;
             System.out.println("A new battle has started2");
-            
         }
         
     }
