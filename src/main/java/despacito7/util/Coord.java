@@ -5,7 +5,7 @@ import com.google.gson.JsonArray;
 import despacito7.Constants;
 
 public class Coord {
-    private int r, c;
+    public int r, c;
 
     public Coord(int r, int c) {
         this.r = r; this.c = c;
@@ -14,6 +14,10 @@ public class Coord {
     public void setCoord(int r, int c){
         this.r = r;
         this.c = c;
+    }
+    public void setCoord(Coord co){
+        this.r = co.r;
+        this.c = co.c;
     }
 
     public static Coord ofJson(JsonArray ja) {

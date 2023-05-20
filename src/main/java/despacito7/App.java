@@ -2,6 +2,7 @@ package despacito7;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -26,10 +27,10 @@ public class App {
     public static final Gson gson = new Gson();
     private static final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     private static final ResourceLoader resourceLoader = new ResourceLoader();
-    private static final FeatureLoader featureLoader = new FeatureLoader();
+    public static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    public static String currentmap = "citymap";
+    public static String currentmap = "fieldmap";
     static Monster currentMonster;
     public static GameState currentGameState = GameState.WORLD;
     public static Battle currentBattle;
@@ -49,7 +50,8 @@ public class App {
         // f.setIconImage(Utils.ICONIMG);
 
         featureLoader.load();
-        currentMonster = featureLoader.getMonster("Air");
+        int rand = new Random().nextInt(featureLoader.getMonsterIds().length);
+        currentMonster = featureLoader.getMonster(featureLoader.getMonsterIds()[rand]);
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
         featureLoader.player.addMonster(featureLoader.getMonster("Beard"));
         currentMonster.updateStat(Stat.HEALTH, -50f);
@@ -57,6 +59,7 @@ public class App {
         featureLoader.player.addItem(featureLoader.getItem("PotionHealth"));
         featureLoader.player.addItem(featureLoader.getItem("PotionDefense"));
         featureLoader.player.addItem(featureLoader.getItem("PotionAgility"));
+        featureLoader.player.addItem(featureLoader.getItem("Pokeball"));
         // currentBattle = new Battle(App.currentMonster);
         // currentGameState = GameState.BATTLE;
 

@@ -82,4 +82,8 @@ public abstract class AnimatingObject extends GameObject {
         coord.setCoord(r, c);
         renderPos.setLocation(c*Constants.tilesize, r*Constants.tilesize);
     }
+    public void setCoord(Coord co){
+        coord.setCoord(co);
+        renderPos.setLocation(co.c*Constants.tilesize, co.r*Constants.tilesize);
+    }
 }

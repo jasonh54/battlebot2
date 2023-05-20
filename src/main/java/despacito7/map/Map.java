@@ -9,9 +9,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import despacito7.FeatureLoader;
+import despacito7.Constants.TileType;
 import despacito7.Constants;
 import despacito7.detail.*;
-import despacito7.map.Tile.TileType;
 import despacito7.util.Coord;
 import despacito7.util.Drawable;
 
@@ -27,6 +27,7 @@ public class Map implements Drawable {
     private Set<Item.GroundItem> items = new HashSet<>();
 
     public Map(JsonObject data) {
+        System.out.println("Beginning map #"+this);
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
             LayerType layertype = LayerType.valueOf(layerdata.getKey().toUpperCase());
             switch (layertype) {
@@ -34,7 +35,7 @@ public class Map implements Drawable {
                     layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
                 break;
                 default:
-                    layers.put(layertype, new InteractLayer(layerdata.getValue().getAsJsonArray()));
+                    layers.put(layertype, new Layer(layerdata.getValue().getAsJsonArray())); //eventually should be a regular layer
             }
         }
         for (JsonElement npcid : data.get("npcs").getAsJsonArray()) {
@@ -43,6 +44,23 @@ public class Map implements Drawable {
         for (JsonElement itemd : data.get("items").getAsJsonArray()) {
             JsonObject itemdata = itemd.getAsJsonObject();
             items.add(new Item.GroundItem(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
+        }
+        for (JsonElement portal : data.get("portals").getAsJsonArray()) {
+            JsonObject p = portal.getAsJsonObject(); //48-51 are json data retrieval
+            String tarmap = p.get("target").getAsJsonObject().get("map").getAsString();
+            JsonArray tarcj = p.get("target").getAsJsonObject().get("loc").getAsJsonArray();
+            Coord tarcoord = new Coord(tarcj.get(0).getAsInt(),tarcj.get(1).getAsInt());
+            JsonArray c = p.get("loc").getAsJsonArray();
+
+            Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
+            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,tarmap,tarcoord); //create portaltile replacement
+            System.out.println("map " + this + " attempting to replace tile with portal tile");
+            System.out.println("coords of replacement action are " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
+
+            layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
+            //next two lines should be uncommented once the interactlayer/layer system is functioning again and portals can be added to the portal coord set
+            /* layers.get(LayerType.INTERACT).specials.get(TileType.PORTAL).add(copy.coord()); //add portals to set
+            System.out.println("new portaltile successfully placed; terminus at " + (PortalTile) layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()].terminus()); //finish test */
         }
     }
 
@@ -68,8 +86,16 @@ public class Map implements Drawable {
     public boolean monsters(Coord pos) {
         // System.out.println("Player coord: ");
         // pos.print();
-        // System.out.println(((InteractLayer)layers.get(LayerType.BASE)).getS(TileType.MONSTER));
-        return ((InteractLayer)layers.get(LayerType.BASE)).has(TileType.MONSTER,pos);
+        // System.out.println(((InteractLayer)layers.get(LayerType.INTERACT)).getS(TileType.MONSTER));
+        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER,pos);
+    }
+
+    public boolean portals(Coord pos) {
+        return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.PORTAL,pos);
+    } 
+
+    public PortalTile getPortal(Coord pos){
+        return (PortalTile)((InteractLayer)layers.get(LayerType.INTERACT)).get(pos);
     }
 
     private class Layer implements Drawable {
@@ -79,21 +105,22 @@ public class Map implements Drawable {
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
                 this.tiles[r] = new Tile[row.size()];
-                for (int c = 0; c < row.size(); c++) {
+                for (int c = 0; c < row.size(); c++) { //this whole for loop is redundant (all types will only be in the interactlayer)
                     int sprite = row.get(c).getAsInt();
-                    TileType type;
-                    if (Constants.collideTiles.contains(sprite)) {
-                        type = TileType.COLLIDE;
-                    } else if (Constants.monsterTiles.contains(sprite)) {
-                        type = TileType.MONSTER;
-                    } else {
-                        type = TileType.NORMAL;
-                    }
-                    tiles[r][c] = new Tile(sprite, new Coord(r, c), type);
+                
+                    tiles[r][c] = new Tile(sprite, new Coord(r, c), TileType.NORMAL);
                 }
             }
         }
         protected Layer() {};
+
+        public void replaceTile(Coord co, PortalTile p) {
+            if (tiles[co.getComponents()[0]][co.getComponents()[1]].type != TileType.PORTAL) {
+                System.out.println("WARNING: Attempting to replace non-portal tile with portaltile at coords " + co.getComponents()[0] + "," + co.getComponents()[1] + "; original type is " + tiles[co.getComponents()[0]][co.getComponents()[1]].type);
+            } else {
+                tiles[co.getComponents()[0]][co.getComponents()[1]] = p;
+            }
+        }
 
         public void draw(java.awt.Graphics2D g) {
             for (int r = 0; r < tiles.length; r++) {
@@ -107,10 +134,11 @@ public class Map implements Drawable {
     }
 
     private class InteractLayer extends Layer {
-        private static java.util.Map<TileType, Set<Integer>> specialSprites = java.util.Map.of(TileType.COLLIDE, Set.of(69));
+
         private java.util.Map<TileType, Set<Coord>> specials = java.util.Map.of(
             TileType.COLLIDE, new HashSet<>(),
-            TileType.MONSTER, new HashSet<>()
+            TileType.MONSTER, new HashSet<>(),
+            TileType.PORTAL, new HashSet<>()
         );
         public InteractLayer(JsonArray data) {
             this.tiles = new Tile[data.size()][];
@@ -126,20 +154,27 @@ public class Map implements Drawable {
                     //         break;
                     //     }
                     // }]
-                    if(Constants.monsterTiles.contains(sprite)){
+                    if (Constants.monsterTiles.contains(sprite)){
                         type = TileType.MONSTER;
-                    }
-                    if(Constants.collideTiles.contains(sprite)){
+                    } else if (Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
+                    } else if (Constants.portalTiles.contains(sprite)) {
+                        System.out.println("(1/2) PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
+                        type = TileType.PORTAL;
+                        //portals are only given a type here; they receive further instruction in the map constructor
+                    } else {
+                        //PRINT ERROR IF NORMAL TILE IS IN INTERACTLAYER
                     }
                     Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
-                    if (!tile.type().equals(TileType.NORMAL)) { 
+                    
+
+                    //JASON GET TILE CLASSIFICATION SETS WORKING WHEN YOU FIX THE LAYER CLASSES
+                    if (!tile.type().equals(TileType.NORMAL) ) {
                         this.specials.get(tile.type()).add(tile.coord());
                     }
                 }
             }
-            // System.out.println(specials.get(TileType.MONSTER));
         }
        
 
@@ -155,6 +190,11 @@ public class Map implements Drawable {
             }
             return false;
         }
+
+        public Tile get(Coord co){
+            return tiles[co.getComponents()[0]][co.getComponents()[1]];
+        }
+
         public Set<Coord> getS(TileType type){
             return specials.get(type);
         }

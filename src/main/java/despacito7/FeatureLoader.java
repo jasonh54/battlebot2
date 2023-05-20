@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.google.gson.JsonElement;
@@ -40,6 +41,17 @@ public class FeatureLoader implements Loader {
     public boolean isLoaded() {
         return FeatureLoader.loaded;
     }
+    
+    public String[] getMonsterIds(){
+        Set<String> monsterids = monsters.keySet();
+        String[] out = new String[monsterids.size()];
+        int i = 0;
+        for(String mon : monsterids){
+            out[i] = mon;
+            i++;
+        }
+        return out;
+    }
 
     public void load() {
         JsonObject movedata = loadJson("moves.json");
@@ -66,7 +78,7 @@ public class FeatureLoader implements Loader {
             FeatureLoader.npcs.put(entry.getKey(), new NPC(entry));
         }
 
-        JsonObject mapdata = loadJson("maps.json");
+        JsonObject mapdata = loadJson("monsters2.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));

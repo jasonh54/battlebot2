@@ -32,7 +32,7 @@ public class Battle {
         currentMonster = currentNPC.getMonster(0);
         currentMonster.setCoord(10, 20);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(20, 10);
+        playerMonster.setCoord(10, 10);
         createMenu();
     }
 
@@ -40,7 +40,7 @@ public class Battle {
         currentMonster = monster;
         currentMonster.setCoord(10, 20);
         playerMonster = FeatureLoader.player.getMonster(0);
-        playerMonster.setCoord(20, 10);
+        playerMonster.setCoord(10, 10);
         //!!!!!!!!!!!!!!!ALERT!!!!!!!!!!!!!!!!!!!!!!
         //something very wrong here with this function
         playerMonster.getStat(Constants.Stat.HEALTH);
@@ -120,7 +120,7 @@ public class Battle {
                 public void activate(){
                     // System.out.println(buttonNum);
                     playerMonster = FeatureLoader.player.getMonster(buttonNum);
-                    playerMonster.setCoord(20, 10);
+                    playerMonster.setCoord(10, 10);
                     // System.out.println("getting monster works");
                     // System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
                     // System.out.println("get name function works");
@@ -145,14 +145,16 @@ public class Battle {
                 Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
                     int buttonNum = itemindex;
                     public void activate(){
-                        // System.out.println(buttonNum);
-                        // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
-                        // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
-                        playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
-                        System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        if(FeatureLoader.player.getItemList()[buttonNum].getTarget().equals("self")){
+                            playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
+                            System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        } else {
+                            // currentMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
+                            // under assumption that the only "enemy" item is the pokeball
+                            FeatureLoader.player.addMonster(currentMonster);
+                            currentState = BattleStates.END;
+                        }
                         FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
-                        // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
-                        // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
                         currentState = BattleStates.ENEMYTURN;
                     }
                 }));
