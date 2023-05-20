@@ -6,6 +6,7 @@ import despacito7.util.Coord;
 import despacito7.detail.Item;
 import despacito7.detail.Monster;
 import despacito7.gameplay.Battle;
+import despacito7.map.PortalTile;
 import despacito7.util.Character;
 import despacito7.Constants.GameState;
 
@@ -64,13 +65,20 @@ public class Player extends Character {
         // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
         //     System.out.println("You are colliding");
         // }
-        if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
-            // coord.print();
-            System.out.println("You are touching grass");
-            App.currentBattle = new Battle(App.currentMonster);
-            App.currentGameState = GameState.BATTLE;
-            System.out.println("A new battle has started2");
-            
+        // if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
+        //     // coord.print();
+        //     System.out.println("You are touching grass");
+        //     App.currentBattle = new Battle(App.currentMonster);
+        //     App.currentGameState = GameState.BATTLE;
+        //     System.out.println("A new battle has started2");
+        // }
+
+        if(FeatureLoader.getMap(App.currentmap).portals(coord)){
+            System.out.println("standing on portal");
+            PortalTile pt =FeatureLoader.getMap(App.currentmap).getPortal(coord);
+            System.out.println(pt.terminus().getLeft());
+            App.currentmap = pt.terminus().getLeft();
+            setCoord(pt.terminus().getRight());
         }
         
     }

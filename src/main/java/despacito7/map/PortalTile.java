@@ -5,13 +5,13 @@ import despacito7.util.Coord;
 import despacito7.util.Pair;
 
 public class PortalTile extends Tile {
-    private Pair<Map,Coord> terminus;
-    public PortalTile(int spritenum, Coord startcoord, TileType t, Map ta, Coord ec) {
+    private Pair<String,Coord> terminus;
+    public PortalTile(int spritenum, Coord startcoord, TileType t, String name, Coord ec) {
         super(spritenum, startcoord, t);
-        terminus = new Pair<Map,Coord>(ta, ec);
+        terminus = new Pair<String,Coord>(name, ec);
     }
 
-    public Pair<Map,Coord> terminus() {
+    public Pair<String,Coord> terminus() {
         return terminus;
     }
 }

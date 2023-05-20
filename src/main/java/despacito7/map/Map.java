@@ -53,7 +53,7 @@ public class Map implements Drawable {
             JsonArray c = p.get("loc").getAsJsonArray();
 
             Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
-            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement
+            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,tarmap,tarcoord); //create portaltile replacement
             System.out.println("map " + this + " attempting to replace tile with portal tile");
             System.out.println("coords of replacement action are " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
 
@@ -86,13 +86,17 @@ public class Map implements Drawable {
     public boolean monsters(Coord pos) {
         // System.out.println("Player coord: ");
         // pos.print();
-        System.out.println(((InteractLayer)layers.get(LayerType.INTERACT)).getS(TileType.MONSTER));
+        // System.out.println(((InteractLayer)layers.get(LayerType.INTERACT)).getS(TileType.MONSTER));
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER,pos);
     }
 
     public boolean portals(Coord pos) {
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.PORTAL,pos);
     } 
+
+    public PortalTile getPortal(Coord pos){
+        return (PortalTile)((InteractLayer)layers.get(LayerType.INTERACT)).get(pos);
+    }
 
     private class Layer implements Drawable {
         protected Tile[][] tiles;
@@ -130,7 +134,7 @@ public class Map implements Drawable {
     }
 
     private class InteractLayer extends Layer {
-        private static java.util.Map<TileType, Set<Integer>> specialSprites = java.util.Map.of(TileType.COLLIDE, Set.of(69));
+
         private java.util.Map<TileType, Set<Coord>> specials = java.util.Map.of(
             TileType.COLLIDE, new HashSet<>(),
             TileType.MONSTER, new HashSet<>(),
@@ -166,7 +170,7 @@ public class Map implements Drawable {
                     
 
                     //JASON GET TILE CLASSIFICATION SETS WORKING WHEN YOU FIX THE LAYER CLASSES
-                    if (!tile.type().equals(TileType.NORMAL) && !tile.type().equals(TileType.PORTAL)) {
+                    if (!tile.type().equals(TileType.NORMAL) ) {
                         this.specials.get(tile.type()).add(tile.coord());
                     }
                 }
@@ -185,6 +189,10 @@ public class Map implements Drawable {
                 }
             }
             return false;
+        }
+
+        public Tile get(Coord co){
+            return tiles[co.getComponents()[0]][co.getComponents()[1]];
         }
 
         public Set<Coord> getS(TileType type){

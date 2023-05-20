@@ -29,7 +29,7 @@ public class App {
     private static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    public static String currentmap = "citymap";
+    public static String currentmap = "fieldmap";
     static Monster currentMonster;
     public static GameState currentGameState = GameState.WORLD;
     public static Battle currentBattle;
