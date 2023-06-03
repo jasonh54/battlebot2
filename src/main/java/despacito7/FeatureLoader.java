@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.google.gson.JsonElement;
@@ -39,6 +40,17 @@ public class FeatureLoader implements Loader {
 
     public boolean isLoaded() {
         return FeatureLoader.loaded;
+    }
+    
+    public String[] getMonsterIds(){
+        Set<String> monsterids = monsters.keySet();
+        String[] out = new String[monsterids.size()];
+        int i = 0;
+        for(String mon : monsterids){
+            out[i] = mon;
+            i++;
+        }
+        return out;
     }
 
     public void load() {

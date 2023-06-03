@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.Map;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import despacito7.Constants;
 import despacito7.FeatureLoader;
@@ -16,13 +17,16 @@ public class Item implements Cloneable {
     public final String id;
     private java.awt.Image sprite;
     private Map<Stat, Float> stats;
+    private String target;
     public Item(Map.Entry<String, JsonElement> entry) {
         this.id = entry.getKey();
+        JsonObject v = entry.getValue().getAsJsonObject();
         this.sprite = ResourceLoader.getItemSprite(id);
-        this.stats = Stat.toMap(entry.getValue().getAsJsonObject());
+        this.stats = Stat.toMap(v.get("stats").getAsJsonObject());
+        this.target = v.get("TARGET").getAsString();
     }
-    private Item(String id, java.awt.Image sprite, Map<Stat, Float> stats) {
-        this.id = id; this.sprite = sprite; this.stats = stats;
+    private Item(String id, java.awt.Image sprite, Map<Stat, Float> stats, String target) {
+        this.id = id; this.sprite = sprite; this.stats = stats; this.target = target;
     }
 
     public void apply(Object monster) { // placeholder
@@ -48,7 +52,11 @@ public class Item implements Cloneable {
         }
     }
 
+    public String getTarget(){
+        return target;
+    }
+
     public Item clone() {
-        return new Item(this.id, this.sprite, this.stats);
+        return new Item(this.id, this.sprite, this.stats, this.target);
     }
 }

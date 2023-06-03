@@ -84,17 +84,20 @@ public class Battle {
         int menuX = 300;
         int menuY = 366;
         moveindex = 0;
+        Menu.itemMenu.resetButtons();
         for(Move m : playerMonster.getMoves()){
             Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.getId(), new Menu.ButtonCallback(){
                 int buttonNum = moveindex;
                 public void activate(){
                     if(m.getTarget().equals("self")){
                         playerMonster.updateStatChange(m);
+                        currentState = BattleStates.ENEMYTURN;
                     } else if(m.getTarget().equals("enemy")){
                         currentMonster.updateStatChange(m);
+                        currentState = BattleStates.ENEMYTURN;
                     }
-                    playerMonster.getMoves().get(buttonNum);
-                    currentState = BattleStates.ENEMYTURN;
+                    // playerMonster.getMoves().get(buttonNum);
+                    
                 }
             }));
             moveindex++;
@@ -110,6 +113,7 @@ public class Battle {
         int menuX = 300;
         int menuY = 366;
         monsterindex = 0;
+        Menu.itemMenu.resetButtons();
         for(String m : FeatureLoader.player.getMonsterNames()){
             Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
                 int buttonNum = monsterindex;
@@ -141,14 +145,16 @@ public class Battle {
                 Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
                     int buttonNum = itemindex;
                     public void activate(){
-                        // System.out.println(buttonNum);
-                        // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
-                        // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
-                        playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
-                        System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        if(FeatureLoader.player.getItemList()[buttonNum].getTarget().equals("self")){
+                            playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
+                            System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        } else {
+                            // currentMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
+                            // under assumption that the only "enemy" item is the pokeball
+                            FeatureLoader.player.addMonster(currentMonster);
+                            currentState = BattleStates.END;
+                        }
                         FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
-                        // System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
-                        // System.out.println(FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum]));
                         currentState = BattleStates.ENEMYTURN;
                     }
                 }));
@@ -211,11 +217,11 @@ public class Battle {
                 Menu.monsterMenu.tick();
             break;
             case SELECTMOVE: 
-                System.out.println("attack works");
+                // System.out.println("attack works");
                 Menu.moveMenu.tick();
             break;
             case END:
-                System.out.println("run away works");
+                // System.out.println("run away works");
                 App.currentGameState = GameState.WORLD;
             break;
        } 

@@ -33,7 +33,7 @@ public class Coord {
     }
 
     public java.awt.Point getPosition() {
-        return new java.awt.Point(c * Constants.tilesize, r * Constants.tilesize); // !!! INVERTED 
+        return new java.awt.Point(c * Constants.tilesize, r * Constants.tilesize);
     }
     public void print(){
         System.out.println("r:"+r + " c:"+c);
