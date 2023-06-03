@@ -27,7 +27,7 @@ public class Map implements Drawable {
     private Set<Item.GroundItem> items = new HashSet<>();
 
     public Map(JsonObject data) {
-        System.out.println("Beginning map #"+this);
+        System.out.println("*****Beginning map #"+this+"*****");
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
             LayerType layertype = LayerType.valueOf(layerdata.getKey().toUpperCase());
             switch (layertype) {
@@ -47,15 +47,18 @@ public class Map implements Drawable {
         }
         for (JsonElement portal : data.get("portals").getAsJsonArray()) {
             JsonObject p = portal.getAsJsonObject(); //48-51 are json data retrieval
-            String tarmap = p.get("target").getAsJsonObject().get("map").getAsString();
-            JsonArray tarcj = p.get("target").getAsJsonObject().get("loc").getAsJsonArray();
-            Coord tarcoord = new Coord(tarcj.get(0).getAsInt(),tarcj.get(1).getAsInt());
-            JsonArray c = p.get("loc").getAsJsonArray();
+            String tarmap = p.get("target").getAsJsonObject().get("map").getAsString(); //get map terminus (string)
+            JsonArray tarcj = p.get("target").getAsJsonObject().get("loc").getAsJsonArray(); //get coord terminus (jarray)
+            Coord tarcoord = new Coord(tarcj.get(0).getAsInt(),tarcj.get(1).getAsInt()); //get coord terminus (coord)
+            JsonArray c = p.get("loc").getAsJsonArray(); //get tile coord (jarray)
 
             Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
-            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,tarmap,tarcoord); //create portaltile replacement
+            
+            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement with all same info
+
             System.out.println("map " + this + " attempting to replace tile with portal tile");
             System.out.println("coords of replacement action are " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
+            System.out.println("map # " + this + " attempting a portal swap at coords " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
 
             layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
             //next two lines should be uncommented once the interactlayer/layer system is functioning again and portals can be added to the portal coord set
@@ -86,7 +89,7 @@ public class Map implements Drawable {
     public boolean monsters(Coord pos) {
         // System.out.println("Player coord: ");
         // pos.print();
-        // System.out.println(((InteractLayer)layers.get(LayerType.INTERACT)).getS(TileType.MONSTER));
+
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER,pos);
     }
 
@@ -105,23 +108,14 @@ public class Map implements Drawable {
             for (int r = 0; r < data.size(); r++) {
                 JsonArray row = data.get(r).getAsJsonArray();
                 this.tiles[r] = new Tile[row.size()];
-                for (int c = 0; c < row.size(); c++) { //this whole for loop is redundant (all types will only be in the interactlayer)
+                for (int c = 0; c < row.size(); c++) {
                     int sprite = row.get(c).getAsInt();
-                
+                    //eventually, skip blank tiles
                     tiles[r][c] = new Tile(sprite, new Coord(r, c), TileType.NORMAL);
                 }
             }
         }
         protected Layer() {};
-
-        public void replaceTile(Coord co, PortalTile p) {
-            if (tiles[co.getComponents()[0]][co.getComponents()[1]].type != TileType.PORTAL) {
-                System.out.println("WARNING: Attempting to replace non-portal tile with portaltile at coords " + co.getComponents()[0] + "," + co.getComponents()[1] + "; original type is " + tiles[co.getComponents()[0]][co.getComponents()[1]].type);
-            } else {
-                tiles[co.getComponents()[0]][co.getComponents()[1]] = p;
-            }
-        }
-
         public void draw(java.awt.Graphics2D g) {
             for (int r = 0; r < tiles.length; r++) {
                 Tile[] row = tiles[r];
@@ -129,6 +123,14 @@ public class Map implements Drawable {
                     Tile tile = row[c];
                     tile.draw(g);
                 }
+            }
+        }
+
+        public void replaceTile(Coord co, PortalTile p) {
+            if (tiles[co.getComponents()[0]][co.getComponents()[1]].type != TileType.PORTAL) {
+                System.out.println("WARNING: Attempting to replace non-portal tile with portaltile at coords " + co.getComponents()[0] + "," + co.getComponents()[1] + "; original type is " + tiles[co.getComponents()[0]][co.getComponents()[1]].type);
+            } else {
+                tiles[co.getComponents()[0]][co.getComponents()[1]] = p;
             }
         }
     }
@@ -159,24 +161,25 @@ public class Map implements Drawable {
                     } else if (Constants.collideTiles.contains(sprite)){
                         type = TileType.COLLIDE;
                     } else if (Constants.portalTiles.contains(sprite)) {
-                        System.out.println("(1/2) PORTAL # " + sprite + "AT LOC R=" + r + ", C=" + c);
                         type = TileType.PORTAL;
                         //portals are only given a type here; they receive further instruction in the map constructor
                     } else {
-                        //PRINT ERROR IF NORMAL TILE IS IN INTERACTLAYER
+                        //blank tile -- check if not
+                        if (sprite != -1) {
+                            System.out.println("WARNING: nonblank NORMAL tile in interactlayer at " + r + "," + c);
+                        }
                     }
+                    //eventually, this should skip blank tiles
                     Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
-                    
 
-                    //JASON GET TILE CLASSIFICATION SETS WORKING WHEN YOU FIX THE LAYER CLASSES
-                    if (!tile.type().equals(TileType.NORMAL) ) {
+                    if (sprite != -1) {
+
                         this.specials.get(tile.type()).add(tile.coord());
                     }
                 }
             }
         }
-       
 
         public boolean has(TileType type, Coord coord) {
             // coord.print();

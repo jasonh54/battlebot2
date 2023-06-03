@@ -15,6 +15,7 @@ public class Tile implements Drawable {
     TileType type;
     public Tile(int spritenum, Coord coord, TileType t) {
         sprite = ResourceLoader.getTileSprite(spritenum);
+        spnum = spritenum;
         this.coord = coord;
         type = t;
     }
