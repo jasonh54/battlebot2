@@ -22,9 +22,11 @@ public class Monster extends AnimatingObject implements Cloneable {
     private ArrayList<Move> moveset;
     private Map<Stat, Float> stats;
     private Map<Stat, Float> statchanges;
+    private Map.Entry<String, JsonElement> entry;
 
     public Monster(Map.Entry<String, JsonElement> entry) {
         super(new Coord(1,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getValue().getAsJsonObject().get("sprite").getAsString())));
+        this.entry = entry;
         //name self
         id = entry.getKey();
         //load stats
@@ -139,7 +141,7 @@ public class Monster extends AnimatingObject implements Cloneable {
         g.setColor(Color.BLACK);
     }
 
-    // public Monster clone() {
-    //     return new Monster();
-    // }
+    public Monster clone() {
+        return new Monster(entry);
+    }
 }

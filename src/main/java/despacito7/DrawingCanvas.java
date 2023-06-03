@@ -66,18 +66,18 @@ public class DrawingCanvas extends javax.swing.JComponent implements KeyListener
 
     @Override
     public void mousePressed(MouseEvent me) { 
-        // if (me.getButton() == MouseEvent.BUTTON1) {
-        //     System.out.println("Button 1 pressed...");
-        //     Constants.leftMouseClick = true;
-        // }
+        if (me.getButton() == MouseEvent.BUTTON1) {
+            // System.out.println("Button 1 pressed...");
+            Constants.leftMouseClick = true;
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-        // if (me.getButton() == MouseEvent.BUTTON1) {
-        //     System.out.println("Button 1 released...");
-        //     Constants.leftMouseClick = false;
-        // }
+        if (me.getButton() == MouseEvent.BUTTON1) {
+            // System.out.println("Button 1 released...");
+            Constants.leftMouseClick = false;
+        }
     }
 
     @Override
@@ -88,8 +88,8 @@ public class DrawingCanvas extends javax.swing.JComponent implements KeyListener
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if (me.getButton() == MouseEvent.BUTTON1) {
-            Constants.leftMouseClick = true;
-        }
+        // if (me.getButton() == MouseEvent.BUTTON1) {
+        //     Constants.leftMouseClick = true;
+        // }
     }
 }
