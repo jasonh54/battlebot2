@@ -65,13 +65,13 @@ public class Player extends Character {
         // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
         //     System.out.println("You are colliding");
         // }
-        // if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
-        //     // coord.print();
-        //     System.out.println("You are touching grass");
-        //     App.currentBattle = new Battle(App.currentMonster);
-        //     App.currentGameState = GameState.BATTLE;
-        //     System.out.println("A new battle has started2");
-        // }
+        if(FeatureLoader.getMap(App.currentmap).monsters(coord) && animationComplete()){
+            // coord.print();
+            System.out.println("You are touching grass");
+            App.currentBattle = new Battle(App.currentMonster);
+            App.currentGameState = GameState.BATTLE;
+            System.out.println("A new battle has started2");
+        }
 
         if(FeatureLoader.getMap(App.currentmap).portals(coord)){
             System.out.println("standing on portal");

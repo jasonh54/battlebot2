@@ -103,6 +103,7 @@ public class App {
     }
 
     public static void tick() {
+        System.out.println("running tick");
         switch (currentGameState) {
             case WORLD:
                 // Menu.cornerMenu.update();

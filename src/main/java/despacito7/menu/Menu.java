@@ -100,7 +100,7 @@ public abstract class Menu {
             return false;
         }
         public void tick(){
-            System.out.println("running tick");
+
             if(hover() && Constants.leftMouseClick){
                 c.activate();
             }
