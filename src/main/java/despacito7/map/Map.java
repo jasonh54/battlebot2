@@ -25,9 +25,11 @@ public class Map implements Drawable {
     private java.util.Map<LayerType, Layer> layers = new HashMap<>();
     private Set<NPC> npcs = new HashSet<>();
     private Set<Item.GroundItem> items = new HashSet<>();
+    String id;
 
     public Map(JsonObject data) {
-        System.out.println("*****Beginning map #"+this+"*****");
+        id = data.get("id").getAsString();
+        System.out.println("*****Beginning map "+id+"*****");
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
             LayerType layertype = LayerType.valueOf(layerdata.getKey().toUpperCase());
             switch (layertype) {
