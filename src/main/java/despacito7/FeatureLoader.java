@@ -78,7 +78,7 @@ public class FeatureLoader implements Loader {
             FeatureLoader.npcs.put(entry.getKey(), new NPC(entry));
         }
 
-        JsonObject mapdata = loadJson("monsters2.json");
+        JsonObject mapdata = loadJson("maps.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
