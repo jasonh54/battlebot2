@@ -25,7 +25,7 @@ public class Map implements Drawable {
     private java.util.Map<LayerType, Layer> layers = new HashMap<>();
     private Set<NPC> npcs = new HashSet<>();
     private Set<Item.GroundItem> items = new HashSet<>();
-    String id;
+    public String id;
 
     public Map(JsonObject data) {
         id = data.get("id").getAsString();
