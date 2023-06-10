@@ -157,7 +157,9 @@ public class Battle {
                             FeatureLoader.player.setItemCount(i, FeatureLoader.player.getItemCount(i)+1);
                         }
                         FeatureLoader.player.setItemCount(i, FeatureLoader.player.getItemCount(i)-1);
-                        if(currentState.equals(BattleStates.YOURTURN)) currentState = BattleStates.ENEMYTURN;
+                        if(currentState.equals(BattleStates.SELECTITEM)){
+                            currentState = BattleStates.ENEMYTURN;
+                        }
                     }
                 }));
                 itemindex++;
