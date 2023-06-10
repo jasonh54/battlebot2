@@ -101,6 +101,10 @@ public class Monster extends AnimatingObject implements Cloneable {
             if(s.equals(Stat.HEALTH)){
                 if(stats.get(Stat.HEALTH) + i.getStat(s) <= stats.get(Stat.MAX_HEALTH)){
                     updateStat(Stat.HEALTH, i.getStat(s));
+                } else {
+                    if(!stats.get(Stat.HEALTH).equals(stats.get(Stat.MAX_HEALTH))){
+                        updateStat(Stat.HEALTH, stats.get(Stat.MAX_HEALTH)-stats.get(Stat.HEALTH));
+                    }
                 }
                 System.out.println("health change: " + stats.get(Stat.HEALTH));
             } else {

@@ -4,6 +4,7 @@ import despacito7.App;
 import despacito7.Constants;
 import despacito7.FeatureLoader;
 import despacito7.Constants.GameState;
+import despacito7.Constants.Stat;
 import despacito7.detail.*;
 import despacito7.menu.Menu;
 import scala.tools.nsc.typechecker.MacroAnnotationAttachments.SymbolSourceAttachment;
@@ -87,7 +88,6 @@ public class Battle {
         Menu.itemMenu.resetButtons();
         for(Move m : playerMonster.getMoves()){
             Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.getId(), new Menu.ButtonCallback(){
-                int buttonNum = moveindex;
                 public void activate(){
                     if(m.getTarget().equals("self")){
                         playerMonster.updateStatChange(m);
@@ -143,19 +143,21 @@ public class Battle {
         for(Item i : FeatureLoader.player.getItemList()){
             if (i != null) {
                 Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
-                    int buttonNum = itemindex;
                     public void activate(){
-                        if(FeatureLoader.player.getItemList()[buttonNum].getTarget().equals("self")){
-                            playerMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
-                            System.out.println(FeatureLoader.player.getItemList()[buttonNum].id);
+                        if(i.getTarget().equals("self")){
+                            playerMonster.updateStatChange(i);
+                            System.out.println(i.id);
                         } else {
                             // currentMonster.updateStatChange(FeatureLoader.player.getItemList()[buttonNum]);
                             // under assumption that the only "enemy" item is the pokeball
                             FeatureLoader.player.addMonster(currentMonster);
                             currentState = BattleStates.END;
                         }
-                        FeatureLoader.player.setItemCount(FeatureLoader.player.getItemList()[buttonNum], FeatureLoader.player.getItemCount(FeatureLoader.player.getItemList()[buttonNum])-1);
-                        currentState = BattleStates.ENEMYTURN;
+                        if(i.id.equals("PotionHealth") && playerMonster.getStat(Stat.HEALTH) == playerMonster.getStat(Stat.MAX_HEALTH)){
+                            FeatureLoader.player.setItemCount(i, FeatureLoader.player.getItemCount(i)+1);
+                        }
+                        FeatureLoader.player.setItemCount(i, FeatureLoader.player.getItemCount(i)-1);
+                        if(currentState.equals(BattleStates.YOURTURN)) currentState = BattleStates.ENEMYTURN;
                     }
                 }));
                 itemindex++;
@@ -221,7 +223,7 @@ public class Battle {
                 Menu.moveMenu.tick();
             break;
             case END:
-                // System.out.println("run away works");
+                System.out.println("run away works");
                 App.currentGameState = GameState.WORLD;
             break;
        } 
