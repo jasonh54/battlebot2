@@ -55,7 +55,11 @@ public class Map implements Drawable {
             JsonArray c = p.get("loc").getAsJsonArray(); //get tile coord (jarray)
 
             Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
+            
             PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement with all same info
+
+            System.out.println("map " + this + " attempting to replace tile with portal tile");
+            System.out.println("coords of replacement action are " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
             System.out.println("map # " + this + " attempting a portal swap at coords " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
 
             layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
@@ -87,12 +91,17 @@ public class Map implements Drawable {
     public boolean monsters(Coord pos) {
         // System.out.println("Player coord: ");
         // pos.print();
+
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER,pos);
     }
 
     public boolean portals(Coord pos) {
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.PORTAL,pos);
     } 
+
+    public PortalTile getPortal(Coord pos){
+        return (PortalTile)((InteractLayer)layers.get(LayerType.INTERACT)).get(pos);
+    }
 
     private class Layer implements Drawable {
         protected Tile[][] tiles;
@@ -129,6 +138,7 @@ public class Map implements Drawable {
     }
 
     private class InteractLayer extends Layer {
+
         private java.util.Map<TileType, Set<Coord>> specials = java.util.Map.of(
             TileType.COLLIDE, new HashSet<>(),
             TileType.MONSTER, new HashSet<>(),
@@ -164,7 +174,9 @@ public class Map implements Drawable {
                     //eventually, this should skip blank tiles
                     Tile tile = new Tile(sprite, new Coord(r, c), type);
                     tiles[r][c] = tile;
+
                     if (sprite != -1) {
+
                         this.specials.get(tile.type()).add(tile.coord());
                     }
                 }
@@ -182,6 +194,10 @@ public class Map implements Drawable {
                 }
             }
             return false;
+        }
+
+        public Tile get(Coord co){
+            return tiles[co.getComponents()[0]][co.getComponents()[1]];
         }
 
         public Set<Coord> getS(TileType type){

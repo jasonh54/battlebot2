@@ -62,6 +62,8 @@ public abstract class AnimatingObject extends GameObject {
     }
 
     public boolean animationComplete(){
+        System.out.println("Frame #:"+animationFrame);
+        System.out.println("Frame length:"+animations.get(currentAnimation).length);
         if(animationFrame == animations.get(currentAnimation).length){
             return true;
         }
@@ -81,5 +83,9 @@ public abstract class AnimatingObject extends GameObject {
     public void setCoord(int r, int c){
         coord.setCoord(r, c);
         renderPos.setLocation(c*Constants.tilesize, r*Constants.tilesize);
+    }
+    public void setCoord(Coord co){
+        coord.setCoord(co);
+        renderPos.setLocation(co.c*Constants.tilesize, co.r*Constants.tilesize);
     }
 }

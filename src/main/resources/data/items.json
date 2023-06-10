@@ -1,11 +1,26 @@
 {
     "PotionHealth": {
-        "HEALTH": 10
+        "stats": {
+            "HEALTH": 10
+        },
+        "TARGET": "self"
     },
     "PotionDefense": {
-        "DEFENSE": 10
+        "stats": {
+            "DEFENSE": 10
+        },
+        "TARGET": "self"
     },
     "PotionAgility": {
-        "AGILITY": 10
+        "stats": {
+            "AGILITY": 10
+        },
+        "TARGET": "self"
+    },
+    "Pokeball": {
+        "stats": {
+            "HEALTH": -10
+        },
+        "TARGET": "enemy"
     }
 }
