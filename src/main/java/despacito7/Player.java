@@ -66,8 +66,8 @@ public class Player extends Character {
         if (FeatureLoader.getMap(App.currentmap).collides(coord)) {
             System.out.println("You are colliding");
         }
-
-
+        
+        
         if (FeatureLoader.getMap(App.currentmap).monsters(coord)) {
             System.out.println("You are touching grass");
             int rand = new Random().nextInt(App.featureLoader.getMonsterIds().length);
