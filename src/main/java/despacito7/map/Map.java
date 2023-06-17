@@ -89,15 +89,21 @@ public class Map implements Drawable {
     }
 
     public boolean monsters(Coord pos) {
-        // System.out.println("Player coord: ");
-        // pos.print();
-
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.MONSTER,pos);
     }
 
     public boolean portals(Coord pos) {
         return ((InteractLayer)layers.get(LayerType.INTERACT)).has(TileType.PORTAL,pos);
-    } 
+    }
+
+    public boolean npcs(Coord pos) {
+        for (NPC n : npcs) {
+            if (pos == n.getCoord()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public PortalTile getPortal(Coord pos){
         return (PortalTile)((InteractLayer)layers.get(LayerType.INTERACT)).get(pos);

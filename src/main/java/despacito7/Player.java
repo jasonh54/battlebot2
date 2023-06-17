@@ -34,7 +34,7 @@ public class Player extends Character {
         createAnimation("rightIdle", new int[]{9});
 
     }
-    public boolean monstersFull(){
+    public boolean monstersFull() {
         if(monsters.size() == 6) {
             return true;
         } 
@@ -63,23 +63,21 @@ public class Player extends Character {
     }
     
     public void update(){
-        // coord.print();
-        // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
-        //     System.out.println("You are colliding");
-        // }
+        if (FeatureLoader.getMap(App.currentmap).collides(coord)) {
+            System.out.println("You are colliding");
+        }
 
 
-        if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
-            // coord.print();
+        if (FeatureLoader.getMap(App.currentmap).monsters(coord)) {
             System.out.println("You are touching grass");
             int rand = new Random().nextInt(App.featureLoader.getMonsterIds().length);
             App.currentMonster = App.featureLoader.getMonster(App.featureLoader.getMonsterIds()[rand]);
             App.currentBattle = new Battle(App.currentMonster.clone());
             App.currentGameState = GameState.BATTLE;
-            System.out.println("A new battle has started2");
+            System.out.println("A new battle has started");
         }
 
-        if(FeatureLoader.getMap(App.currentmap).portals(coord)){
+        if (FeatureLoader.getMap(App.currentmap).portals(coord)) {
             System.out.println("standing on portal");
             PortalTile pt =FeatureLoader.getMap(App.currentmap).getPortal(coord);
             System.out.println(pt.terminus().getLeft());
@@ -87,7 +85,6 @@ public class Player extends Character {
             setCoord(pt.terminus().getRight());
 
         }
-        
     }
-
+        
 }

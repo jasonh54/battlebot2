@@ -120,6 +120,10 @@ public class Character extends AnimatingObject{
         inventory.replace(item, n);
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     public Monster getMonster(int n) {
         return monsters.get(n);
     }
