@@ -11,6 +11,7 @@ import scala.tools.nsc.typechecker.MacroAnnotationAttachments.SymbolSourceAttach
 
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
+import java.util.Random;
 import java.awt.Color;
 
 public class Battle {
@@ -170,6 +171,24 @@ public class Battle {
                 currentState = BattleStates.YOURTURN;
             }
         }));
+    }
+
+    public void enemyAttack(){
+        Random rand = new Random();
+        float randint = rand.nextFloat()*currentMonster.getStat(Stat.MAX_HEALTH);
+        if(randint <= (currentMonster.getStat(Stat.MAX_HEALTH)-currentMonster.getStat(Stat.HEALTH))/2f){
+            //heal
+            System.out.println("heal");
+        } else if (randint <= (currentMonster.getStat(Stat.MAX_HEALTH)-currentMonster.getStat(Stat.HEALTH))/2f + currentMonster.getStat(Stat.MAX_HEALTH)/4f){
+            //buff
+            System.out.println("buff");
+        } else if (randint <= (currentMonster.getStat(Stat.MAX_HEALTH)-currentMonster.getStat(Stat.HEALTH))/2f + currentMonster.getStat(Stat.MAX_HEALTH)/2f){
+            //debuff
+            System.out.println("debuff");
+        } else {
+            //fight
+            System.out.println("fight");
+        }
     }
 
     public void draw(Graphics2D g){
