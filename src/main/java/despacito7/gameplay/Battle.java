@@ -55,7 +55,7 @@ public class Battle {
 
     public void createMenu(){
         int menuX = 300;
-        int menuY = 366;
+        int menuY = 266;
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-66, 100, 20, "Attack", new Menu.ButtonCallback(){
             public void activate(){
                 createMoveMenu();
@@ -83,7 +83,7 @@ public class Battle {
 
     public void createMoveMenu(){
         int menuX = 300;
-        int menuY = 366;
+        int menuY = 266;
         moveindex = 0;
         Menu.itemMenu.resetButtons();
         for(Move m : playerMonster.getMoves()){
@@ -111,7 +111,7 @@ public class Battle {
 
     public void createMonsterMenu(){
         int menuX = 300;
-        int menuY = 366;
+        int menuY = 266;
         monsterindex = 0;
         Menu.itemMenu.resetButtons();
         for(String m : FeatureLoader.player.getMonsterNames()){
@@ -137,7 +137,7 @@ public class Battle {
 
     public void createItemMenu(){
         int menuX = 300;
-        int menuY = 366;
+        int menuY = 266;
         itemindex = 0;
         Menu.itemMenu.resetButtons();
         for(Item i : FeatureLoader.player.getItemList()){

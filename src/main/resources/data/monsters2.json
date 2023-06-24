@@ -79,10 +79,10 @@
   "variant":"PotionHealth","location":[10,1]
   }],
   "portals":[{
-  "target":{
-  "map":"fieldmap","loc":[2,2]
-  },
-  "loc":[5,5]
+        "target":{
+                "map":"fieldmap", "loc":[2,2]
+        },
+        "loc":[5,5]
   }],
   "npcs":["Cynthia","Red","Blue","Yellow","Dawn"]
   },
@@ -133,10 +133,10 @@
   "variant":"PotionHealth","location":[10,3]
   }],
   "portals":[{
-  "target":{
-  "map":"citymap","loc":[6,5]
-  },
-  "loc":[2,2]
+        "target":{
+                "map":"citymap", "loc":[6,5]
+        },
+        "loc":[2,2]
   }],
   "npcs":["Yellow","Dawn"]
   },
@@ -162,12 +162,13 @@
   "items":[{
   "variant":"PotionHealth","location":[10,3]
   }],
-  "portals":[{
-  "target":{
-  "map":"citymap","loc":[13,13]
-  },
-  "loc":[1,1]
-  },
+  "portals":[
+        {
+                "target":{
+                        "map":"citymap", "loc":[13,13]
+                },
+                "loc":[1,1]
+        },
   {
   "target":{
   "map":"fieldmap","loc":[13,7]

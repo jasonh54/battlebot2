@@ -69,7 +69,7 @@ public class Player extends Character {
         // }
 
 
-        if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
+        if(FeatureLoader.getMap(App.currentmap).monsters(coord) && justStopped){
             // coord.print();
             System.out.println("You are touching grass");
             int rand = new Random().nextInt(App.featureLoader.getMonsterIds().length);
@@ -79,13 +79,16 @@ public class Player extends Character {
             System.out.println("A new battle has started2");
         }
 
-        if(FeatureLoader.getMap(App.currentmap).portals(coord)){
+        if(FeatureLoader.getMap(App.currentmap).portals(coord) && stopped){
             System.out.println("standing on portal");
             PortalTile pt =FeatureLoader.getMap(App.currentmap).getPortal(coord);
             System.out.println(pt.terminus().getLeft());
             App.currentmap = pt.terminus().getLeft().id;
             setCoord(pt.terminus().getRight());
+        }
 
+        if(FeatureLoader.getMap(App.currentmap).collides(coord) && stopped){
+            System.out.println("You are on a car");
         }
         
     }

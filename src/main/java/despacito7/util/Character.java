@@ -2,9 +2,13 @@ package despacito7.util;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+
+import despacito7.App;
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
+import despacito7.FeatureLoader;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,6 +21,9 @@ public class Character extends AnimatingObject{
     private Direction direction;
     private MoveState moveState;
     private boolean locked = false;
+    public boolean justStopped = false;
+    public boolean stopped = true;
+    public ArrayList<Direction> unavaliableDirections = new ArrayList<Direction>();
 
     protected ArrayList<Monster> monsters = new ArrayList<Monster>();
     protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
@@ -44,7 +51,7 @@ public class Character extends AnimatingObject{
         if(movecounter == 0){
             locked = true;
         }
-        
+        justStopped = false;
         if(locked){
             switch(moveState) {
                 case WALK: 
@@ -94,11 +101,22 @@ public class Character extends AnimatingObject{
             }
             if(movecounter>=24){
                 locked = false;
+                justStopped = true;
+                stopped = true;
                 movecounter=0;
+            }else{
+                stopped = false;
             }
         }
         movecounter++;
         
+    }
+
+    public void checkUnavaliableDirections(){
+        unavaliableDirections.clear();
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0))){
+            
+        }
     }
 
     public void setDirection(Direction d){
