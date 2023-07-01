@@ -90,7 +90,7 @@
                 "loc":[5,5]},
                 {"target":{
                         "map":"jailmap",
-                        "loc": [1,2]
+                        "loc": [2,1]
                 },
                 "loc":[0,5]}
         ],
@@ -149,8 +149,8 @@
         }],
         "portals":[
                 {"target":{
-                        "map":"fieldmap",
-                        "loc":[0,0]
+                        "map":"jailmap",
+                        "loc":[2,3]
                 },
                 "loc":[12,2]},
                 {"target":{
@@ -196,7 +196,7 @@
                 "loc":[1,1]},
                 {"target":{
                         "map":"fieldmap",
-                        "loc":[13,7]
+                        "loc":[13,2]
                 },
                 "loc":[1,3]}
         ],
