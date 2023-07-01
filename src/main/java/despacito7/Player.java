@@ -61,7 +61,34 @@ public class Player extends Character {
     public void onKey(char keyCode) {
         if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
     }
-    
+
+    public void checkUnavaliableDirections(){
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))){           
+            moveableDirections.put(Direction.DOWN, false);
+        }
+        else{
+            moveableDirections.put(Direction.DOWN, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))){
+            moveableDirections.put(Direction.UP, false);
+        }
+        else{
+            moveableDirections.put(Direction.UP, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))){
+            moveableDirections.put(Direction.RIGHT, false);
+        }
+        else{
+            moveableDirections.put(Direction.RIGHT, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))){
+            moveableDirections.put(Direction.LEFT, false);
+        }
+        else{
+            moveableDirections.put(Direction.LEFT, true);
+        }
+    }
+   
     public void update(){
 
 

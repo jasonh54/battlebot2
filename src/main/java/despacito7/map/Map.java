@@ -80,7 +80,7 @@ public class Map implements Drawable {
 
     public boolean npcs(Coord pos) {
         for (NPC n : npcs) {
-            if (pos == n.getCoord()) {
+            if (n.getCoord().compare(pos)) {
                 return true;
             }
         }
