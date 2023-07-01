@@ -70,15 +70,10 @@
 			"WALK/LEFT",
             "WALK/LEFT",
 			"WALK/LEFT",
-			"IDLE/LEFT",
             "WALK/LEFT",
-            "IDLE/DOWN",
 			"WALK/RIGHT",
             "WALK/RIGHT",
-            "WALK/RIGHT",
-            "IDLE/RIGHT",
-            "WALK/RIGHT",
-            "IDLE/RIGHT"
+            "WALK/RIGHT"
         ]
     },
 
