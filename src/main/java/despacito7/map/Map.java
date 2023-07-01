@@ -26,9 +26,11 @@ public class Map implements Drawable {
     private Set<NPC> npcs = new HashSet<>();
     private Set<Item.GroundItem> items = new HashSet<>();
     public String id;
+    private JsonArray portals;
 
     public Map(JsonObject data) {
         id = data.get("id").getAsString();
+        portals = data.get("portals").getAsJsonArray();
         System.out.println("*****Beginning map "+id+"*****");
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
             LayerType layertype = LayerType.valueOf(layerdata.getKey().toUpperCase());
@@ -46,26 +48,6 @@ public class Map implements Drawable {
         for (JsonElement itemd : data.get("items").getAsJsonArray()) {
             JsonObject itemdata = itemd.getAsJsonObject();
             items.add(new Item.GroundItem(itemdata.get("variant").getAsString(), Coord.ofJson(itemdata.get("location").getAsJsonArray())));
-        }
-        for (JsonElement portal : data.get("portals").getAsJsonArray()) {
-            JsonObject p = portal.getAsJsonObject(); //48-51 are json data retrieval
-            String tarmap = p.get("target").getAsJsonObject().get("map").getAsString(); //get map terminus (string)
-            JsonArray tarcj = p.get("target").getAsJsonObject().get("loc").getAsJsonArray(); //get coord terminus (jarray)
-            Coord tarcoord = new Coord(tarcj.get(0).getAsInt(),tarcj.get(1).getAsInt()); //get coord terminus (coord)
-            JsonArray c = p.get("loc").getAsJsonArray(); //get tile coord (jarray)
-
-            Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
-            
-            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement with all same info
-
-            System.out.println("map " + this + " attempting to replace tile with portal tile");
-            System.out.println("coords of replacement action are " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
-            System.out.println("map # " + this + " attempting a portal swap at coords " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
-
-            layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
-            //next two lines should be uncommented once the interactlayer/layer system is functioning again and portals can be added to the portal coord set
-            /* layers.get(LayerType.INTERACT).specials.get(TileType.PORTAL).add(copy.coord()); //add portals to set
-            System.out.println("new portaltile successfully placed; terminus at " + (PortalTile) layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()].terminus()); //finish test */
         }
     }
 
@@ -107,6 +89,26 @@ public class Map implements Drawable {
 
     public PortalTile getPortal(Coord pos){
         return (PortalTile)((InteractLayer)layers.get(LayerType.INTERACT)).get(pos);
+    }
+
+    public void loadPortalTiles() { //moved from constructor b/c not all maps exist at that point
+        for (JsonElement portal : portals) {
+            JsonObject p = portal.getAsJsonObject(); //48-51 are json data retrieval
+            String tarmap = p.get("target").getAsJsonObject().get("map").getAsString(); //get map terminus (string)
+            JsonArray tarcj = p.get("target").getAsJsonObject().get("loc").getAsJsonArray(); //get coord terminus (jarray)
+            Coord tarcoord = new Coord(tarcj.get(0).getAsInt(),tarcj.get(1).getAsInt()); //get coord terminus (coord)
+            JsonArray c = p.get("loc").getAsJsonArray(); //get tile coord (jarray)
+
+            Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
+            
+            PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement with all same info
+            System.out.println(this.id + " attempting a portal swap at coords " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
+            System.out.println("Destination: " + FeatureLoader.getMap(tarmap) + " AKA " + tarmap + ", " + newtile.terminus().getRight());
+
+            layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
+            //next two lines should be uncommented once the interactlayer/layer system is functioning again and portals can be added to the portal coord set
+            /* layers.get(LayerType.INTERACT).specials.get(TileType.PORTAL).add(copy.coord()); //add portals to set */
+        }
     }
 
     private class Layer implements Drawable {

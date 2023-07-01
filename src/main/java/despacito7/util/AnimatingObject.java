@@ -62,8 +62,6 @@ public abstract class AnimatingObject extends GameObject {
     }
 
     public boolean animationComplete(){
-        System.out.println("Frame #:"+animationFrame);
-        System.out.println("Frame length:"+animations.get(currentAnimation).length);
         if(animationFrame == animations.get(currentAnimation).length){
             return true;
         }

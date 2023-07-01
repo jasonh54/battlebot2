@@ -79,11 +79,11 @@ public class Player extends Character {
 
         if (FeatureLoader.getMap(App.currentmap).portals(coord)) {
             System.out.println("standing on portal");
-            PortalTile pt =FeatureLoader.getMap(App.currentmap).getPortal(coord);
-            System.out.println(pt.terminus().getLeft());
+            PortalTile pt = FeatureLoader.getMap(App.currentmap).getPortal(coord);
+            System.out.println("pt created. destination is " + pt.terminus().getLeft());
+            System.out.println("destination: " + pt.terminus().getLeft().id + ", " + pt.terminus().getRight());
             App.currentmap = pt.terminus().getLeft().id;
             setCoord(pt.terminus().getRight());
-
         }
     }
         
