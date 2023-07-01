@@ -68,11 +68,6 @@
         },
         "movement": [
 			"WALK/LEFT",
-            "WALK/LEFT",
-			"WALK/LEFT",
-            "WALK/LEFT",
-			"WALK/RIGHT",
-            "WALK/RIGHT",
             "WALK/RIGHT"
         ]
     },
