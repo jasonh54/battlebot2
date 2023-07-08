@@ -90,8 +90,6 @@ public class Player extends Character {
     }
    
     public void update(){
-
-
         if(FeatureLoader.getMap(App.currentmap).monsters(coord) && justStopped){
             // coord.print();
             System.out.println("You are touching grass");
@@ -115,8 +113,11 @@ public class Player extends Character {
 
         if(FeatureLoader.getMap(App.currentmap).collides(coord) && stopped){
             System.out.println("You are on a car");
-
         }
+    }
+
+    public void attemptNPCTalk() {
+        System.out.println("See if there is an NPC within range to speak to. if so, change the gamestate");
     }
         
 }

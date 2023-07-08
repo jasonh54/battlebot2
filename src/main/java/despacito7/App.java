@@ -118,6 +118,7 @@ public class App {
             case MENU:
             break;
             case TALK:
+                FeatureLoader.player.update();
             break;
         }
         Constants.leftMouseClick = false;
@@ -126,6 +127,8 @@ public class App {
     public static void onKey(char keyCode) {
         switch (keyCode) {
             case 'm' -> Menu.cornerMenu.expand();
+            case 'e' -> FeatureLoader.player.attemptNPCTalk();
+            case 'x' -> {if (currentGameState == GameState.TALK) {currentGameState = GameState.WORLD;}}
         }
         FeatureLoader.player.onKey(keyCode);
     }
