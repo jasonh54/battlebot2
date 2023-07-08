@@ -30,7 +30,7 @@ public class App {
     public static final FeatureLoader featureLoader = new FeatureLoader();
 
     //game objects
-    public static String currentmap = "fieldmap";
+    public static String currentmap = "citymap";
     static Monster currentMonster;
     public static GameState currentGameState = GameState.WORLD;
     public static Battle currentBattle;
@@ -83,7 +83,7 @@ public class App {
                 g.translate(-p.x+f.getWidth()/4f-Constants.tilesize/2f, -p.y+f.getHeight()/4f-Constants.tilesize/2f);
                 FeatureLoader.getMap(currentmap).draw(g);
                 FeatureLoader.player.draw(g);
-                currentMonster.draw(g);
+                // currentMonster.draw(g);
                 // player movement enums conflicting with monsters animation as monster does not require movement enums
         
                 FeatureLoader.getMap(currentmap).postDraw(g);

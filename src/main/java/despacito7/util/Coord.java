@@ -11,6 +11,10 @@ public class Coord {
         this.r = r; this.c = c;
     }
 
+    public Coord offset(int r, int c){
+        return new Coord(this.r + r, this.c + c);
+    }
+
     public void setCoord(int r, int c){
         this.r = r;
         this.c = c;

@@ -2,9 +2,13 @@ package despacito7.util;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+
+import despacito7.App;
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
+import despacito7.FeatureLoader;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,6 +21,9 @@ public class Character extends AnimatingObject{
     private Direction direction;
     private MoveState moveState;
     private boolean locked = false;
+    public boolean justStopped = false;
+    public boolean stopped = true;
+    public HashMap<Direction,Boolean> moveableDirections = new HashMap<Direction, Boolean>();
 
     protected ArrayList<Monster> monsters = new ArrayList<Monster>();
     protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
@@ -25,6 +32,11 @@ public class Character extends AnimatingObject{
         super(coord,  sprites);
         this.direction = Direction.UP;
         this.moveState = MoveState.WALK;
+        moveableDirections.put(Direction.UP, true);
+        moveableDirections.put(Direction.DOWN, true);
+        moveableDirections.put(Direction.LEFT, true);
+        moveableDirections.put(Direction.RIGHT, true);
+        moveableDirections.put(Direction.IDLE, true);
     }
 
     public void draw(Graphics2D g) {
@@ -44,7 +56,7 @@ public class Character extends AnimatingObject{
         if(movecounter == 0){
             locked = true;
         }
-        
+        justStopped = false;
         if(locked){
             switch(moveState) {
                 case WALK: 
@@ -94,18 +106,52 @@ public class Character extends AnimatingObject{
             }
             if(movecounter>=24){
                 locked = false;
+                justStopped = true;
+                stopped = true;
                 movecounter=0;
+            }else{
+                stopped = false;
             }
         }
         movecounter++;
         
     }
 
+    public void checkUnavaliableDirections(){
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0))){           
+            moveableDirections.put(Direction.DOWN, false);
+        }
+        else{
+            moveableDirections.put(Direction.DOWN, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0))){
+            moveableDirections.put(Direction.UP, false);
+        }
+        else{
+            moveableDirections.put(Direction.UP, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1))){
+            moveableDirections.put(Direction.RIGHT, false);
+        }
+        else{
+            moveableDirections.put(Direction.RIGHT, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1))){
+            moveableDirections.put(Direction.LEFT, false);
+        }
+        else{
+            moveableDirections.put(Direction.LEFT, true);
+        }
+    }
+
     public void setDirection(Direction d){
+        checkUnavaliableDirections();
         if(!locked){
-            direction = d;
-            movecounter = 0;
-            setCurrentAnim(d.toString());
+            if(moveableDirections.get(d)){
+                direction = d;
+                movecounter = 0;
+                setCurrentAnim(d.toString());
+            }
         }
     }
     public void setMovement(MoveState s){
@@ -118,6 +164,10 @@ public class Character extends AnimatingObject{
 
     public void setItemCount(Item item, int n){
         inventory.replace(item, n);
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 
     public Monster getMonster(int n) {

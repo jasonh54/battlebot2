@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import com.google.gson.JsonElement;
@@ -15,6 +16,7 @@ import despacito7.detail.Item;
 import despacito7.detail.Monster;
 import despacito7.detail.NPC;
 import despacito7.gameplay.Move;
+import despacito7.map.Map;
 import despacito7.util.Loader;
 
 public class FeatureLoader implements Loader {
@@ -78,10 +80,13 @@ public class FeatureLoader implements Loader {
             FeatureLoader.npcs.put(entry.getKey(), new NPC(entry));
         }
 
-        JsonObject mapdata = loadJson("monsters2.json");
+        JsonObject mapdata = loadJson("maps.json");
         FeatureLoader.maps = new HashMap<>(mapdata.size(), 0.99f);
         for (java.util.Map.Entry<String, JsonElement> entry : mapdata.entrySet()) {
             FeatureLoader.maps.put(entry.getKey(), new despacito7.map.Map(entry.getValue().getAsJsonObject()));
+        }
+        for (java.util.Map.Entry<String, Map> m : FeatureLoader.maps.entrySet()) {
+            m.getValue().loadPortalTiles();
         }
 
         player = Player.getPlayer();

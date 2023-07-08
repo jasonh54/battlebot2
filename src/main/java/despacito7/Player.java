@@ -34,7 +34,7 @@ public class Player extends Character {
         createAnimation("rightIdle", new int[]{9});
 
     }
-    public boolean monstersFull(){
+    public boolean monstersFull() {
         if(monsters.size() == 6) {
             return true;
         } 
@@ -61,33 +61,62 @@ public class Player extends Character {
     public void onKey(char keyCode) {
         if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
     }
-    
+
+    public void checkUnavaliableDirections(){
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))){           
+            moveableDirections.put(Direction.DOWN, false);
+        }
+        else{
+            moveableDirections.put(Direction.DOWN, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))){
+            moveableDirections.put(Direction.UP, false);
+        }
+        else{
+            moveableDirections.put(Direction.UP, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))){
+            moveableDirections.put(Direction.RIGHT, false);
+        }
+        else{
+            moveableDirections.put(Direction.RIGHT, true);
+        }
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))){
+            moveableDirections.put(Direction.LEFT, false);
+        }
+        else{
+            moveableDirections.put(Direction.LEFT, true);
+        }
+    }
+   
     public void update(){
-        // coord.print();
-        // if(FeatureLoader.getMap(App.currentmap).collides(coord)){
-        //     System.out.println("You are colliding");
-        // }
 
 
-        if(FeatureLoader.getMap(App.currentmap).monsters(coord)){
+        if(FeatureLoader.getMap(App.currentmap).monsters(coord) && justStopped){
             // coord.print();
             System.out.println("You are touching grass");
             int rand = new Random().nextInt(App.featureLoader.getMonsterIds().length);
             App.currentMonster = App.featureLoader.getMonster(App.featureLoader.getMonsterIds()[rand]);
             App.currentBattle = new Battle(App.currentMonster.clone());
             App.currentGameState = GameState.BATTLE;
-            System.out.println("A new battle has started2");
+            System.out.println("A new battle has started");
         }
 
-        if(FeatureLoader.getMap(App.currentmap).portals(coord)){
+
+        if(FeatureLoader.getMap(App.currentmap).portals(coord) && stopped){
+
             System.out.println("standing on portal");
-            PortalTile pt =FeatureLoader.getMap(App.currentmap).getPortal(coord);
-            System.out.println(pt.terminus().getLeft());
+            PortalTile pt = FeatureLoader.getMap(App.currentmap).getPortal(coord);
+            System.out.println("pt created. destination is " + pt.terminus().getLeft());
+            System.out.println("destination: " + pt.terminus().getLeft().id + ", " + pt.terminus().getRight());
             App.currentmap = pt.terminus().getLeft().id;
             setCoord(pt.terminus().getRight());
+        }
+
+        if(FeatureLoader.getMap(App.currentmap).collides(coord) && stopped){
+            System.out.println("You are on a car");
 
         }
-        
     }
-
+        
 }
