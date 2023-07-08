@@ -205,6 +205,7 @@ public class Battle {
     public void checkHP(){
         if(currentMonster.getStat(Stat.HEALTH) <= 0.0){
             System.out.println("player wins");
+            playerMonster.changeExp(50);
             currentState = BattleStates.END;
         } else if (playerMonster.getStat(Stat.HEALTH) <= 0.0){
             System.out.println("enemy wins");
