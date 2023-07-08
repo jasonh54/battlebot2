@@ -11,6 +11,7 @@ import scala.tools.nsc.typechecker.MacroAnnotationAttachments.SymbolSourceAttach
 
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
+import java.util.Random;
 import java.awt.Color;
 
 public class Battle {
@@ -172,6 +173,33 @@ public class Battle {
         }));
     }
 
+    public void enemyAttack(){
+        Random rand = new Random();
+        // float randint = rand.nextFloat()*currentMonster.getStat(Stat.MAX_HEALTH);
+        // if(randint <= (currentMonster.getStat(Stat.MAX_HEALTH)-currentMonster.getStat(Stat.HEALTH))/2f){
+        //     //heal
+        //     System.out.println("heal");
+        // } else if (randint <= (currentMonster.getStat(Stat.MAX_HEALTH)-currentMonster.getStat(Stat.HEALTH))/2f + currentMonster.getStat(Stat.MAX_HEALTH)/4f){
+        //     //buff
+        //     System.out.println("buff");
+        // } else if (randint <= (currentMonster.getStat(Stat.MAX_HEALTH)-currentMonster.getStat(Stat.HEALTH))/2f + currentMonster.getStat(Stat.MAX_HEALTH)/2f){
+        //     //debuff
+        //     System.out.println("debuff");
+        // } else {
+        //     //fight
+        //     System.out.println("fight");
+        // }
+        int randint = rand.nextInt(0, 4);
+        Move m = currentMonster.getMoves().get(randint);
+        if(m.getTarget().equals("self")){
+            currentMonster.updateStatChange(m);
+            currentState = BattleStates.YOURTURN;
+        } else if(m.getTarget().equals("enemy")){
+            playerMonster.updateStatChange(m);
+            currentState = BattleStates.YOURTURN;
+        }
+    }
+
     public void draw(Graphics2D g){
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, App.width*Constants.tilesize, App.height*Constants.tilesize);
@@ -210,6 +238,7 @@ public class Battle {
                 Menu.battleMenu.tick();
             break;
             case ENEMYTURN:
+                enemyAttack();
                 currentState = BattleStates.YOURTURN;
             break;
             case SELECTITEM:
