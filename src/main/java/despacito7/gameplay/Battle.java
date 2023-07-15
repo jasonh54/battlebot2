@@ -7,7 +7,6 @@ import despacito7.Constants.GameState;
 import despacito7.Constants.Stat;
 import despacito7.detail.*;
 import despacito7.menu.Menu;
-import scala.tools.nsc.typechecker.MacroAnnotationAttachments.SymbolSourceAttachment;
 
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
@@ -57,6 +56,7 @@ public class Battle {
     public void createMenu(){
         int menuX = 300;
         int menuY = 266;
+        Menu.battleMenu.resetButtons();
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-66, 100, 20, "Attack", new Menu.ButtonCallback(){
             public void activate(){
                 createMoveMenu();
@@ -195,11 +195,10 @@ public class Battle {
         System.out.println("enemy is using " + m.getId());
         if(m.getTarget().equals("self")){
             currentMonster.updateStatChange(m);
-            currentState = BattleStates.POSTENEMY;
         } else if(m.getTarget().equals("enemy")){
             playerMonster.updateStatChange(m);
-            currentState = BattleStates.POSTENEMY;
         }
+        currentState = BattleStates.POSTENEMY;
     }
 
     public void checkHP(){
@@ -255,15 +254,17 @@ public class Battle {
                 Menu.battleMenu.tick();
             break;
             case ENEMYTURN:
+                System.out.println("postenemy");
                 enemyAttack();
-                currentState = BattleStates.YOURTURN;
             break;
             case POSTPLAYER:
+                System.out.println("postplayer");
                 currentState = BattleStates.ENEMYTURN;
                 checkHP();
             break;
             case POSTENEMY:
                 currentState = BattleStates.YOURTURN;
+                createMenu();
                 checkHP();
             break;
             case SELECTITEM:
