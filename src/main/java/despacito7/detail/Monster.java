@@ -23,6 +23,9 @@ public class Monster extends AnimatingObject implements Cloneable {
     private Map<Stat, Float> stats;
     private Map<Stat, Float> statchanges;
     private Map.Entry<String, JsonElement> entry;
+    private int maxexp;
+    private int currexp;
+    private int level;
 
     public Monster(Map.Entry<String, JsonElement> entry) {
         super(new Coord(1,10), ResourceLoader.cutSprites(ResourceLoader.getMonsterSprite(entry.getValue().getAsJsonObject().get("sprite").getAsString())));
@@ -48,6 +51,9 @@ public class Monster extends AnimatingObject implements Cloneable {
         for(int i = 0; i < sprites.length;i++) frames[i] = i;
         createAnimation("idle", frames);
         setCurrentAnim("idle");
+        level = 1;
+        currexp = 0;
+        maxexp = 100;
     }
 
     //getters
@@ -62,6 +68,18 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public ArrayList<Move> getMoves() {
         return moveset;
+    }
+    
+    public void changeExp(int change){
+        currexp+=change;
+        if(currexp>=maxexp){
+            currexp=currexp-maxexp;
+            level++;
+            System.out.println("level up!");
+            for(Stat s : stats.keySet()){
+                updateStat(s, stats.get(s)*1.1f);
+            }
+        }
     }
 
     //setters

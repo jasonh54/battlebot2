@@ -7,7 +7,6 @@ import despacito7.Constants.GameState;
 import despacito7.Constants.Stat;
 import despacito7.detail.*;
 import despacito7.menu.Menu;
-import scala.tools.nsc.typechecker.MacroAnnotationAttachments.SymbolSourceAttachment;
 
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
@@ -23,7 +22,7 @@ public class Battle {
     private int itemindex;
 
     private enum BattleStates {
-        ENTER, YOURTURN, ENEMYTURN, 
+        ENTER, YOURTURN, ENEMYTURN, POSTPLAYER, POSTENEMY,
         SELECTITEM, SELECTMONSTER, SELECTMOVE, END
     }
 
@@ -57,6 +56,7 @@ public class Battle {
     public void createMenu(){
         int menuX = 300;
         int menuY = 266;
+        Menu.battleMenu.resetButtons();
         Menu.battleMenu.addButton(Menu.generateButton(menuX, menuY-66, 100, 20, "Attack", new Menu.ButtonCallback(){
             public void activate(){
                 createMoveMenu();
@@ -86,16 +86,16 @@ public class Battle {
         int menuX = 300;
         int menuY = 266;
         moveindex = 0;
-        Menu.itemMenu.resetButtons();
+        Menu.moveMenu.resetButtons();
         for(Move m : playerMonster.getMoves()){
             Menu.moveMenu.addButton(Menu.generateButton(menuX, menuY-(moveindex*22), 100, 20, m.getId(), new Menu.ButtonCallback(){
                 public void activate(){
                     if(m.getTarget().equals("self")){
                         playerMonster.updateStatChange(m);
-                        currentState = BattleStates.ENEMYTURN;
+                        currentState = BattleStates.POSTPLAYER;
                     } else if(m.getTarget().equals("enemy")){
                         currentMonster.updateStatChange(m);
-                        currentState = BattleStates.ENEMYTURN;
+                        currentState = BattleStates.POSTPLAYER;
                     }
                     // playerMonster.getMoves().get(buttonNum);
                     
@@ -114,7 +114,7 @@ public class Battle {
         int menuX = 300;
         int menuY = 266;
         monsterindex = 0;
-        Menu.itemMenu.resetButtons();
+        Menu.monsterMenu.resetButtons();
         for(String m : FeatureLoader.player.getMonsterNames()){
             Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
                 int buttonNum = monsterindex;
@@ -125,6 +125,7 @@ public class Battle {
                     // System.out.println("getting monster works");
                     // System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
                     // System.out.println("get name function works");
+                    currentState = BattleStates.POSTPLAYER;
                 }
             }));
             monsterindex++;
@@ -159,7 +160,7 @@ public class Battle {
                         }
                         FeatureLoader.player.setItemCount(i, FeatureLoader.player.getItemCount(i)-1);
                         if(currentState.equals(BattleStates.SELECTITEM)){
-                            currentState = BattleStates.ENEMYTURN;
+                            currentState = BattleStates.POSTPLAYER;
                         }
                     }
                 }));
@@ -191,12 +192,23 @@ public class Battle {
         // }
         int randint = rand.nextInt(0, 4);
         Move m = currentMonster.getMoves().get(randint);
+        System.out.println("enemy is using " + m.getId());
         if(m.getTarget().equals("self")){
             currentMonster.updateStatChange(m);
-            currentState = BattleStates.YOURTURN;
         } else if(m.getTarget().equals("enemy")){
             playerMonster.updateStatChange(m);
-            currentState = BattleStates.YOURTURN;
+        }
+        currentState = BattleStates.POSTENEMY;
+    }
+
+    public void checkHP(){
+        if(currentMonster.getStat(Stat.HEALTH) <= 0.0){
+            System.out.println("player wins");
+            playerMonster.changeExp(50);
+            currentState = BattleStates.END;
+        } else if (playerMonster.getStat(Stat.HEALTH) <= 0.0){
+            System.out.println("enemy wins");
+            currentState = BattleStates.END;
         }
     }
 
@@ -215,6 +227,10 @@ public class Battle {
                 Menu.battleMenu.draw(g);
             break;
             case ENEMYTURN:
+            break;
+            case POSTPLAYER:
+            break;
+            case POSTENEMY:
             break;
             case SELECTITEM:
                 Menu.itemMenu.draw(g);
@@ -238,8 +254,18 @@ public class Battle {
                 Menu.battleMenu.tick();
             break;
             case ENEMYTURN:
+                System.out.println("postenemy");
                 enemyAttack();
+            break;
+            case POSTPLAYER:
+                System.out.println("postplayer");
+                currentState = BattleStates.ENEMYTURN;
+                checkHP();
+            break;
+            case POSTENEMY:
                 currentState = BattleStates.YOURTURN;
+                createMenu();
+                checkHP();
             break;
             case SELECTITEM:
                 // System.out.println("pick item works");
