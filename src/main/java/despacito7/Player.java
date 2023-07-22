@@ -24,6 +24,7 @@ public class Player extends Character {
 
     private Player() {
         super(new Coord(0,0), ResourceLoader.createCharacterSprites(1));
+        currentAnimation = "downIdle";
     }
     public boolean monstersFull() {
         if(monsters.size() == 6) {

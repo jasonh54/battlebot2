@@ -28,6 +28,7 @@ public class NPC extends Character {
 
         this.id = entry.getKey();
         this.currentmove = 0;
+        this.currentAnimation = "downIdle";
 
         JsonObject data = entry.getValue().getAsJsonObject();
 

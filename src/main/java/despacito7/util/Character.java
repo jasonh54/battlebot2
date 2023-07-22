@@ -113,10 +113,13 @@ public class Character extends AnimatingObject{
                         case RIGHT:
                             setCurrentAnim("rightIdle");
                         break;
+                        case IDLE:
+                        break;
                     }
                 break;
             }
-            play(currentAnimation, 12, false);
+            play(currentAnimation, 8, false);
+            System.out.println("playing " + currentAnimation);
             if(movecounter>=24){
                 locked = false;
                 justStopped = true;
