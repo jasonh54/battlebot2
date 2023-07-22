@@ -7,6 +7,7 @@ import despacito7.App;
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
+import despacito7.Constants.Collider;
 import despacito7.FeatureLoader;
 
 import java.util.ArrayList;
@@ -18,13 +19,14 @@ import despacito7.detail.Item;
 
 public class Character extends AnimatingObject{
     private int movecounter = 0;
-    private Direction direction;
     private MoveState moveState;
     private boolean locked = false;
+
     public boolean justStopped = false;
     public boolean stopped = true;
-    public HashMap<Direction,Boolean> moveableDirections = new HashMap<Direction, Boolean>();
+    public HashMap<Direction,Collider> moveableDirections = new HashMap<Direction,Collider>();
 
+    protected Direction direction;
     protected ArrayList<Monster> monsters = new ArrayList<Monster>();
     protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
 
@@ -43,11 +45,11 @@ public class Character extends AnimatingObject{
         createAnimation("upIdle", new int[]{6});
         createAnimation("rightIdle", new int[]{9});
 
-        moveableDirections.put(Direction.UP, true);
-        moveableDirections.put(Direction.DOWN, true);
-        moveableDirections.put(Direction.LEFT, true);
-        moveableDirections.put(Direction.RIGHT, true);
-        moveableDirections.put(Direction.IDLE, true);
+        moveableDirections.put(Direction.UP, Collider.NONE);
+        moveableDirections.put(Direction.DOWN, Collider.NONE);
+        moveableDirections.put(Direction.LEFT, Collider.NONE);
+        moveableDirections.put(Direction.RIGHT, Collider.NONE);
+        moveableDirections.put(Direction.IDLE, Collider.NONE);
     }
 
     public void draw(Graphics2D g) {
@@ -132,29 +134,37 @@ public class Character extends AnimatingObject{
     }
 
     public void checkUnavaliableDirections(){
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))){
-            moveableDirections.put(Direction.DOWN, false);
+        //down
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0))) {
+            moveableDirections.put(Direction.DOWN, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))) {
+            moveableDirections.put(Direction.DOWN, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.DOWN, Collider.NONE);
         }
-        else{
-            moveableDirections.put(Direction.DOWN, true);
+        //up
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0))) {
+            moveableDirections.put(Direction.UP, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))) {
+            moveableDirections.put(Direction.UP, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.UP, Collider.NONE);
         }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))){
-            moveableDirections.put(Direction.UP, false);
+        //right
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1))) {
+            moveableDirections.put(Direction.RIGHT, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))) {
+            moveableDirections.put(Direction.RIGHT, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.RIGHT, Collider.NONE);
         }
-        else{
-            moveableDirections.put(Direction.UP, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))){
-            moveableDirections.put(Direction.RIGHT, false);
-        }
-        else{
-            moveableDirections.put(Direction.RIGHT, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))){
-            moveableDirections.put(Direction.LEFT, false);
-        }
-        else{
-            moveableDirections.put(Direction.LEFT, true);
+        //left
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1))) {
+            moveableDirections.put(Direction.LEFT, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))) {
+            moveableDirections.put(Direction.LEFT, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.LEFT, Collider.NONE);
         }
     }
 
@@ -163,7 +173,7 @@ public class Character extends AnimatingObject{
         if(!locked){
             direction = d;
             movecounter = 0;
-            if(moveableDirections.get(d)) {
+            if(moveableDirections.get(d) == Collider.NONE) {
                 setMovement(MoveState.WALK);
                 setCurrentAnim(d.toString());
             } else {
