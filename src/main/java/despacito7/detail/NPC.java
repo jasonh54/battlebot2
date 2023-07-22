@@ -28,16 +28,7 @@ public class NPC extends Character {
 
         this.id = entry.getKey();
         this.currentmove = 0;
-
-        //create animations
-        createAnimation("leftWalk",new int[]{0,1,2});
-        createAnimation("downWalk",new int[]{3,4,5});
-        createAnimation("upWalk",new int[]{6,7,8});
-        createAnimation("rightWalk",new int[]{9,10,11});
-        createAnimation("leftIdle", new int[]{0});
-        createAnimation("downIdle", new int[]{3});
-        createAnimation("upIdle", new int[]{6});
-        createAnimation("rightIdle", new int[]{9});
+        this.currentAnimation = "downIdle";
 
         JsonObject data = entry.getValue().getAsJsonObject();
 
@@ -116,6 +107,7 @@ public class NPC extends Character {
         }
     }
 
+
     public void update() {
         if(stopped){
             this.setDirection(Constants.Direction.valueOf(movesequence.get(currentmove).getRight()));
@@ -127,6 +119,7 @@ public class NPC extends Character {
             } else {
                 currentmove++;
             }
+
         }
 
     }

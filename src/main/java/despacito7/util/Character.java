@@ -32,6 +32,17 @@ public class Character extends AnimatingObject{
         super(coord,  sprites);
         this.direction = Direction.UP;
         this.moveState = MoveState.WALK;
+
+        //create animations
+        createAnimation("leftWalk",new int[]{0,1,2});
+        createAnimation("downWalk",new int[]{3,4,5});
+        createAnimation("upWalk",new int[]{6,7,8});
+        createAnimation("rightWalk",new int[]{9,10,11});
+        createAnimation("leftIdle", new int[]{0});
+        createAnimation("downIdle", new int[]{3});
+        createAnimation("upIdle", new int[]{6});
+        createAnimation("rightIdle", new int[]{9});
+
         moveableDirections.put(Direction.UP, true);
         moveableDirections.put(Direction.DOWN, true);
         moveableDirections.put(Direction.LEFT, true);
@@ -42,16 +53,16 @@ public class Character extends AnimatingObject{
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], renderPos.x, renderPos.y, Constants.tilesize, Constants.tilesize, null);
         move();
-        if(animations.containsKey(currentAnimation)) {
-            play(currentAnimation, 12, false);
-        }
     }
     private void RenderToCoord(){
         coord.setCoord(renderPos.y/Constants.tilesize, renderPos.x/Constants.tilesize);
         // coord.print();
     }
+
+    
     
     private void move(){
+        System.out.println(this + "attempting move. trying for " + currentAnimation + " from " + animations);
         RenderToCoord();
         if(movecounter == 0){
             locked = true;
@@ -62,44 +73,47 @@ public class Character extends AnimatingObject{
                 case WALK: 
                     switch(direction) {
                         case UP:
-                            play("upWalk",8,false);
+                            play("upWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(0,-2);
                             }
                         break;
                         case DOWN:
-                            play("downWalk",8,false);
+                            play("downWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(0,2);
                             }
                         break;
                         case LEFT:
-                            play("leftWalk",8,false);
+                            play("leftWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(-2,0);
                             }
                         break;
                         case RIGHT:
-                            play("rightWalk",8,false);
+                            play("rightWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(2,0);
                             }
+                        case IDLE:
                         break;
                     }
                 break;
                 case IDLE:
                     switch(direction) {
                         case UP:
-                            play("upIdle",8,true);
+                            play("upIdle", 8, false);
                         break;
                         case DOWN:
-                            play("downIdle",8,true);
+                            play("downIdle", 8, false);
                         break;
                         case LEFT:
-                            play("leftWalk",8,true);
+                            play("leftIdle", 8, false);
                         break;
                         case RIGHT:
-                            play("rightWalk",8,true);
+                            play("rightIdle", 8, false);
+                        break;
+                        case IDLE:
                         break;
                     }
                 break;
@@ -118,25 +132,25 @@ public class Character extends AnimatingObject{
     }
 
     public void checkUnavaliableDirections(){
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0))){           
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))){
             moveableDirections.put(Direction.DOWN, false);
         }
         else{
             moveableDirections.put(Direction.DOWN, true);
         }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0))){
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))){
             moveableDirections.put(Direction.UP, false);
         }
         else{
             moveableDirections.put(Direction.UP, true);
         }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1))){
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))){
             moveableDirections.put(Direction.RIGHT, false);
         }
         else{
             moveableDirections.put(Direction.RIGHT, true);
         }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1))){
+        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))){
             moveableDirections.put(Direction.LEFT, false);
         }
         else{
@@ -147,10 +161,13 @@ public class Character extends AnimatingObject{
     public void setDirection(Direction d){
         checkUnavaliableDirections();
         if(!locked){
-            if(moveableDirections.get(d)){
-                direction = d;
-                movecounter = 0;
+            direction = d;
+            movecounter = 0;
+            if(moveableDirections.get(d)) {
+                setMovement(MoveState.WALK);
                 setCurrentAnim(d.toString());
+            } else {
+                setMovement(MoveState.IDLE);
             }
         }
     }
