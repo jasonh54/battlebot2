@@ -56,6 +56,10 @@ public abstract class Menu {
         return buttons.size();
     }
 
+    public void disableButton(){
+        
+    }
+
     public static interface Button extends Drawable {
         public void draw(Graphics2D g);
     }
@@ -68,10 +72,11 @@ public abstract class Menu {
         void activate();
     }
 
-    static class BattleButton implements Drawable {
+    public static class BattleButton implements Drawable {
         int x, y, w, h;
         String text;
         ButtonCallback c;
+        private boolean disabled = false;
         public BattleButton(int x, int y, int w, int h, String text, ButtonCallback callback){
             this.x = x;
             this.y = y;
@@ -83,6 +88,7 @@ public abstract class Menu {
         public void draw(Graphics2D g){
             Color buttonColor = Color.WHITE;
             if(hover()) buttonColor = Color.GRAY;
+            if(disabled) buttonColor = Color.RED;
             g.setColor(buttonColor);
             g.fillRect(x, y, w, h);
             g.setColor(Color.BLACK);
@@ -98,6 +104,9 @@ public abstract class Menu {
             // System.out.println(mouseX + ", " + mouseY);
             if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h)return true;
             return false;
+        }
+        public void disable(){
+            disabled = !disabled;
         }
         public void tick(){
 
