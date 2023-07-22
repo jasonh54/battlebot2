@@ -7,6 +7,7 @@ import despacito7.Constants.GameState;
 import despacito7.Constants.Stat;
 import despacito7.detail.*;
 import despacito7.menu.Menu;
+import despacito7.menu.Menu.BattleButton;
 
 import java.awt.Graphics2D;
 import java.awt.Taskbar.Feature;
@@ -116,18 +117,22 @@ public class Battle {
         monsterindex = 0;
         Menu.monsterMenu.resetButtons();
         for(String m : FeatureLoader.player.getMonsterNames()){
-            Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
+            BattleButton monsterButton = Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, m, new Menu.ButtonCallback(){
                 int buttonNum = monsterindex;
                 public void activate(){
                     // System.out.println(buttonNum);
-                    playerMonster = FeatureLoader.player.getMonster(buttonNum);
-                    playerMonster.setCoord(10, 10);
+                    if(FeatureLoader.player.getMonster(buttonNum).getStat(Stat.HEALTH) > 0.0){
+                        playerMonster = FeatureLoader.player.getMonster(buttonNum);
+                        playerMonster.setCoord(10, 10);
+                        currentState = BattleStates.POSTPLAYER;
+                    }
                     // System.out.println("getting monster works");
                     // System.out.println(FeatureLoader.player.getMonster(buttonNum).getName());
                     // System.out.println("get name function works");
-                    currentState = BattleStates.POSTPLAYER;
                 }
-            }));
+            });
+            Menu.monsterMenu.addButton(monsterButton);
+            if(FeatureLoader.player.getMonster(monsterindex).getStat(Stat.HEALTH) <= 0.0){monsterButton.disable();}
             monsterindex++;
         }
         Menu.monsterMenu.addButton(Menu.generateButton(menuX, menuY-(monsterindex*22), 100, 20, "Return", new Menu.ButtonCallback(){
@@ -144,7 +149,7 @@ public class Battle {
         Menu.itemMenu.resetButtons();
         for(Item i : FeatureLoader.player.getItemList()){
             if (i != null) {
-                Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id,  new Menu.ButtonCallback() {
+                Menu.itemMenu.addButton(Menu.generateButton(menuX, menuY-(itemindex*22), 100, 20, i.id, new Menu.ButtonCallback() {
                     public void activate(){
                         if(i.getTarget().equals("self")){
                             playerMonster.updateStatChange(i);
@@ -207,8 +212,10 @@ public class Battle {
             playerMonster.changeExp(50);
             currentState = BattleStates.END;
         } else if (playerMonster.getStat(Stat.HEALTH) <= 0.0){
-            System.out.println("enemy wins");
-            currentState = BattleStates.END;
+            System.out.println("player monster dies");
+            createMonsterMenu();
+            currentState = BattleStates.SELECTMONSTER;
+            System.out.println(currentState);
         }
     }
 
