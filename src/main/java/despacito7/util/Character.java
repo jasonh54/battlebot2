@@ -73,25 +73,25 @@ public class Character extends AnimatingObject{
                 case WALK: 
                     switch(direction) {
                         case UP:
-                            setCurrentAnim("upWalk");
+                            play("upWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(0,-2);
                             }
                         break;
                         case DOWN:
-                            setCurrentAnim("downWalk");
+                            play("downWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(0,2);
                             }
                         break;
                         case LEFT:
-                            setCurrentAnim("leftWalk");
+                            play("leftWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(-2,0);
                             }
                         break;
                         case RIGHT:
-                            setCurrentAnim("rightWalk");
+                            play("rightWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(2,0);
                             }
@@ -102,24 +102,22 @@ public class Character extends AnimatingObject{
                 case IDLE:
                     switch(direction) {
                         case UP:
-                            setCurrentAnim("upIdle");
+                            play("upIdle", 8, false);
                         break;
                         case DOWN:
-                            setCurrentAnim("downIdle");
+                            play("downIdle", 8, false);
                         break;
                         case LEFT:
-                            setCurrentAnim("leftIdle");
+                            play("leftIdle", 8, false);
                         break;
                         case RIGHT:
-                            setCurrentAnim("rightIdle");
+                            play("rightIdle", 8, false);
                         break;
                         case IDLE:
                         break;
                     }
                 break;
             }
-            play(currentAnimation, 8, false);
-            System.out.println("playing " + currentAnimation);
             if(movecounter>=24){
                 locked = false;
                 justStopped = true;
