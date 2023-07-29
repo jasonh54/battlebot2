@@ -54,7 +54,7 @@ public class App {
         currentMonster = featureLoader.getMonster(featureLoader.getMonsterIds()[rand]);
         featureLoader.player.addMonster(featureLoader.getMonster("Ball"));
         featureLoader.player.addMonster(featureLoader.getMonster("Beard"));
-        featureLoader.player.getMonster(1).updateStat(Stat.HEALTH, -100f);
+        featureLoader.player.getMonster(1).updateStat(Stat.HEALTH, -25f);
         featureLoader.player.addItem(featureLoader.getItem("PotionHealth"));
         featureLoader.player.addItem(featureLoader.getItem("PotionDefense"));
         featureLoader.player.addItem(featureLoader.getItem("PotionAgility"));
