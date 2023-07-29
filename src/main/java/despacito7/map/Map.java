@@ -31,7 +31,6 @@ public class Map implements Drawable {
     public Map(JsonObject data) {
         id = data.get("id").getAsString();
         portals = data.get("portals").getAsJsonArray();
-        System.out.println("*****Beginning map "+id+"*****");
         for (java.util.Map.Entry<String, JsonElement> layerdata : data.get("layers").getAsJsonObject().entrySet()) {
             LayerType layertype = LayerType.valueOf(layerdata.getKey().toUpperCase());
             switch (layertype) {
@@ -102,9 +101,6 @@ public class Map implements Drawable {
             Tile copy = layers.get(LayerType.INTERACT).tiles[c.get(0).getAsInt()][c.get(1).getAsInt()]; //exists as a reference to copy
             
             PortalTile newtile = new PortalTile(copy.spnum,copy.coord,copy.type,FeatureLoader.getMap(tarmap),tarcoord); //create portaltile replacement with all same info
-            System.out.println(this.id + " attempting a portal swap at coords " + copy.coord().getComponents()[0] + "," + copy.coord().getComponents()[1]);
-            System.out.println("Destination: " + FeatureLoader.getMap(tarmap) + " AKA " + tarmap + ", " + newtile.terminus().getRight());
-
             layers.get(LayerType.INTERACT).replaceTile(copy.coord(), newtile); //replace tile in layer with new portaltile
             //next two lines should be uncommented once the interactlayer/layer system is functioning again and portals can be added to the portal coord set
             /* layers.get(LayerType.INTERACT).specials.get(TileType.PORTAL).add(copy.coord()); //add portals to set */

@@ -64,7 +64,6 @@ public class Character extends AnimatingObject{
     
     
     private void move(){
-        System.out.println(this + "attempting move. trying for " + currentAnimation + " from " + animations);
         RenderToCoord();
         if(movecounter == 0){
             locked = true;
