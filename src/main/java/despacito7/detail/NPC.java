@@ -16,7 +16,7 @@ import despacito7.util.Pair;
 public class NPC extends Character {
     public final String id;
     private Map<String,String> topics = new HashMap<String,String>(); // keys should be topic name (CHAT, BATTLE, SHOP), value should be response
-    private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic, key[1] should be new topic (YES, NO), value should be response
+    private Map<Pair<String, String>,String> subtopics = new HashMap<Pair<String, String>,String>(); // key[0] should be source topic (CONTESTS), key[1] should be new topic (YES, NO), value should be response
     private ArrayList<Pair<String,String>> movesequence;
     private int currentmove;
 
@@ -63,7 +63,6 @@ public class NPC extends Character {
         if (data.has("items")) {
             for (JsonElement te : data.getAsJsonArray("items")) {
                 inventory.put(FeatureLoader.getItem(te.getAsString()),0);
-                System.out.println(id + "has items: " + inventory.keySet());
                 //update json to include # of items in the NPC.json
             }
         }
@@ -71,20 +70,34 @@ public class NPC extends Character {
         if (data.has("monsters")) {
             for (JsonElement t : data.getAsJsonArray("monsters")) {
                 monsters.add(FeatureLoader.getMonster(t.getAsString())); //monsters null?
-                System.out.println(id + " has monsters: " + monsters);
             }
         }
+
+        printAllInformation();
+    }
+
+    public void printAllInformation() { //to confirm all information has been correctly stored and is accessible!!
+        System.out.println("*** Printing for NPC " + id + " ***");
+        System.out.println("Topics: " + this.topics.keySet().toArray(new String[]{}));
+        for (String s : this.topics.keySet()) {
+            System.out.println("Response to " + s + ": " + topics.get(s));
+        }
+        for (Pair<String,String> p : this.subtopics.keySet()) {
+            System.out.println("Response to " + p.getRight() + " from " + p.getLeft() + ": " + subtopics.get(p));
+        }
+        System.out.println("Monsters: " + monsters);
+        System.out.println("Items: " + inventory);
     }
 
     public Coord getLoc() {
         return super.coord;
     }
 
-    public String[] getTopics() {
+    public String[] getTopics() { //get a list of the NPC's initial topics -- this should not include suptopics, which should only appear after the NPC asks the player the associated question
         return this.topics.keySet().toArray(new String[]{});
     }
 
-    public String[] getQuestionTopics(String q) {
+    public String[] getQuestionTopics(String q) { //this gets a list of the NPC's subtopics, which are associated with a particular question
         ArrayList<String> s = new ArrayList<String>();
         for (Pair<String, String> p : subtopics.keySet()) {
             if (p.getLeft().equals(q)) {
@@ -94,17 +107,13 @@ public class NPC extends Character {
         return (String[]) s.toArray();
     }
 
-    public String getResponse(String t) {
-        if (topics.containsKey(t)) {
-            return topics.get(t);
-        } else {
-            for (Pair<String, String> p : subtopics.keySet()) {
-                if (p.getRight().equals(t)) {
-                    return subtopics.get(p);
-                }
+    public String getResponse(String t, String source) { //this gets the NPC's statement, which is associated with the topic selected by the player. this is only needed for subtopics. for standard ones, use Map.get()
+        for (Pair<String, String> p : subtopics.keySet()) {
+            if (p.getRight().equals(t) && p.getLeft().equals(source)) {
+                return subtopics.get(p);
             }
-            return "Something is wrong; your topic does not exist!";
         }
+        return "Something is wrong; your topic does not exist!";
     }
 
 
