@@ -11,6 +11,7 @@ import despacito7.gameplay.Battle;
 import despacito7.map.PortalTile;
 import despacito7.util.Character;
 import despacito7.Constants.GameState;
+import despacito7.Constants.Collider;
 
 
 public class Player extends Character {
@@ -24,15 +25,7 @@ public class Player extends Character {
 
     private Player() {
         super(new Coord(0,0), ResourceLoader.createCharacterSprites(1));
-        createAnimation("leftWalk",new int[]{0,1,2}); // i somewhat disagree with the string-based animation keys
-        createAnimation("downWalk",new int[]{3,4,5});
-        createAnimation("upWalk",new int[]{6,7,8});
-        createAnimation("rightWalk",new int[]{9,10,11});
-        createAnimation("leftIdle", new int[]{0});
-        createAnimation("downIdle", new int[]{3});
-        createAnimation("upIdle", new int[]{6});
-        createAnimation("rightIdle", new int[]{9});
-
+        currentAnimation = "downIdle";
     }
     public boolean monstersFull() {
         if(monsters.size() == 6) {
@@ -62,37 +55,8 @@ public class Player extends Character {
     public void onKey(char keyCode) {
         if (Direction.fromKey(keyCode) != null) this.setDirection(Direction.fromKey(keyCode));
     }
-
-    public void checkUnavaliableDirections(){
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))){           
-            moveableDirections.put(Direction.DOWN, false);
-        }
-        else{
-            moveableDirections.put(Direction.DOWN, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))){
-            moveableDirections.put(Direction.UP, false);
-        }
-        else{
-            moveableDirections.put(Direction.UP, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))){
-            moveableDirections.put(Direction.RIGHT, false);
-        }
-        else{
-            moveableDirections.put(Direction.RIGHT, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1)) || FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))){
-            moveableDirections.put(Direction.LEFT, false);
-        }
-        else{
-            moveableDirections.put(Direction.LEFT, true);
-        }
-    }
    
     public void update(){
-
-
         if(FeatureLoader.getMap(App.currentmap).monsters(coord) && justStopped){
             // coord.print();
             System.out.println("You are touching grass");
@@ -116,7 +80,15 @@ public class Player extends Character {
 
         if(FeatureLoader.getMap(App.currentmap).collides(coord) && stopped){
             System.out.println("You are on a car");
+        }
+    }
 
+    public boolean attemptNPCTalk() {
+        if (moveableDirections.get(direction) == Collider.NPC) {
+            System.out.println("NPC in range. Gamestate is now TALK. to exit, press 'x'.");
+            return true;
+        } else {
+            return false;
         }
     }
         

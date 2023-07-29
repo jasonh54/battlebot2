@@ -7,6 +7,7 @@ import despacito7.App;
 import despacito7.Constants;
 import despacito7.Constants.Direction;
 import despacito7.Constants.MoveState;
+import despacito7.Constants.Collider;
 import despacito7.FeatureLoader;
 
 import java.util.ArrayList;
@@ -18,13 +19,14 @@ import despacito7.detail.Item;
 
 public class Character extends AnimatingObject{
     private int movecounter = 0;
-    private Direction direction;
     private MoveState moveState;
     private boolean locked = false;
+
     public boolean justStopped = false;
     public boolean stopped = true;
-    public HashMap<Direction,Boolean> moveableDirections = new HashMap<Direction, Boolean>();
+    public HashMap<Direction,Collider> moveableDirections = new HashMap<Direction,Collider>();
 
+    protected Direction direction;
     protected ArrayList<Monster> monsters = new ArrayList<Monster>();
     protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
     protected ArrayList<Monster> PC = new ArrayList<Monster>();
@@ -33,26 +35,37 @@ public class Character extends AnimatingObject{
         super(coord,  sprites);
         this.direction = Direction.UP;
         this.moveState = MoveState.WALK;
-        moveableDirections.put(Direction.UP, true);
-        moveableDirections.put(Direction.DOWN, true);
-        moveableDirections.put(Direction.LEFT, true);
-        moveableDirections.put(Direction.RIGHT, true);
-        moveableDirections.put(Direction.IDLE, true);
+
+        //create animations
+        createAnimation("leftWalk",new int[]{0,1,2});
+        createAnimation("downWalk",new int[]{3,4,5});
+        createAnimation("upWalk",new int[]{6,7,8});
+        createAnimation("rightWalk",new int[]{9,10,11});
+        createAnimation("leftIdle", new int[]{0});
+        createAnimation("downIdle", new int[]{3});
+        createAnimation("upIdle", new int[]{6});
+        createAnimation("rightIdle", new int[]{9});
+
+        moveableDirections.put(Direction.UP, Collider.NONE);
+        moveableDirections.put(Direction.DOWN, Collider.NONE);
+        moveableDirections.put(Direction.LEFT, Collider.NONE);
+        moveableDirections.put(Direction.RIGHT, Collider.NONE);
+        moveableDirections.put(Direction.IDLE, Collider.NONE);
     }
 
     public void draw(Graphics2D g) {
         g.drawImage(sprites[frame], renderPos.x, renderPos.y, Constants.tilesize, Constants.tilesize, null);
         move();
-        if(animations.containsKey(currentAnimation)) {
-            play(currentAnimation, 12, false);
-        }
     }
     private void RenderToCoord(){
         coord.setCoord(renderPos.y/Constants.tilesize, renderPos.x/Constants.tilesize);
         // coord.print();
     }
+
+    
     
     private void move(){
+        System.out.println(this + "attempting move. trying for " + currentAnimation + " from " + animations);
         RenderToCoord();
         if(movecounter == 0){
             locked = true;
@@ -63,44 +76,47 @@ public class Character extends AnimatingObject{
                 case WALK: 
                     switch(direction) {
                         case UP:
-                            play("upWalk",8,false);
+                            play("upWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(0,-2);
                             }
                         break;
                         case DOWN:
-                            play("downWalk",8,false);
+                            play("downWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(0,2);
                             }
                         break;
                         case LEFT:
-                            play("leftWalk",8,false);
+                            play("leftWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(-2,0);
                             }
                         break;
                         case RIGHT:
-                            play("rightWalk",8,false);
+                            play("rightWalk", 8, false);
                             if(movecounter%3==1){
                                 renderPos.translate(2,0);
                             }
+                        case IDLE:
                         break;
                     }
                 break;
                 case IDLE:
                     switch(direction) {
                         case UP:
-                            play("upIdle",8,true);
+                            play("upIdle", 8, false);
                         break;
                         case DOWN:
-                            play("downIdle",8,true);
+                            play("downIdle", 8, false);
                         break;
                         case LEFT:
-                            play("leftWalk",8,true);
+                            play("leftIdle", 8, false);
                         break;
                         case RIGHT:
-                            play("rightWalk",8,true);
+                            play("rightIdle", 8, false);
+                        break;
+                        case IDLE:
                         break;
                     }
                 break;
@@ -119,39 +135,50 @@ public class Character extends AnimatingObject{
     }
 
     public void checkUnavaliableDirections(){
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0))){           
-            moveableDirections.put(Direction.DOWN, false);
+        //down
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(1,0))) {
+            moveableDirections.put(Direction.DOWN, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(1,0))) {
+            moveableDirections.put(Direction.DOWN, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.DOWN, Collider.NONE);
         }
-        else{
-            moveableDirections.put(Direction.DOWN, true);
+        //up
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0))) {
+            moveableDirections.put(Direction.UP, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(-1,0))) {
+            moveableDirections.put(Direction.UP, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.UP, Collider.NONE);
         }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(-1,0))){
-            moveableDirections.put(Direction.UP, false);
+        //right
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1))) {
+            moveableDirections.put(Direction.RIGHT, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,1))) {
+            moveableDirections.put(Direction.RIGHT, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.RIGHT, Collider.NONE);
         }
-        else{
-            moveableDirections.put(Direction.UP, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,1))){
-            moveableDirections.put(Direction.RIGHT, false);
-        }
-        else{
-            moveableDirections.put(Direction.RIGHT, true);
-        }
-        if(FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1))){
-            moveableDirections.put(Direction.LEFT, false);
-        }
-        else{
-            moveableDirections.put(Direction.LEFT, true);
+        //left
+        if (FeatureLoader.getMap(App.currentmap).collides(coord.offset(0,-1))) {
+            moveableDirections.put(Direction.LEFT, Collider.OBJECT);
+        } else if (FeatureLoader.getMap(App.currentmap).npcs(coord.offset(0,-1))) {
+            moveableDirections.put(Direction.LEFT, Collider.NPC);
+        } else {
+            moveableDirections.put(Direction.LEFT, Collider.NONE);
         }
     }
 
     public void setDirection(Direction d){
         checkUnavaliableDirections();
         if(!locked){
-            if(moveableDirections.get(d)){
-                direction = d;
-                movecounter = 0;
+            direction = d;
+            movecounter = 0;
+            if(moveableDirections.get(d) == Collider.NONE) {
+                setMovement(MoveState.WALK);
                 setCurrentAnim(d.toString());
+            } else {
+                setMovement(MoveState.IDLE);
             }
         }
     }
