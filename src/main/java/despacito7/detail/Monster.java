@@ -77,7 +77,7 @@ public class Monster extends AnimatingObject implements Cloneable {
             level++;
             System.out.println("level up!");
             for(Stat s : stats.keySet()){
-                updateStat(s, stats.get(s)*1.1f);
+                updateStat(s, stats.get(s)*0.1f);
             }
         }
     }
@@ -159,9 +159,9 @@ public class Monster extends AnimatingObject implements Cloneable {
 
     public void drawHealthBar(Graphics2D g){
         g.setColor(Color.RED);
-        g.fillRect((int)coord.getPosition().getX()-18, (int)coord.getPosition().getY()-10, 50, 5);
+        g.fillRect((int)coord.getPosition().getX()-(int)(stats.get(Stat.MAX_HEALTH).intValue()*0.1875), (int)coord.getPosition().getY()-10, (int)(stats.get(Stat.MAX_HEALTH).intValue()*0.5), 5);
         g.setColor(Color.GREEN);
-        g.fillRect((int)coord.getPosition().getX()-18, (int)coord.getPosition().getY()-10, (int)(stats.get(Stat.HEALTH).intValue()*0.5), 5);
+        g.fillRect((int)coord.getPosition().getX()-(int)(stats.get(Stat.MAX_HEALTH).intValue()*0.1875), (int)coord.getPosition().getY()-10, (int)(stats.get(Stat.HEALTH).intValue()*0.5), 5);
         g.setColor(Color.BLACK);
     }
 
