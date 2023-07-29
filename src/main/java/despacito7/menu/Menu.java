@@ -102,7 +102,9 @@ public abstract class Menu {
             int mouseY = (((int)coord.getY()+(int)offset.getY()*2)/2)-50;
 
             // System.out.println(mouseX + ", " + mouseY);
-            if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h)return true;
+            if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h){
+                return true;
+            }
             return false;
         }
         public void disable(){
