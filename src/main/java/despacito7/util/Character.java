@@ -27,6 +27,7 @@ public class Character extends AnimatingObject{
 
     protected ArrayList<Monster> monsters = new ArrayList<Monster>();
     protected HashMap<Item,Integer> inventory = new HashMap<Item,Integer>();
+    protected ArrayList<Monster> PC = new ArrayList<Monster>();
 
     public Character(Coord coord, Image[] sprites){
         super(coord,  sprites);

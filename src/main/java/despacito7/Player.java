@@ -43,6 +43,7 @@ public class Player extends Character {
 
     public void addMonster(Monster mon) {
         if(monstersFull()) {
+            PC.add(mon);
             return;
         }
         monsters.add(mon);
