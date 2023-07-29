@@ -11,6 +11,7 @@ import despacito7.gameplay.Battle;
 import despacito7.map.PortalTile;
 import despacito7.util.Character;
 import despacito7.Constants.GameState;
+import despacito7.Constants.Collider;
 
 
 public class Player extends Character {
@@ -81,8 +82,13 @@ public class Player extends Character {
         }
     }
 
-    public void attemptNPCTalk() {
-        System.out.println("See if there is an NPC within range to speak to. if so, change the gamestate");
+    public boolean attemptNPCTalk() {
+        if (moveableDirections.get(direction) == Collider.NPC) {
+            System.out.println("NPC in range. Gamestate is now TALK. to exit, press 'x'.");
+            return true;
+        } else {
+            return false;
+        }
     }
         
 }

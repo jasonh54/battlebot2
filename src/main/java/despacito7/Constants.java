@@ -37,6 +37,10 @@ public final class Constants {
         }
     }
 
+    public static enum Collider {
+        NONE, OBJECT, NPC
+    }
+
     public static enum Type {
         WATER, EARTH, FIRE, AIR, // long ago, the four nations lived together in harmony
         NORMAL, FIGHTING
