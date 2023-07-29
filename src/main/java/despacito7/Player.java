@@ -48,6 +48,17 @@ public class Player extends Character {
         return temp;
     }
 
+    public void switchMonster(Monster inv, Monster pc){
+        monsters.remove(inv);
+        addMonster(pc);
+    }
+    public void swapMonster(Monster m1, Monster m2){
+        int ind1  = monsters.indexOf(m1);
+        int ind2 = monsters.indexOf(m2);
+        monsters.set(ind1, m2);
+        monsters.set(ind2, m1);
+    }
+
     public void addItem(Item i){
         inventory.put(i, 1);
     }
